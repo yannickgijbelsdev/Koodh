@@ -1,21 +1,37 @@
 import "./App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useEffect } from "react";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import Home from "./pages/Home";
+import About from "./pages/About";
+import Work from "./pages/Work";
+import Journal from "./pages/Journal";
+import Lab from "./pages/Lab";
+import Careers from "./pages/Careers";
+import Contact from "./pages/Contact";
 import SimplePage from "./pages/SimplePage";
+
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  return null;
+}
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/work" element={<SimplePage title="Work" />} />
+          <Route path="/work" element={<Work />} />
           <Route path="/work/:slug" element={<SimplePage title="Case Study" />} />
-          <Route path="/about" element={<SimplePage title="About" />} />
-          <Route path="/journal" element={<SimplePage title="Journal" />} />
-          <Route path="/lab" element={<SimplePage title="Lab" />} />
-          <Route path="/careers" element={<SimplePage title="Careers" />} />
-          <Route path="/contact" element={<SimplePage title="Contact" />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/journal" element={<Journal />} />
+          <Route path="/lab" element={<Lab />} />
+          <Route path="/careers" element={<Careers />} />
+          <Route path="/contact" element={<Contact />} />
         </Routes>
       </BrowserRouter>
     </div>
