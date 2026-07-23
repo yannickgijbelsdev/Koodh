@@ -13,7 +13,7 @@ export default function Lab() {
         <section className="max-w-[1600px] mx-auto px-6 md:px-10 pt-20 md:pt-28 pb-14">
           <p className="text-sm font-semibold uppercase tracking-[0.2em] text-neutral-400">Lab</p>
           <h1 className="mt-4 font-extrabold uppercase-tight text-black text-[9vw] md:text-[5.5vw] leading-[0.98]">
-            Saffron Lab:<br />Testing creative boundaries
+            Koodh Lab:<br />Testing creative boundaries
           </h1>
           <p className="mt-8 max-w-2xl text-xl md:text-2xl text-neutral-600 font-medium">
             A space for us to explore, toy with, and incubate new ideas that push

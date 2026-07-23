@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
 import { navLinks, offices } from "../mock";
+import logo from "../assets/koodh-logo.png";
 
 export default function Footer() {
   return (
@@ -56,9 +57,9 @@ export default function Footer() {
         </div>
 
         <div className="mt-20 pt-8 border-t border-white/15 flex flex-col md:flex-row items-center justify-between gap-4">
-          <span className="text-3xl font-extrabold tracking-tight">SAFFRON</span>
+          <img src={logo} alt="Koodh" className="h-9 w-auto brightness-0 invert" />
           <p className="text-[13px] text-white/50">
-            &copy; {new Date().getFullYear()} Saffron Brand Consultants. Clone for demo purposes.
+            &copy; {new Date().getFullYear()} Koodh. All rights reserved.
           </p>
         </div>
       </div>

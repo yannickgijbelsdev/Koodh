@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Search, Menu, X } from "lucide-react";
 import { navLinks } from "../mock";
+import logo from "../assets/koodh-logo.png";
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -29,9 +30,15 @@ export default function Header() {
       <div className="max-w-[1600px] mx-auto px-6 md:px-10 h-[68px] flex items-center justify-between">
         <Link
           to="/"
-          className={`text-[22px] font-extrabold tracking-tight ${textColor} transition-colors duration-300`}
+          className="flex items-center transition-opacity duration-300 hover:opacity-80"
         >
-          SAFFRON
+          <img
+            src={logo}
+            alt="Koodh"
+            className={`h-7 md:h-8 w-auto transition-all duration-300 ${
+              light ? "brightness-0 invert" : ""
+            }`}
+          />
         </Link>
 
         <nav className="hidden lg:flex items-center gap-8">
@@ -65,7 +72,7 @@ export default function Header() {
       {open && (
         <div className="fixed inset-0 z-[60] bg-white flex flex-col p-6 animate-fade-up">
           <div className="flex items-center justify-between h-[36px]">
-            <span className="text-[22px] font-extrabold tracking-tight text-black">SAFFRON</span>
+            <img src={logo} alt="Koodh" className="h-7 w-auto" />
             <button onClick={() => setOpen(false)} aria-label="Close menu">
               <X size={28} className="text-black" />
             </button>

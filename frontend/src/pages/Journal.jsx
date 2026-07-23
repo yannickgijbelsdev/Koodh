@@ -15,7 +15,7 @@ export default function Journal() {
       <main className="pt-[68px] bg-white">
         <section className="max-w-[1600px] mx-auto px-6 md:px-10 pt-20 md:pt-28 pb-14">
           <h1 className="font-extrabold uppercase-tight text-black text-[13vw] md:text-[8vw] leading-[0.92]">
-            A pinch of<br />Saffron
+            A pinch of<br />Koodh
           </h1>
           <p className="mt-8 max-w-2xl text-xl md:text-2xl text-neutral-600 font-medium">
             Keep up with all the latest insights, events, and stories from our

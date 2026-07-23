@@ -41,7 +41,7 @@ export default function About() {
                 key={i}
                 className="shrink-0 w-[260px] md:w-[400px] aspect-[4/5] rounded-2xl overflow-hidden bg-neutral-100"
               >
-                <img src={src} alt="Saffron studio" className="w-full h-full object-cover" />
+                <img src={src} alt="Koodh studio" className="w-full h-full object-cover" />
               </div>
             ))}
           </div>
@@ -55,7 +55,7 @@ export default function About() {
             </h2>
             <div>
               <p className="text-lg md:text-xl text-neutral-600 leading-relaxed">
-                At Saffron, we turn brand into action. We define your DNA and
+                At Koodh, we turn brand into action. We define your DNA and
                 embed it across every interaction, ensuring it is consistently
                 expressed, measured and continuously improved. Because brand is
                 never finished — it evolves, learns and expands, becoming a force
@@ -139,7 +139,7 @@ export default function About() {
         <section className="bg-black text-white py-24">
           <div className="max-w-[1600px] mx-auto px-6 md:px-10">
             <p className="text-white/60 max-w-xl text-lg">
-              Saffron is an independent and global company. This is a snapshot of
+              Koodh is an independent and global company. This is a snapshot of
               where we show up in the world.
             </p>
             <div className="mt-14 grid grid-cols-2 md:grid-cols-4 gap-10">
@@ -161,7 +161,7 @@ export default function About() {
                 Meet the team
               </h2>
               <p className="mt-4 text-neutral-600 text-lg max-w-xl">
-                At Saffron, we collaborate with clients and each other on all
+                At Koodh, we collaborate with clients and each other on all
                 projects as one team across our locations.
               </p>
             </div>

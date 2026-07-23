@@ -48,10 +48,10 @@ export default function Contact() {
               </p>
               <p className="mt-3 text-lg font-bold text-black">Alice Anderson</p>
               <a
-                href="mailto:enquiries@saffron-consultants.com"
+                href="mailto:enquiries@koodh.com"
                 className="text-black link-underline"
               >
-                enquiries@saffron-consultants.com
+                enquiries@koodh.com
               </a>
             </div>
             <div className="border-t-2 border-black pt-5">
@@ -59,10 +59,10 @@ export default function Contact() {
                 Press & Media
               </p>
               <a
-                href="mailto:media@saffron-consultants.com"
+                href="mailto:media@koodh.com"
                 className="mt-3 block text-black link-underline"
               >
-                media@saffron-consultants.com
+                media@koodh.com
               </a>
             </div>
           </div>
@@ -73,7 +73,7 @@ export default function Contact() {
           <div className="grid md:grid-cols-3 gap-4 px-6 md:px-10">
             {contactImages.map((src, i) => (
               <div key={i} className="aspect-video rounded-2xl overflow-hidden bg-neutral-100">
-                <img src={src} alt="Saffron office" className="w-full h-full object-cover" />
+                <img src={src} alt="Koodh office" className="w-full h-full object-cover" />
               </div>
             ))}
           </div>

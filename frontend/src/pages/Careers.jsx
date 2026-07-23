@@ -18,7 +18,7 @@ export default function Careers() {
         {/* Hero */}
         <section className="max-w-[1600px] mx-auto px-6 md:px-10 pt-20 md:pt-28 pb-14">
           <h1 className="font-extrabold uppercase-tight text-black text-[13vw] md:text-[8vw] leading-[0.92]">
-            Imagine at<br />Saffron
+            Imagine at<br />Koodh
           </h1>
           <p className="mt-8 max-w-2xl text-xl md:text-2xl text-neutral-600 font-medium">
             Take your curiosity anywhere. Create opportunity everywhere.
@@ -39,7 +39,7 @@ export default function Careers() {
           <div className="flex gap-4 px-6 md:px-10 overflow-x-auto no-scrollbar">
             {careersImages.map((src, i) => (
               <div key={i} className="shrink-0 w-[260px] md:w-[400px] aspect-[4/5] rounded-2xl overflow-hidden bg-neutral-100">
-                <img src={src} alt="Life at Saffron" className="w-full h-full object-cover" />
+                <img src={src} alt="Life at Koodh" className="w-full h-full object-cover" />
               </div>
             ))}
           </div>
@@ -69,7 +69,7 @@ export default function Careers() {
 
         {/* Stats */}
         <section className="max-w-[1600px] mx-auto px-6 md:px-10 py-24">
-          <h2 className="font-extrabold uppercase-tight text-black text-3xl md:text-5xl">At Saffron</h2>
+          <h2 className="font-extrabold uppercase-tight text-black text-3xl md:text-5xl">At Koodh</h2>
           <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-10">
             {stats.map((s) => (
               <div key={s.label}>
@@ -108,7 +108,7 @@ export default function Careers() {
           <h2 className="font-extrabold uppercase-tight text-black text-3xl md:text-5xl">Perks & Benefits</h2>
           <p className="mt-4 max-w-2xl text-neutral-600 text-lg">
             Interesting work with global clients is where our offer starts. At
-            Saffron, we look after our people.
+            Koodh, we look after our people.
           </p>
           <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {benefits.map((b) => (

@@ -1,4 +1,4 @@
-// Mock data for Saffron Brand Consultants clone
+// Mock data for Koodh Brand Consultants clone
 const IMG = "https://saffron.imgix.net";
 const p = "?ixlib=js-3.8.0&q=80&auto=format%2Ccompress&fit=crop";
 
@@ -208,8 +208,8 @@ export const aboutImages = [
 
 export const values = [
   {
-    title: "One Saffron",
-    text: "No matter where we are, we are one; one Saffron culture working as one team across the world.",
+    title: "One Koodh",
+    text: "No matter where we are, we are one; one Koodh culture working as one team across the world.",
   },
   {
     title: "Natively global",
@@ -305,7 +305,7 @@ export const careersImages = [
 ];
 
 export const benefits = [
-  { n: "01", title: "One Saffron", text: "One culture working as one team across the world." },
+  { n: "01", title: "One Koodh", text: "One culture working as one team across the world." },
   { n: "02", title: "Remote Work", text: "Connect from wherever you like around the world, 10 days a year." },
   { n: "03", title: "Holidays", text: "26 days and counting, plus your birthday." },
   { n: "04", title: "Flex Hours", text: "Flexible start and finish every day." },
@@ -323,11 +323,11 @@ export const dayInLife = [
 ];
 
 export const careersFaq = [
-  { q: "Can I freelance for Saffron?", a: "Yes. We work with all sorts of great freelancers across our departments." },
-  { q: "Do I have to have professional experience in branding to work at Saffron?", a: "Not necessarily. We value curiosity, craft and a distinct point of view as much as formal experience." },
-  { q: "Does Saffron hire students, new graduates and interns?", a: "Yes, we regularly welcome new graduates and interns across our studios." },
-  { q: "What happens after I submit my application to Saffron?", a: "Our talent team reviews every application and will be in touch if there's a potential fit." },
-  { q: "What precautions should I take when communicating with Saffron during the hiring process?", a: "We'll only ever contact you from an official saffron-consultants.com address. We never ask for payment." },
+  { q: "Can I freelance for Koodh?", a: "Yes. We work with all sorts of great freelancers across our departments." },
+  { q: "Do I have to have professional experience in branding to work at Koodh?", a: "Not necessarily. We value curiosity, craft and a distinct point of view as much as formal experience." },
+  { q: "Does Koodh hire students, new graduates and interns?", a: "Yes, we regularly welcome new graduates and interns across our studios." },
+  { q: "What happens after I submit my application to Koodh?", a: "Our talent team reviews every application and will be in touch if there's a potential fit." },
+  { q: "What precautions should I take when communicating with Koodh during the hiring process?", a: "We'll only ever contact you from an official koodh.com address. We never ask for payment." },
 ];
 
 // ===== JOURNAL / LAB PAGES =====
