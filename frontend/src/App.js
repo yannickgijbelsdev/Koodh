@@ -8,7 +8,7 @@ import Journal from "./pages/Journal";
 import Lab from "./pages/Lab";
 import Careers from "./pages/Careers";
 import Contact from "./pages/Contact";
-import SimplePage from "./pages/SimplePage";
+import WorkDetail from "./pages/WorkDetail";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -26,7 +26,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/work" element={<Work />} />
-          <Route path="/work/:slug" element={<SimplePage title="Case Study" />} />
+          <Route path="/work/:slug" element={<WorkDetail />} />
           <Route path="/about" element={<About />} />
           <Route path="/journal" element={<Journal />} />
           <Route path="/lab" element={<Lab />} />

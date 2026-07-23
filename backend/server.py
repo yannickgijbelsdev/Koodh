@@ -8,6 +8,7 @@ from pathlib import Path
 from pydantic import BaseModel, Field, ConfigDict
 from typing import List
 import uuid
+import httpx
 from datetime import datetime, timezone
 
 
@@ -65,6 +66,33 @@ async def get_status_checks():
             check['timestamp'] = datetime.fromisoformat(check['timestamp'])
     
     return status_checks
+
+# ===== Koodh News API proxy (avoids CORS / mixed-content from HTTPS frontend) =====
+KOODH_NEWS_BASE = "https://clr.koodh.com/api/news"
+
+@api_router.get("/work")
+async def get_work_items():
+    """Proxy the Koodh news list endpoint used to power the Work grid."""
+    try:
+        async with httpx.AsyncClient(timeout=20, follow_redirects=True) as http:
+            resp = await http.get(f"{KOODH_NEWS_BASE}/koodh/koodh")
+            resp.raise_for_status()
+            return resp.json()
+    except Exception as e:
+        logger.error(f"Failed to fetch Koodh work list: {e}")
+        return {"items": [], "count": 0, "error": str(e)}
+
+@api_router.get("/work/{article_id}")
+async def get_work_item(article_id: str):
+    """Proxy the Koodh article detail endpoint used when opening a project."""
+    try:
+        async with httpx.AsyncClient(timeout=20, follow_redirects=True) as http:
+            resp = await http.get(f"{KOODH_NEWS_BASE}/articles/{article_id}")
+            resp.raise_for_status()
+            return resp.json()
+    except Exception as e:
+        logger.error(f"Failed to fetch Koodh article {article_id}: {e}")
+        return {"error": str(e)}
 
 # Include the router in the main app
 app.include_router(api_router)

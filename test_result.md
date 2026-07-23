@@ -101,3 +101,83 @@
 #====================================================================================================
 # Testing Data - Main Agent and testing sub agent both should log testing data below this section
 #====================================================================================================
+
+user_problem_statement: "Test the two new backend proxy endpoints that power the Work grid of a React site"
+
+backend:
+  - task: "GET /api/work endpoint - List work items"
+    implemented: true
+    working: true
+    file: "/app/backend/server.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: "NA"
+        agent: "testing"
+        comment: "Initial testing - endpoint implemented at lines 73-83 in server.py"
+      - working: true
+        agent: "testing"
+        comment: "✅ PASSED - Returns HTTP 200 with JSON containing 'items' array. All 3 items have required fields: id, title, image_url, published_at, category.name. Proxies https://clr.koodh.com/api/news/koodh/koodh successfully. Sample data: First item ID a8bfbcd2-1567-4332-beb5-5e7f42551aa9, title 'A radiostation without limits. That's GRK in Genk, Belgium!', category 'Koodh'."
+
+  - task: "GET /api/work/{article_id} endpoint - Get work item detail"
+    implemented: true
+    working: true
+    file: "/app/backend/server.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: "NA"
+        agent: "testing"
+        comment: "Initial testing - endpoint implemented at lines 85-95 in server.py"
+      - working: true
+        agent: "testing"
+        comment: "✅ PASSED - Returns HTTP 200 with all required fields: id, title, image_url, published_at, body (HTML content 836 chars). Tested with valid ID a8bfbcd2-1567-4332-beb5-5e7f42551aa9. Body contains proper HTML markup. Proxies https://clr.koodh.com/api/news/articles/{id} successfully."
+
+  - task: "GET /api/work/{article_id} invalid ID handling"
+    implemented: true
+    working: true
+    file: "/app/backend/server.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: "NA"
+        agent: "testing"
+        comment: "Initial testing - error handling in endpoint at lines 85-95"
+      - working: true
+        agent: "testing"
+        comment: "✅ PASSED - Handles invalid ID gracefully. Returns HTTP 200 with JSON containing 'error' key instead of crashing with 500. Tested with 'invalid-id-123', returned error message: 'Client error 404 Not Found for url https://clr.koodh.com/api/news/articles/invalid-id-123'. No server crashes."
+
+frontend:
+  - task: "Frontend testing not performed"
+    implemented: false
+    working: "NA"
+    file: "N/A"
+    stuck_count: 0
+    priority: "low"
+    needs_retesting: false
+    status_history:
+      - working: "NA"
+        agent: "testing"
+        comment: "Frontend testing was not requested in this review. Only backend proxy endpoints were tested."
+
+metadata:
+  created_by: "testing_agent"
+  version: "1.0"
+  test_sequence: 1
+  run_ui: false
+
+test_plan:
+  current_focus:
+    - "GET /api/work endpoint - List work items"
+    - "GET /api/work/{article_id} endpoint - Get work item detail"
+    - "GET /api/work/{article_id} invalid ID handling"
+  stuck_tasks: []
+  test_all: false
+  test_priority: "high_first"
+
+agent_communication:
+  - agent: "testing"
+    message: "Completed testing of two backend proxy endpoints for Work grid. Created comprehensive test suite in /app/backend_test.py. All 3 tests passed successfully: (1) GET /api/work returns 3 items with correct structure, (2) GET /api/work/{id} returns article detail with HTML body, (3) Invalid ID handling returns graceful error without crashing. Backend logs show no errors. Endpoints are production-ready."
