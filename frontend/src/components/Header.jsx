@@ -27,7 +27,21 @@ export default function Header() {
         scrolled ? "bg-white/90 backdrop-blur-md border-b border-black/5" : "bg-transparent"
       }`}
     >
-      <div className="max-w-[1600px] mx-auto px-6 md:px-10 h-[68px] flex items-center justify-between">
+      {/* Always-on subtle blur at the top of the menu (fades downward) */}
+      {!scrolled && (
+        <div
+          className="pointer-events-none absolute inset-x-0 top-0 h-[110px] backdrop-blur-md"
+          style={{
+            WebkitMaskImage:
+              "linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 45%, rgba(0,0,0,0) 100%)",
+            maskImage:
+              "linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 45%, rgba(0,0,0,0) 100%)",
+            background:
+              "linear-gradient(to bottom, rgba(0,0,0,0.28), rgba(0,0,0,0))",
+          }}
+        />
+      )}
+      <div className="relative max-w-[1600px] mx-auto px-6 md:px-10 h-[68px] flex items-center justify-between">
         <Link
           to="/"
           className="flex items-center transition-opacity duration-300 hover:opacity-80"
