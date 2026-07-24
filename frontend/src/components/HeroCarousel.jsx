@@ -56,12 +56,9 @@ export default function HeroCarousel() {
             {paused ? <Play size={16} fill="currentColor" /> : <Pause size={16} fill="currentColor" />}
           </button>
 
-          {/* MADE WITH + rotating title */}
+          {/* Rotating project title */}
           <div className="flex-1 flex items-center justify-center">
             <div className="flex items-center gap-4 md:gap-6 max-w-[1100px]">
-              <span className="text-white font-extrabold uppercase-tight text-3xl md:text-6xl leading-none shrink-0">
-                MADE WITH
-              </span>
               {active && (
                 <img
                   src={active.cover}
