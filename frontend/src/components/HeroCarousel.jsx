@@ -58,21 +58,21 @@ export default function HeroCarousel() {
 
           {/* Rotating project title */}
           <div className="flex-1 flex items-center justify-center">
-            <div className="flex items-center gap-4 md:gap-6 max-w-[1100px]">
+            <div className="flex items-center gap-4 md:gap-8 w-full max-w-[1200px]">
               {active && (
                 <img
                   src={active.cover}
                   alt={active.title}
-                  className="w-10 h-10 md:w-16 md:h-16 rounded-2xl object-cover transition-all duration-500 shrink-0"
+                  className="w-12 h-12 md:w-20 md:h-20 rounded-2xl object-cover transition-all duration-500 shrink-0"
                   key={`icon-${active.id}`}
                 />
               )}
-              <div className="relative h-[52px] md:h-[80px] overflow-hidden flex-1 min-w-[160px]">
+              <div className="relative h-[84px] md:h-[168px] overflow-hidden flex-1 min-w-0">
                 {slides.map((s, i) => (
                   <button
                     key={s.id}
                     onClick={() => setIndex(i)}
-                    className="absolute left-0 top-0 w-full text-left text-white font-extrabold uppercase-tight text-2xl md:text-4xl leading-[1.05] transition-all duration-500 line-clamp-2"
+                    className="absolute left-0 top-0 w-full text-left text-white font-extrabold uppercase-tight text-2xl md:text-5xl leading-[1.08] transition-all duration-500 line-clamp-3"
                     style={{
                       transform: `translateY(${(i - index) * 100}%)`,
                       opacity: i === index ? 1 : 0.25,
