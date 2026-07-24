@@ -6,6 +6,14 @@ import Footer from "../components/Footer";
 import CookieBanner from "../components/CookieBanner";
 import { fetchWorkArticle, formatDate } from "../api";
 
+// Remove the duplicate image-credit paragraph(s) from the article body.
+// The small credit is already shown under the photo via image_caption_html.
+const stripImageCredit = (html) =>
+  (html || "").replace(
+    /<p[^>]*class=["'][^"']*clara-image-credit[^"']*["'][^>]*>[\s\S]*?<\/p>/gi,
+    ""
+  );
+
 export default function WorkDetail() {
   const { slug } = useParams();
   const [article, setArticle] = useState(null);
@@ -53,11 +61,6 @@ export default function WorkDetail() {
           {!loading && article && (
             <article>
               <div className="mt-10 flex items-center gap-3 text-sm font-semibold text-neutral-500">
-                {article.category && article.category.name && (
-                  <span className="uppercase tracking-wide text-black">
-                    {article.category.name}
-                  </span>
-                )}
                 <span>{formatDate(article.published_at)}</span>
               </div>
               <h1 className="mt-4 font-extrabold uppercase-tight text-black text-3xl md:text-5xl leading-[1.05]">
@@ -84,7 +87,7 @@ export default function WorkDetail() {
               {article.body && (
                 <div
                   className="article-body mt-10 text-lg text-neutral-700 leading-relaxed space-y-5"
-                  dangerouslySetInnerHTML={{ __html: article.body }}
+                  dangerouslySetInnerHTML={{ __html: stripImageCredit(article.body) }}
                 />
               )}
             </article>

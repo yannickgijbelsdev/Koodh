@@ -151,29 +151,46 @@ backend:
         comment: "✅ PASSED - Handles invalid ID gracefully. Returns HTTP 200 with JSON containing 'error' key instead of crashing with 500. Tested with 'invalid-id-123', returned error message: 'Client error 404 Not Found for url https://clr.koodh.com/api/news/articles/invalid-id-123'. No server crashes."
 
 frontend:
-  - task: "Frontend testing not performed"
-    implemented: false
-    working: "NA"
-    file: "N/A"
+  - task: "Article detail page - Remove 'KOODH' label before date"
+    implemented: true
+    working: true
+    file: "/app/frontend/src/pages/WorkDetail.jsx"
     stuck_count: 0
-    priority: "low"
+    priority: "high"
     needs_retesting: false
     status_history:
       - working: "NA"
         agent: "testing"
-        comment: "Frontend testing was not requested in this review. Only backend proxy endpoints were tested."
+        comment: "Bug fix verification - checking if 'KOODH' label is removed from date line"
+      - working: true
+        agent: "testing"
+        comment: "✅ PASSED - Date line shows only '7 June 2026' without any 'KOODH' label. Line 63-65 in WorkDetail.jsx correctly displays only formatDate(article.published_at). Verified on article ID a8bfbcd2-1567-4332-beb5-5e7f42551aa9."
+
+  - task: "Article detail page - Copyright/credit appears only once under image"
+    implemented: true
+    working: true
+    file: "/app/frontend/src/pages/WorkDetail.jsx"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: "NA"
+        agent: "testing"
+        comment: "Bug fix verification - checking copyright/credit appears only once as small caption"
+      - working: true
+        agent: "testing"
+        comment: "✅ PASSED - Copyright 'Foto: Glenn Legein, Timo Piredda · © GRK' appears exactly once as small grey caption (text-xs text-neutral-400) directly under the hero image. Lines 80-85 in WorkDetail.jsx render image_caption_html correctly. No duplication found in article body - stripImageCredit function (lines 11-15) successfully removes clara-image-credit paragraphs from body HTML. Article body contains 3 paragraphs of actual content (726 chars) about GRK radio station."
 
 metadata:
   created_by: "testing_agent"
   version: "1.0"
-  test_sequence: 1
-  run_ui: false
+  test_sequence: 2
+  run_ui: true
 
 test_plan:
   current_focus:
-    - "GET /api/work endpoint - List work items"
-    - "GET /api/work/{article_id} endpoint - Get work item detail"
-    - "GET /api/work/{article_id} invalid ID handling"
+    - "Article detail page - Remove 'KOODH' label before date"
+    - "Article detail page - Copyright/credit appears only once under image"
   stuck_tasks: []
   test_all: false
   test_priority: "high_first"
@@ -181,3 +198,5 @@ test_plan:
 agent_communication:
   - agent: "testing"
     message: "Completed testing of two backend proxy endpoints for Work grid. Created comprehensive test suite in /app/backend_test.py. All 3 tests passed successfully: (1) GET /api/work returns 3 items with correct structure, (2) GET /api/work/{id} returns article detail with HTML body, (3) Invalid ID handling returns graceful error without crashing. Backend logs show no errors. Endpoints are production-ready."
+  - agent: "testing"
+    message: "✅ Bug fix verification COMPLETE - All requirements passed. Tested article detail page (ID a8bfbcd2-1567-4332-beb5-5e7f42551aa9): (1) 'KOODH' label successfully removed from date line - shows only '7 June 2026', (2) Copyright 'Foto: Glenn Legein, Timo Piredda · © GRK' appears exactly once as small grey caption under image, (3) Copyright NOT duplicated in article body - stripImageCredit function working correctly, (4) Article body content present with 3 paragraphs about GRK. Screenshots captured for visual confirmation. No issues found - bug fix is working as expected."
