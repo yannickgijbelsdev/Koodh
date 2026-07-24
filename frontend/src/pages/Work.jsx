@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import CookieBanner from "../components/CookieBanner";
@@ -8,7 +8,6 @@ import { fetchWorkItems } from "../api";
 export default function Work() {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [filter, setFilter] = useState("All");
 
   useEffect(() => {
     let alive = true;
@@ -20,14 +19,6 @@ export default function Work() {
       alive = false;
     };
   }, []);
-
-  const categories = useMemo(() => {
-    const set = new Set(items.map((i) => i.client).filter(Boolean));
-    return ["All", ...Array.from(set)];
-  }, [items]);
-
-  const filtered =
-    filter === "All" ? items : items.filter((c) => c.client === filter);
 
   return (
     <>
@@ -41,24 +32,6 @@ export default function Work() {
             Selected case studies. Brand and experience, put into action for
             ambitious organisations around the world.
           </p>
-
-          {categories.length > 1 && (
-            <div className="mt-12 flex flex-wrap gap-3">
-              {categories.map((c) => (
-                <button
-                  key={c}
-                  onClick={() => setFilter(c)}
-                  className={`px-5 py-2.5 rounded-full text-sm font-medium border transition-colors duration-300 ${
-                    filter === c
-                      ? "bg-black text-white border-black"
-                      : "bg-white text-black border-black/15 hover:border-black"
-                  }`}
-                >
-                  {c}
-                </button>
-              ))}
-            </div>
-          )}
         </section>
 
         <section className="max-w-[1600px] mx-auto px-6 md:px-10 pb-28">
@@ -70,11 +43,11 @@ export default function Work() {
                     <div className="mt-4 h-6 w-3/4 rounded bg-neutral-100 animate-pulse" />
                   </div>
                 ))
-              : filtered.map((c) => <WorkCard key={c.id} item={c} />)}
+              : items.map((c) => <WorkCard key={c.id} item={c} />)}
           </div>
-          {!loading && filtered.length === 0 && (
+          {!loading && items.length === 0 && (
             <p className="text-neutral-500 py-20 text-center">
-              No projects in this category yet.
+              No projects yet.
             </p>
           )}
         </section>
