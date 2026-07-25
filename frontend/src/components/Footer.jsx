@@ -1,6 +1,8 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Mail } from "lucide-react";
 import logo from "../assets/koodh-logo.png";
+import { openCookiePreferences } from "../lib/consent";
 
 export default function Footer() {
   return (
@@ -58,6 +60,27 @@ export default function Footer() {
             <span className="font-script lowercase font-semibold">team,</span>{" "}
             for your IT solutions.
           </p>
+        </div>
+
+        {/* Legal links */}
+        <div className="mt-10 pt-6 border-t border-[#f4efe3]/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <p className="text-[13px] text-[#f4efe3]/50">
+            &copy; {new Date().getFullYear()} Koodh. All rights reserved.
+          </p>
+          <div className="flex flex-wrap items-center gap-6 text-[13px] font-medium text-[#f4efe3]/80">
+            <Link to="/terms" className="hover:text-[#f4efe3] link-underline">
+              Terms &amp; Conditions
+            </Link>
+            <Link to="/privacy" className="hover:text-[#f4efe3] link-underline">
+              Privacy &amp; Cookies
+            </Link>
+            <button
+              onClick={openCookiePreferences}
+              className="hover:text-[#f4efe3] link-underline"
+            >
+              Cookie settings
+            </button>
+          </div>
         </div>
       </div>
     </footer>

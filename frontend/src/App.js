@@ -9,6 +9,8 @@ import Lab from "./pages/Lab";
 import Careers from "./pages/Careers";
 import Contact from "./pages/Contact";
 import WorkDetail from "./pages/WorkDetail";
+import Terms from "./pages/Terms";
+import Privacy from "./pages/Privacy";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -32,6 +34,8 @@ function App() {
           <Route path="/lab" element={<Lab />} />
           <Route path="/careers" element={<Careers />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/terms" element={<Terms />} />
+          <Route path="/privacy" element={<Privacy />} />
         </Routes>
       </BrowserRouter>
     </div>
