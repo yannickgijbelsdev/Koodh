@@ -5,9 +5,6 @@ const p = "?ixlib=js-3.8.0&q=80&auto=format%2Ccompress&fit=crop";
 export const navLinks = [
   { label: "WORK", to: "/work" },
   { label: "ABOUT", to: "/about" },
-  { label: "JOURNAL", to: "/journal" },
-  { label: "LAB", to: "/lab" },
-  { label: "CAREERS", to: "/careers" },
   { label: "CONTACT", to: "/contact" },
 ];
 
@@ -198,6 +195,63 @@ export const journal = [
 
 export const offices = ["London", "Madrid", "Vienna", "Tokyo"];
 
+// ===== KOODH ABOUT CONTENT =====
+export const koodhIntro =
+  "Koodh builds websites and AI solutions for small and large businesses. From the first line of code to smart automation, we are the right team for your IT solutions.";
+
+export const koodhServices = [
+  {
+    name: "Web Development",
+    desc: "We design and build fast, modern and reliable websites and web apps, fully tailored to your brand and your goals.",
+    items: ["Websites", "Web apps", "E-commerce", "Maintenance & hosting"],
+  },
+  {
+    name: "AI Solutions",
+    desc: "From smart automation to custom tools like Clara, we bring artificial intelligence into your business in a practical, human way.",
+    items: ["Custom AI tools", "Automation", "Content systems", "Integrations"],
+  },
+  {
+    name: "IT Consultancy",
+    desc: "The right team for your IT decisions. We help you with strategy, architecture and hands-on support so technology works for you.",
+    items: ["Strategy", "Architecture", "Support", "Digital products"],
+  },
+];
+
+export const koodhValues = [
+  {
+    title: "Craft first",
+    text: "We care about the details. Clean code, thoughtful design and products that simply work.",
+  },
+  {
+    title: "Human & AI",
+    text: "We combine human judgement with the power of AI, so you get the best of both worlds.",
+  },
+  {
+    title: "One team",
+    text: "We work as one team with our clients, from the first idea to launch and beyond.",
+  },
+  {
+    title: "Built to last",
+    text: "We build solutions that grow with your business and stand the test of time.",
+  },
+];
+
+export const koodhStats = [
+  { value: "100+", label: "Projects delivered" },
+  { value: "10+", label: "Years of experience" },
+  { value: "2", label: "Countries (NL & BE)" },
+  { value: "1M+", label: "Lines of code" },
+];
+
+// White logos from koodh.com (shown on a dark strip)
+export const koodhClients = [
+  { name: "Thomas More", logo: "https://koodh.com/clients/thomasmore_w.svg" },
+  { name: "Radiogroep", logo: "https://koodh.com/clients/radiogroep_w.png" },
+  { name: "Studio Wonderland", logo: "https://koodh.com/clients/wonderland_w.png" },
+  { name: "GRK", logo: "https://koodh.com/clients/grk_w.png" },
+];
+
+
 // ===== ABOUT PAGE =====
 export const aboutImages = [
   `${IMG}/060923_SAFFRON_159-1_RGB.jpg${p}&w=520&h=640`,
@@ -290,10 +344,8 @@ export const contactImages = [
 ];
 
 export const officeLocations = [
-  { hello: "Hello", city: "London, UK", address: ["13 Northburgh St.", "London EC1V 0JP"], phone: "+44 20 7087 3460", image: `${IMG}/250723_SAFFRON_0366_RGB_2023-09-22-131539_tzqe.jpg${p}&w=640&h=512` },
-  { hello: "Hola", city: "Madrid, ES", address: ["C/ de Almagro, 36", "28010 Madrid"], phone: "+34 917 873 200", image: `${IMG}/060923_SAFFRON_258_RGB.jpg${p}&w=640&h=512` },
-  { hello: "Hallo", city: "Vienna, AT", address: ["Morelligasse 4-6/6/16", "1210 Wien"], phone: "+43 670 206 0545", image: `${IMG}/jacek-dylag-OmIx515PF38-unsplash-copia.webp${p}&w=640&h=512` },
-  { hello: "ようこそ", city: "Tokyo, JP", address: ["5-9-9-101, Hiroo,", "Shibuya, Tokyo 150-0012"], phone: "+81 70 7660 1150", image: `${IMG}/1000123076.jpg${p}&w=640&h=512` },
+  { hello: "Hallo", city: "Budel-Schoot, NL", address: ["Budel-Schoot", "Noord-Brabant, Nederland"], phone: "", image: `${IMG}/250723_SAFFRON_0366_RGB_2023-09-22-131539_tzqe.jpg${p}&w=640&h=512` },
+  { hello: "Hallo", city: "Pelt, BE", address: ["Pelt", "Limburg, België"], phone: "", image: `${IMG}/060923_SAFFRON_258_RGB.jpg${p}&w=640&h=512` },
 ];
 
 // ===== CAREERS PAGE =====

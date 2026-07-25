@@ -9,6 +9,9 @@ from pydantic import BaseModel, Field, ConfigDict
 from typing import List
 import uuid
 import httpx
+import smtplib
+import asyncio
+from email.message import EmailMessage
 from datetime import datetime, timezone
 
 
@@ -93,6 +96,76 @@ async def get_work_item(article_id: str):
     except Exception as e:
         logger.error(f"Failed to fetch Koodh article {article_id}: {e}")
         return {"error": str(e)}
+
+# ===== Contact form =====
+class ContactMessage(BaseModel):
+    name: str
+    email: str
+    message: str
+
+CONTACT_TO = os.environ.get("CONTACT_TO", "info@koodh.com")
+
+def _send_contact_email(payload: ContactMessage):
+    host = os.environ.get("SMTP_HOST")
+    port = int(os.environ.get("SMTP_PORT", "587"))
+    user = os.environ.get("SMTP_USER")
+    password = os.environ.get("SMTP_PASSWORD")
+    sender = os.environ.get("SMTP_FROM", user)
+
+    if not (host and user and password and sender):
+        raise RuntimeError("SMTP is not configured")
+
+    msg = EmailMessage()
+    msg["Subject"] = f"New contact message from {payload.name}"
+    msg["From"] = sender
+    msg["To"] = CONTACT_TO
+    msg["Reply-To"] = payload.email
+    msg.set_content(
+        f"You received a new message via the Koodh website contact form.\n\n"
+        f"Name: {payload.name}\n"
+        f"Email: {payload.email}\n\n"
+        f"Message:\n{payload.message}\n"
+    )
+
+    use_ssl = os.environ.get("SMTP_SSL", "false").lower() == "true"
+    if use_ssl:
+        with smtplib.SMTP_SSL(host, port, timeout=20) as server:
+            server.login(user, password)
+            server.send_message(msg)
+    else:
+        with smtplib.SMTP(host, port, timeout=20) as server:
+            server.starttls()
+            server.login(user, password)
+            server.send_message(msg)
+
+@api_router.post("/contact")
+async def submit_contact(payload: ContactMessage):
+    # Always store the submission so nothing is lost.
+    doc = {
+        "id": str(uuid.uuid4()),
+        "name": payload.name,
+        "email": payload.email,
+        "message": payload.message,
+        "created_at": datetime.now(timezone.utc).isoformat(),
+        "emailed": False,
+    }
+
+    email_sent = False
+    email_error = None
+    try:
+        await asyncio.to_thread(_send_contact_email, payload)
+        email_sent = True
+        doc["emailed"] = True
+    except Exception as e:
+        email_error = str(e)
+        logger.error(f"Contact email not sent: {e}")
+
+    try:
+        await db.contact_messages.insert_one(doc)
+    except Exception as e:
+        logger.error(f"Failed to store contact message: {e}")
+
+    return {"success": True, "email_sent": email_sent, "email_error": email_error}
 
 # Include the router in the main app
 app.include_router(api_router)

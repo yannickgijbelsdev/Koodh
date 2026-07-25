@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, MapPin, Phone } from "lucide-react";
+import axios from "axios";
+import { ArrowRight, MapPin, Phone, Mail } from "lucide-react";
 import { useToast } from "../hooks/use-toast";
 import { Toaster } from "../components/ui/toaster";
 import Header from "../components/Header";
@@ -8,21 +9,35 @@ import Footer from "../components/Footer";
 import CookieBanner from "../components/CookieBanner";
 import { contactImages, officeLocations } from "../mock";
 
+const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
+
 export default function Contact() {
   const { toast } = useToast();
   const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [sending, setSending] = useState(false);
 
-  const submit = (e) => {
+  const submit = async (e) => {
     e.preventDefault();
     if (!form.name || !form.email || !form.message) {
       toast({ title: "Please complete all fields" });
       return;
     }
-    toast({
-      title: "Message sent",
-      description: "Thanks for reaching out — we'll be in touch soon.",
-    });
-    setForm({ name: "", email: "", message: "" });
+    setSending(true);
+    try {
+      await axios.post(`${API}/contact`, form);
+      toast({
+        title: "Message sent",
+        description: "Thanks for reaching out — we'll be in touch soon.",
+      });
+      setForm({ name: "", email: "", message: "" });
+    } catch (err) {
+      toast({
+        title: "Something went wrong",
+        description: "Please try again or email us at info@koodh.com.",
+      });
+    } finally {
+      setSending(false);
+    }
   };
 
   const upd = (k) => (e) => setForm((f) => ({ ...f, [k]: e.target.value }));
@@ -123,9 +138,10 @@ export default function Contact() {
               </div>
               <button
                 type="submit"
-                className="inline-flex items-center gap-2 bg-black text-white rounded-full pl-6 pr-5 py-3.5 text-sm font-semibold hover:bg-neutral-800 transition-colors group"
+                disabled={sending}
+                className="inline-flex items-center gap-2 bg-black text-white rounded-full pl-6 pr-5 py-3.5 text-sm font-semibold hover:bg-neutral-800 transition-colors group disabled:opacity-60 disabled:cursor-not-allowed"
               >
-                Send message
+                {sending ? "Sending..." : "Send message"}
                 <ArrowRight size={17} className="transition-transform group-hover:translate-x-1" />
               </button>
             </form>
@@ -150,12 +166,21 @@ export default function Contact() {
                     <MapPin size={15} className="mt-0.5 shrink-0" />
                     <span>{o.address.join(", ")}</span>
                   </p>
-                  <a
-                    href={`tel:${o.phone.replace(/\s/g, "")}`}
-                    className="mt-2 text-neutral-600 text-sm flex items-center gap-2 hover:text-black transition-colors"
-                  >
-                    <Phone size={15} /> {o.phone}
-                  </a>
+                  {o.phone ? (
+                    <a
+                      href={`tel:${o.phone.replace(/\s/g, "")}`}
+                      className="mt-2 text-neutral-600 text-sm flex items-center gap-2 hover:text-black transition-colors"
+                    >
+                      <Phone size={15} /> {o.phone}
+                    </a>
+                  ) : (
+                    <a
+                      href="mailto:info@koodh.com"
+                      className="mt-2 text-neutral-600 text-sm flex items-center gap-2 hover:text-black transition-colors"
+                    >
+                      <Mail size={15} /> info@koodh.com
+                    </a>
+                  )}
                 </div>
               ))}
             </div>

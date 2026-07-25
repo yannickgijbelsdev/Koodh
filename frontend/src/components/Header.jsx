@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Search, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { navLinks } from "../mock";
 import logo from "../assets/koodh-logo.png";
 
@@ -65,12 +65,6 @@ export default function Header() {
               {l.label}
             </Link>
           ))}
-          <button
-            className={`flex items-center gap-2 text-[13px] font-semibold tracking-wide ${textColor} transition-colors duration-300`}
-          >
-            SEARCH
-            <Search size={15} strokeWidth={2.2} />
-          </button>
         </nav>
 
         <button
