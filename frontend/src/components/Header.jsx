@@ -27,8 +27,8 @@ export default function Header() {
         scrolled ? "bg-white/90 backdrop-blur-md border-b border-black/5" : "bg-transparent"
       }`}
     >
-      {/* Always-on subtle blur at the top of the menu (fades downward) */}
-      {!scrolled && (
+      {/* Always-on subtle blur at the top of the menu (only over the dark hero on home) */}
+      {isHome && !scrolled && (
         <div
           className="pointer-events-none absolute inset-x-0 top-0 h-[110px] backdrop-blur-md"
           style={{
