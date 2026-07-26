@@ -11,10 +11,17 @@ import {
   koodhStats,
   koodhClients,
 } from "../mock";
+import usePageMeta from "../lib/seo";
 
 const serviceIcons = [Code2, Cpu, Compass];
 
 export default function About() {
+  usePageMeta({
+    title: "About",
+    description:
+      "Koodh builds websites and AI solutions for small and large businesses. Learn what we do: web development, AI solutions and IT consultancy across the Netherlands and Belgium.",
+    path: "/about",
+  });
   return (
     <>
       <Header />

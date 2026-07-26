@@ -5,6 +5,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import CookieBanner from "../components/CookieBanner";
 import { fetchWorkArticle } from "../api";
+import usePageMeta from "../lib/seo";
 
 // Remove the duplicate image-credit paragraph(s) from the article body.
 // The small credit is already shown under the photo via image_caption_html.
@@ -18,6 +19,14 @@ export default function WorkDetail() {
   const { slug } = useParams();
   const [article, setArticle] = useState(null);
   const [loading, setLoading] = useState(true);
+
+  usePageMeta({
+    title: article ? article.title : "Work",
+    description: article
+      ? `${article.title} — a project by Koodh.`
+      : "A project by Koodh — websites and AI solutions.",
+    path: `/work/${slug}`,
+  });
 
   useEffect(() => {
     let alive = true;

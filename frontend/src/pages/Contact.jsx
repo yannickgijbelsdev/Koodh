@@ -8,10 +8,17 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import CookieBanner from "../components/CookieBanner";
 import { contactImages } from "../mock";
+import usePageMeta from "../lib/seo";
 
 const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
 
 export default function Contact() {
+  usePageMeta({
+    title: "Contact",
+    description:
+      "Get in touch with Koodh. Tell us about your website, AI or IT project and we'll get back to you. Email info@koodh.com.",
+    path: "/contact",
+  });
   const { toast } = useToast();
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [sending, setSending] = useState(false);

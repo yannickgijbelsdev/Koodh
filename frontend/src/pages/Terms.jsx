@@ -5,6 +5,7 @@ export default function Terms() {
   return (
     <LegalPage
       title="Terms & Conditions"
+      path="/terms"
       updated="July 2025"
       intro="These terms and conditions apply to all services, quotes and agreements provided by Koodh. By using our website or working with us, you agree to the terms set out below."
       sections={[

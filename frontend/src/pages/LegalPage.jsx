@@ -2,8 +2,10 @@ import React from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import CookieBanner from "../components/CookieBanner";
+import usePageMeta from "../lib/seo";
 
-export default function LegalPage({ title, updated, intro, sections }) {
+export default function LegalPage({ title, updated, intro, sections, path }) {
+  usePageMeta({ title, description: intro, path });
   return (
     <>
       <Header />

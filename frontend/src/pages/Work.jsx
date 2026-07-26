@@ -4,8 +4,15 @@ import Footer from "../components/Footer";
 import CookieBanner from "../components/CookieBanner";
 import WorkCard from "../components/WorkCard";
 import { fetchWorkItems } from "../api";
+import usePageMeta from "../lib/seo";
 
 export default function Work() {
+  usePageMeta({
+    title: "Work",
+    description:
+      "Selected work by Koodh: websites, web apps and AI solutions built for ambitious businesses across the Netherlands and Belgium.",
+    path: "/work",
+  });
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
 

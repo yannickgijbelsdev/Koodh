@@ -5,6 +5,7 @@ export default function Privacy() {
   return (
     <LegalPage
       title="Privacy & Cookie Policy"
+      path="/privacy"
       updated="July 2025"
       intro="Koodh respects your privacy. This policy explains what personal data we collect, why we collect it, and how we use cookies on our website."
       sections={[

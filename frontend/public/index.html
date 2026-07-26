@@ -3,11 +3,99 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="theme-color" content="#000000" />
-        <meta name="description" content="A product of emergent.sh" />
+        <meta name="theme-color" content="#0e1728" />
+
+        <!-- Primary SEO -->
+        <title>Koodh | The Right Team, For Your IT Solutions</title>
+        <meta name="description" content="Koodh builds websites and AI solutions for small and large businesses. Based in Budel-Schoot (NL) and Pelt (BE), active across Limburg, Brabant, the Netherlands and Belgium. The right team for your IT solutions." />
+        <meta name="keywords" content="Koodh, website bouwen, websites laten maken, AI-oplossingen, AI solutions, webdevelopment, IT consultancy, softwareontwikkeling, Pelt, Budel-Schoot, Limburg, Brabant, Nederland, België, web agency, digital agency" />
+        <meta name="author" content="Koodh" />
+        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+        <meta name="language" content="en" />
+        <link rel="canonical" href="https://koodh.com/" />
+        <link rel="icon" type="image/png" href="%PUBLIC_URL%/koodh-logo.png" />
+        <link rel="apple-touch-icon" href="%PUBLIC_URL%/koodh-logo.png" />
+
+        <!-- Geographic SEO (GEO) -->
+        <meta name="geo.region" content="NL-NB" />
+        <meta name="geo.placename" content="Budel-Schoot, Pelt, Limburg, Brabant" />
+        <meta name="geo.position" content="51.271;5.588" />
+        <meta name="ICBM" content="51.271, 5.588" />
+
+        <!-- Open Graph -->
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="Koodh" />
+        <meta property="og:title" content="Koodh | The Right Team, For Your IT Solutions" />
+        <meta property="og:description" content="Koodh builds websites and AI solutions for small and large businesses across the Netherlands and Belgium." />
+        <meta property="og:url" content="https://koodh.com/" />
+        <meta property="og:image" content="https://koodh.com/og-image.png" />
+        <meta property="og:locale" content="en_US" />
+        <meta property="og:locale:alternate" content="nl_NL" />
+        <meta property="og:locale:alternate" content="nl_BE" />
+
+        <!-- Twitter -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Koodh | The Right Team, For Your IT Solutions" />
+        <meta name="twitter:description" content="Koodh builds websites and AI solutions for small and large businesses across the Netherlands and Belgium." />
+        <meta name="twitter:image" content="https://koodh.com/og-image.png" />
+
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap" rel="stylesheet" />
+
+        <!-- Structured data: Organization / LocalBusiness for rich results & GEO -->
+        <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "ProfessionalService",
+          "name": "Koodh",
+          "description": "Koodh builds websites and AI solutions for small and large businesses. The right team for your IT solutions.",
+          "url": "https://koodh.com",
+          "email": "info@koodh.com",
+          "image": "https://koodh.com/og-image.png",
+          "logo": "https://koodh.com/koodh-logo.png",
+          "slogan": "The Right Team, For Your IT Solutions",
+          "priceRange": "$$",
+          "knowsLanguage": ["nl", "en"],
+          "address": [
+            {
+              "@type": "PostalAddress",
+              "addressLocality": "Budel-Schoot",
+              "addressRegion": "Noord-Brabant",
+              "addressCountry": "NL"
+            },
+            {
+              "@type": "PostalAddress",
+              "addressLocality": "Pelt",
+              "addressRegion": "Limburg",
+              "addressCountry": "BE"
+            }
+          ],
+          "areaServed": [
+            { "@type": "AdministrativeArea", "name": "Limburg" },
+            { "@type": "AdministrativeArea", "name": "Noord-Brabant" },
+            { "@type": "Country", "name": "Netherlands" },
+            { "@type": "Country", "name": "Belgium" }
+          ],
+          "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Services",
+            "itemListElement": [
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Web Development" } },
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "AI Solutions" } },
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "IT Consultancy" } }
+            ]
+          }
+        }
+        </script>
+        <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "name": "Koodh",
+          "url": "https://koodh.com",
+          "inLanguage": "en"
+        }
+        </script>
         <!--
         manifest.json provides metadata used when your web app is installed on a
         user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
@@ -21,7 +109,6 @@
         work correctly both with client-side routing and a non-root public URL.
         Learn how to configure a non-root public URL by running `npm run build`.
         -->
-        <title>Emergent | Fullstack App</title>
         <script>window.addEventListener("error",function(e){if(e.error instanceof DOMException&&e.error.name==="DataCloneError"&&e.message&&e.message.includes("PerformanceServerTiming")){e.stopImmediatePropagation();e.preventDefault()}},true);</script>
         <script src="https://assets.emergent.sh/scripts/emergent-main.js"></script>
     </head>
