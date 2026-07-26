@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Mail } from "lucide-react";
 import logo from "../assets/koodh-logo.png";
-import footerBg from "../assets/footer-bg.png";
+import footerBg from "../assets/footer-bg.webp";
 import { openCookiePreferences } from "../lib/consent";
 
 const NAVY = "#3f5b9e";

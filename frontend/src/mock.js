@@ -237,7 +237,7 @@ export const koodhValues = [
 ];
 
 export const koodhStats = [
-  { value: "100+", label: "Projects delivered" },
+  { value: "15+", label: "Projects" },
   { value: "10+", label: "Years of experience" },
   { value: "2", label: "Countries (NL & BE)" },
   { value: "1M+", label: "Lines of code" },
