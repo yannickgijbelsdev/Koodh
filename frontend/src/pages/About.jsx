@@ -12,6 +12,13 @@ import {
   koodhClients,
 } from "../mock";
 import usePageMeta from "../lib/seo";
+import yannickImg from "../assets/yannick-gijbels.png";
+import chielImg from "../assets/chiel-van-gansewinkel.png";
+
+const team = [
+  { name: "Yannick Gijbels", role: "Co-founder & Developer", photo: yannickImg },
+  { name: "Chiel van Gansewinkel", role: "Co-founder & Developer", photo: chielImg },
+];
 
 const serviceIcons = [Code2, Cpu, Compass];
 
@@ -153,6 +160,33 @@ export default function About() {
                 </div>
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* Team */}
+        <section className="max-w-[1600px] mx-auto px-6 md:px-10 py-24 md:py-32">
+          <h2 className="font-extrabold uppercase-tight text-black text-3xl md:text-5xl">
+            Meet the team
+          </h2>
+          <p className="mt-4 max-w-2xl text-neutral-600 text-lg">
+            The people behind Koodh &mdash; a small, dedicated team that builds
+            your websites and AI solutions with care.
+          </p>
+          <div className="mt-14 grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-4xl">
+            {team.map((m) => (
+              <div key={m.name} className="group">
+                <div className="aspect-[3/4] rounded-2xl overflow-hidden bg-neutral-100">
+                  <img
+                    src={m.photo}
+                    alt={m.name}
+                    loading="lazy"
+                    className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-700"
+                  />
+                </div>
+                <h3 className="mt-5 font-bold text-black text-xl">{m.name}</h3>
+                <p className="text-neutral-500">{m.role}</p>
+              </div>
+            ))}
           </div>
         </section>
 
