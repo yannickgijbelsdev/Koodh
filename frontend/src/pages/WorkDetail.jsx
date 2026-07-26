@@ -4,7 +4,7 @@ import { ArrowLeft } from "lucide-react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import CookieBanner from "../components/CookieBanner";
-import { fetchWorkArticle, formatDate } from "../api";
+import { fetchWorkArticle } from "../api";
 
 // Remove the duplicate image-credit paragraph(s) from the article body.
 // The small credit is already shown under the photo via image_caption_html.
@@ -60,10 +60,7 @@ export default function WorkDetail() {
 
           {!loading && article && (
             <article>
-              <div className="mt-10 flex items-center gap-3 text-sm font-semibold text-neutral-500">
-                <span>{formatDate(article.published_at)}</span>
-              </div>
-              <h1 className="mt-4 font-extrabold uppercase-tight text-black text-3xl md:text-5xl leading-[1.05]">
+              <h1 className="mt-10 font-extrabold uppercase-tight text-black text-3xl md:text-5xl leading-[1.05]">
                 {article.title}
               </h1>
 

@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { ArrowRight, MapPin, Phone, Mail } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { useToast } from "../hooks/use-toast";
 import { Toaster } from "../components/ui/toaster";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import CookieBanner from "../components/CookieBanner";
-import { contactImages, officeLocations } from "../mock";
+import { contactImages } from "../mock";
 
 const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
 
@@ -56,28 +56,16 @@ export default function Contact() {
             can reach us.
           </p>
 
-          <div className="mt-14 grid md:grid-cols-2 gap-10 max-w-3xl">
-            <div className="border-t-2 border-black pt-5">
+          <div className="mt-14 max-w-3xl">
+            <div className="border-t-2 border-black pt-5 md:max-w-sm">
               <p className="text-sm font-semibold uppercase tracking-widest text-neutral-500">
-                Business Development
-              </p>
-              <p className="mt-3 text-lg font-bold text-black">Alice Anderson</p>
-              <a
-                href="mailto:enquiries@koodh.com"
-                className="text-black link-underline"
-              >
-                enquiries@koodh.com
-              </a>
-            </div>
-            <div className="border-t-2 border-black pt-5">
-              <p className="text-sm font-semibold uppercase tracking-widest text-neutral-500">
-                Press & Media
+                Payments
               </p>
               <a
-                href="mailto:media@koodh.com"
+                href="mailto:payments@koodh.com"
                 className="mt-3 block text-black link-underline"
               >
-                media@koodh.com
+                payments@koodh.com
               </a>
             </div>
           </div>
@@ -145,45 +133,6 @@ export default function Contact() {
                 <ArrowRight size={17} className="transition-transform group-hover:translate-x-1" />
               </button>
             </form>
-          </div>
-        </section>
-
-        {/* Office locations */}
-        <section className="bg-neutral-50 border-t border-black/5 py-24 md:py-32">
-          <div className="max-w-[1600px] mx-auto px-6 md:px-10">
-            <h2 className="font-extrabold uppercase-tight text-black text-3xl md:text-5xl">
-              Office locations
-            </h2>
-            <div className="mt-14 grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {officeLocations.map((o) => (
-                <div key={o.city}>
-                  <div className="aspect-[5/4] rounded-2xl overflow-hidden bg-neutral-100">
-                    <img src={o.image} alt={o.city} loading="lazy" className="w-full h-full object-cover" />
-                  </div>
-                  <p className="mt-4 text-neutral-400 font-medium">{o.hello}</p>
-                  <h3 className="font-bold text-xl text-black">{o.city}</h3>
-                  <p className="mt-2 text-neutral-600 text-sm flex items-start gap-2">
-                    <MapPin size={15} className="mt-0.5 shrink-0" />
-                    <span>{o.address.join(", ")}</span>
-                  </p>
-                  {o.phone ? (
-                    <a
-                      href={`tel:${o.phone.replace(/\s/g, "")}`}
-                      className="mt-2 text-neutral-600 text-sm flex items-center gap-2 hover:text-black transition-colors"
-                    >
-                      <Phone size={15} /> {o.phone}
-                    </a>
-                  ) : (
-                    <a
-                      href="mailto:info@koodh.com"
-                      className="mt-2 text-neutral-600 text-sm flex items-center gap-2 hover:text-black transition-colors"
-                    >
-                      <Mail size={15} /> info@koodh.com
-                    </a>
-                  )}
-                </div>
-              ))}
-            </div>
           </div>
         </section>
       </main>
