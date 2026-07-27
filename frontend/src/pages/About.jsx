@@ -16,8 +16,8 @@ import yannickImg from "../assets/yannick-gijbels.png";
 import chielImg from "../assets/chiel-van-gansewinkel.png";
 
 const team = [
-  { name: "Yannick Gijbels", role: "Co-founder & Developer", photo: yannickImg },
-  { name: "Chiel van Gansewinkel", role: "Co-founder & Developer", photo: chielImg },
+  { name: "Yannick Gijbels", role: "Online Identity, Microsoft 365 Cloud & Xink E-mail Signatures", photo: yannickImg },
+  { name: "Chiel van Gansewinkel", role: "IT Consultancy & Microsoft 365 Cloud", photo: chielImg },
 ];
 
 const serviceIcons = [Code2, Cpu, Compass];
