@@ -14,10 +14,23 @@ import {
 import usePageMeta from "../lib/seo";
 import yannickImg from "../assets/yannick-gijbels.png";
 import chielImg from "../assets/chiel-van-gansewinkel.png";
+import msLogo from "../assets/brands/microsoft.svg";
+import xinkLogo from "../assets/brands/xink.svg";
+import googleLogo from "../assets/brands/google.svg";
+import proxmoxLogo from "../assets/brands/proxmox.svg";
+import unraidLogo from "../assets/brands/unraid.svg";
 
 const team = [
   { name: "Yannick Gijbels", role: "Online Identity, Microsoft 365 Cloud & Xink E-mail Signatures", photo: yannickImg },
   { name: "Chiel van Gansewinkel", role: "IT Consultancy & Microsoft 365 Cloud", photo: chielImg },
+];
+
+const tools = [
+  { name: "Microsoft", logo: msLogo },
+  { name: "Xink Signatures", logo: xinkLogo },
+  { name: "Google", logo: googleLogo },
+  { name: "Proxmox", logo: proxmoxLogo },
+  { name: "Unraid", logo: unraidLogo },
 ];
 
 const serviceIcons = [Code2, Cpu, Compass];
@@ -39,7 +52,7 @@ export default function About() {
             About Koodh
           </p>
           <h1 className="mt-6 font-extrabold uppercase-tight text-black text-[11vw] md:text-[6.5vw] leading-[0.95]">
-            We build websites<br />&amp; AI solutions
+            We build websites<br />&amp; <span className="font-script normal-case" style={{ color: "#3f5b9e" }}>AI</span> solutions
           </h1>
           <p className="mt-10 max-w-2xl text-xl md:text-2xl text-neutral-600 font-medium">
             {koodhIntro}
@@ -160,13 +173,32 @@ export default function About() {
                 </div>
               ))}
             </div>
+
+            {/* We love to use */}
+            <div className="mt-20 pt-12 border-t border-white/10">
+              <h2 className="text-[#f4efe3] text-2xl md:text-3xl font-extrabold uppercase-tight">
+                We love to use{" "}
+                <span className="font-script text-[#8aa0d8]">brands</span> like
+              </h2>
+              <div className="mt-12 grid grid-cols-2 md:grid-cols-5 gap-x-8 gap-y-12 items-center">
+                {tools.map((t) => (
+                  <div key={t.name} className="flex items-center justify-center h-10">
+                    <img
+                      src={t.logo}
+                      alt={t.name}
+                      className="max-h-9 max-w-[150px] object-contain opacity-75 hover:opacity-100 transition-opacity"
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </section>
 
         {/* Team */}
         <section className="max-w-[1600px] mx-auto px-6 md:px-10 py-24 md:py-32">
           <h2 className="font-extrabold uppercase-tight text-black text-3xl md:text-5xl">
-            Meet the team
+            Meet the <span className="font-script normal-case" style={{ color: "#3f5b9e" }}>team</span>
           </h2>
           <p className="mt-4 max-w-2xl text-neutral-600 text-lg">
             The people behind Koodh &mdash; a small, dedicated team that builds
@@ -194,7 +226,7 @@ export default function About() {
         <section className="max-w-[1600px] mx-auto px-6 md:px-10 py-24 md:py-32">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-8">
             <h2 className="font-extrabold uppercase-tight text-black text-3xl md:text-5xl max-w-2xl leading-[1.05]">
-              Have a project in mind?
+              Have a <span className="font-script normal-case" style={{ color: "#3f5b9e" }}>project</span> in mind?
             </h2>
             <Link
               to="/contact"
