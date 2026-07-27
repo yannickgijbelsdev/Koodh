@@ -1,11 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, Code2, Cpu, Compass } from "lucide-react";
+import { ArrowRight, Code2, Cpu, Compass, Info } from "lucide-react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import CookieBanner from "../components/CookieBanner";
 import FaqSection from "../components/FaqSection";
 import Reveal from "../components/Reveal";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "../components/ui/tooltip";
 import {
   koodhIntro,
   koodhServices,
@@ -68,34 +69,53 @@ export default function About() {
 
         {/* Image feature band */}
         <section className="max-w-[1600px] mx-auto px-6 md:px-10 pb-8">
-          <Reveal className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {[
-              { src: kootahUnifi, alt: "Koodh network management dashboard" },
-              { src: kootahMicrosoft365, alt: "Koodh Microsoft 365 cloud workspace" },
-              { src: kootahSignature, alt: "Koodh e-mail signature design" },
-              { src: kootahCode, alt: "Koodh web development" },
-            ].map((img, i) => (
-              <div
-                key={i}
-                className={`overflow-hidden rounded-2xl bg-neutral-100 ${
-                  i === 0 ? "col-span-2 aspect-[2/1] md:aspect-[2/1]" : "aspect-square"
-                }`}
-                data-testid={`about-feature-image-${i}`}
-              >
-                <img src={img.src} alt={img.alt} loading="lazy" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
-              </div>
-            ))}
-          </Reveal>
-          <p
-            data-testid="about-image-disclaimer"
-            className="mt-5 max-w-3xl text-xs md:text-sm text-neutral-400 leading-relaxed"
-          >
-            Please note: the visuals above are illustrative mockups, not screenshots
-            of real client environments. We keep them fictional on purpose to protect
-            the privacy and security of our clients&rsquo; infrastructure and data.
-            &ldquo;Kootah&rdquo; is simply an informal, internal nickname we use for
-            Koodh &mdash; nothing more than a playful spin on the name.
-          </p>
+          <TooltipProvider delayDuration={100}>
+            <Reveal className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              {[
+                { src: kootahUnifi, alt: "Koodh network access point installation", pos: "object-top" },
+                { src: kootahMicrosoft365, alt: "Koodh Microsoft 365 cloud workspace", pos: "object-center" },
+                { src: kootahSignature, alt: "Koodh e-mail signature design", pos: "object-center" },
+                { src: kootahCode, alt: "Koodh web development", pos: "object-center" },
+              ].map((img, i) => (
+                <div
+                  key={i}
+                  className={`group relative overflow-hidden rounded-2xl bg-neutral-100 ${
+                    i === 0 ? "col-span-2 aspect-[2/1] md:aspect-[2/1]" : "aspect-square"
+                  }`}
+                  data-testid={`about-feature-image-${i}`}
+                >
+                  <img
+                    src={img.src}
+                    alt={img.alt}
+                    loading="lazy"
+                    className={`w-full h-full object-cover ${img.pos} group-hover:scale-105 transition-transform duration-700`}
+                  />
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <button
+                        type="button"
+                        aria-label="Image information"
+                        data-testid={`about-image-info-${i}`}
+                        className="absolute top-3 right-3 flex h-7 w-7 items-center justify-center rounded-full bg-black/45 text-white backdrop-blur-sm ring-1 ring-white/25 transition-colors hover:bg-black/70 focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+                      >
+                        <Info size={15} strokeWidth={2} />
+                      </button>
+                    </TooltipTrigger>
+                    <TooltipContent
+                      side="bottom"
+                      align="end"
+                      className="max-w-[280px] bg-neutral-900 text-[11px] leading-relaxed text-neutral-200 px-3 py-2"
+                    >
+                      Illustrative mockup, not a real client environment. Kept
+                      fictional on purpose to protect our clients&rsquo; privacy and
+                      security. &ldquo;Kootah&rdquo; is just an informal, internal
+                      nickname for Koodh.
+                    </TooltipContent>
+                  </Tooltip>
+                </div>
+              ))}
+            </Reveal>
+          </TooltipProvider>
         </section>
 
         {/* What we do */}
