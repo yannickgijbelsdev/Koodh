@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Pause, Play, ArrowUpRight } from "lucide-react";
 import { fetchWorkItems } from "../api";
@@ -10,10 +10,23 @@ export default function HeroCarousel() {
   const [paused, setPaused] = useState(false);
   const timer = useRef(null);
   const prevIndex = useRef(0);
+  const titleRefs = useRef([]);
+  const [heights, setHeights] = useState([]);
 
   useEffect(() => {
     prevIndex.current = index;
   }, [index]);
+
+  // Measure the real rendered height of every title so we can stack them
+  // with consistent spacing regardless of how many lines each title wraps to.
+  useLayoutEffect(() => {
+    const measure = () => {
+      setHeights(titleRefs.current.map((el) => (el ? el.offsetHeight : 0)));
+    };
+    measure();
+    window.addEventListener("resize", measure);
+    return () => window.removeEventListener("resize", measure);
+  }, [slides]);
 
   useEffect(() => {
     let alive = true;
@@ -72,38 +85,64 @@ export default function HeroCarousel() {
                   key={`icon-${active.id}`}
                 />
               )}
-              <div className="relative h-[84px] md:h-[168px] overflow-hidden flex-1 min-w-0">
-                {slides.map((s, i) => {
-                  const n = slides.length;
-                  const wrap = (off) => {
-                    if (n <= 0) return off;
-                    if (off > n / 2) off -= n;
-                    if (off < -n / 2) off += n;
-                    return off;
-                  };
-                  const offset = wrap(i - index);
-                  const prevOffset = wrap(i - prevIndex.current);
-                  // The title that wraps around jumps more than one step:
-                  // snap it instantly so it never sweeps across the center.
-                  const wrapped = Math.abs(offset - prevOffset) > 1;
-                  return (
-                    <button
-                      key={s.id}
-                      onClick={() => setIndex(i)}
-                      className="absolute left-0 top-0 w-full text-left text-white font-extrabold uppercase-tight text-2xl md:text-5xl leading-[1.08] line-clamp-3"
-                      style={{
-                        transform: `translateY(${offset * 100}%)`,
-                        opacity: i === index ? 1 : 0.25,
-                        transition: wrapped
-                          ? "none"
-                          : "transform 0.5s ease, opacity 0.5s ease",
-                      }}
-                    >
-                      {s.title}
-                    </button>
-                  );
-                })}
-              </div>
+              {(() => {
+                const n = slides.length;
+                const GAP = 10;
+                const wrap = (off) => {
+                  if (n <= 0) return off;
+                  if (off > n / 2) off -= n;
+                  if (off < -n / 2) off += n;
+                  return off;
+                };
+                const h = (i) => heights[i] || 60;
+                // cumulative vertical position of a title given its wrapped offset
+                const yFor = (offset) => {
+                  if (offset === 0) return 0;
+                  let y = 0;
+                  if (offset > 0) {
+                    for (let j = 0; j < offset; j++) {
+                      y += h((index + j) % n) + GAP;
+                    }
+                    return y;
+                  }
+                  for (let j = 1; j <= -offset; j++) {
+                    y -= h(((index - j) % n + n) % n) + GAP;
+                  }
+                  return y;
+                };
+                const activeH = h(index);
+                return (
+                  <div
+                    className="relative overflow-hidden flex-1 min-w-0"
+                    style={{ height: activeH + 26 }}
+                  >
+                    {slides.map((s, i) => {
+                      const offset = wrap(i - index);
+                      const prevOffset = wrap(i - prevIndex.current);
+                      // The title that wraps around jumps more than one step:
+                      // snap it instantly so it never sweeps across the center.
+                      const wrapped = Math.abs(offset - prevOffset) > 1;
+                      return (
+                        <button
+                          key={s.id}
+                          ref={(el) => (titleRefs.current[i] = el)}
+                          onClick={() => setIndex(i)}
+                          className="absolute left-0 top-0 w-full text-left text-white font-extrabold uppercase-tight text-2xl md:text-5xl leading-[1.08] line-clamp-3"
+                          style={{
+                            transform: `translateY(${yFor(offset)}px)`,
+                            opacity: i === index ? 1 : 0.25,
+                            transition: wrapped
+                              ? "opacity 0.5s ease"
+                              : "transform 0.5s ease, opacity 0.5s ease",
+                          }}
+                        >
+                          {s.title}
+                        </button>
+                      );
+                    })}
+                  </div>
+                );
+              })()}
             </div>
           </div>
 
