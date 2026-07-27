@@ -114,7 +114,13 @@ export default function HeroCarousel() {
                 return (
                   <div
                     className="relative overflow-hidden flex-1 min-w-0"
-                    style={{ height: activeH + 26 }}
+                    style={{
+                      height: activeH + 34,
+                      WebkitMaskImage:
+                        "linear-gradient(to bottom, #000 0%, #000 62%, transparent 100%)",
+                      maskImage:
+                        "linear-gradient(to bottom, #000 0%, #000 62%, transparent 100%)",
+                    }}
                   >
                     {slides.map((s, i) => {
                       const offset = wrap(i - index);
