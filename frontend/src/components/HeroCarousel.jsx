@@ -9,6 +9,11 @@ export default function HeroCarousel() {
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
   const timer = useRef(null);
+  const prevIndex = useRef(0);
+
+  useEffect(() => {
+    prevIndex.current = index;
+  }, [index]);
 
   useEffect(() => {
     let alive = true;
@@ -70,11 +75,17 @@ export default function HeroCarousel() {
               <div className="relative h-[84px] md:h-[168px] overflow-hidden flex-1 min-w-0">
                 {slides.map((s, i) => {
                   const n = slides.length;
-                  let offset = i - index;
-                  if (n > 0) {
-                    if (offset > n / 2) offset -= n;
-                    if (offset < -n / 2) offset += n;
-                  }
+                  const wrap = (off) => {
+                    if (n <= 0) return off;
+                    if (off > n / 2) off -= n;
+                    if (off < -n / 2) off += n;
+                    return off;
+                  };
+                  const offset = wrap(i - index);
+                  const prevOffset = wrap(i - prevIndex.current);
+                  // The title that wraps around jumps more than one step:
+                  // snap it instantly so it never sweeps across the center.
+                  const wrapped = Math.abs(offset - prevOffset) > 1;
                   return (
                     <button
                       key={s.id}
@@ -83,10 +94,9 @@ export default function HeroCarousel() {
                       style={{
                         transform: `translateY(${offset * 100}%)`,
                         opacity: i === index ? 1 : 0.25,
-                        transition:
-                          Math.abs(offset) <= 1
-                            ? "transform 0.5s ease, opacity 0.5s ease"
-                            : "none",
+                        transition: wrapped
+                          ? "none"
+                          : "transform 0.5s ease, opacity 0.5s ease",
                       }}
                     >
                       {s.title}
