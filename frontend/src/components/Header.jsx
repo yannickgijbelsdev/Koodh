@@ -55,12 +55,12 @@ export default function Header() {
           />
         </Link>
 
-        <nav className="hidden lg:flex items-center gap-8">
+        <nav className="hidden xl:flex items-center gap-x-5">
           {navLinks.map((l) => (
             <Link
               key={l.label}
               to={l.to}
-              className={`text-[13px] font-semibold tracking-wide link-underline ${textColor} transition-colors duration-300`}
+              className={`text-[12px] font-semibold tracking-wide whitespace-nowrap link-underline ${textColor} transition-colors duration-300`}
             >
               {l.label}
             </Link>
@@ -68,7 +68,7 @@ export default function Header() {
         </nav>
 
         <button
-          className={`lg:hidden ${textColor}`}
+          className={`xl:hidden ${textColor}`}
           onClick={() => setOpen(true)}
           aria-label="Open menu"
         >
@@ -85,13 +85,13 @@ export default function Header() {
               <X size={28} className="text-black" />
             </button>
           </div>
-          <nav className="mt-12 flex flex-col gap-6">
+          <nav className="mt-12 flex flex-col gap-5 overflow-y-auto">
             {navLinks.map((l) => (
               <Link
                 key={l.label}
                 to={l.to}
                 onClick={() => setOpen(false)}
-                className="text-4xl font-extrabold uppercase-tight text-black"
+                className="text-2xl sm:text-3xl font-extrabold uppercase-tight text-black"
               >
                 {l.label}
               </Link>

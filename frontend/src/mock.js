@@ -5,6 +5,10 @@ const p = "?ixlib=js-3.8.0&q=80&auto=format%2Ccompress&fit=crop";
 export const navLinks = [
   { label: "WORK", to: "/work" },
   { label: "ABOUT", to: "/about" },
+  { label: "MEET US", to: "/meet-us" },
+  { label: "WEBSITE DEVELOPMENT", to: "/website-development" },
+  { label: "MICROSOFT 365", to: "/microsoft-365" },
+  { label: "IT CONSULTANCY", to: "/it-consultancy" },
   { label: "CONTACT", to: "/contact" },
 ];
 

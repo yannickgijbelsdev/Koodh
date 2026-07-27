@@ -1,24 +1,20 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, Code2, Cpu, Compass, Info } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Code2, Cloud, Wifi } from "lucide-react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import CookieBanner from "../components/CookieBanner";
 import FaqSection from "../components/FaqSection";
 import Reveal from "../components/Reveal";
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "../components/ui/tooltip";
+import PageHero from "../components/PageHero";
+import CtaBand from "../components/CtaBand";
 import {
   koodhIntro,
-  koodhServices,
   koodhValues,
   koodhStats,
   koodhClients,
 } from "../mock";
 import accentBg from "../assets/accent-bg.png";
-import kootahUnifi from "../assets/kootah-unifi.png";
-import kootahMicrosoft365 from "../assets/kootah-microsoft365.png";
-import kootahSignature from "../assets/kootah-signature.png";
-import kootahCode from "../assets/kootah-code.png";
 import usePageMeta from "../lib/seo";
 import yannickImg from "../assets/yannick-gijbels.png";
 import chielImg from "../assets/chiel-van-gansewinkel.png";
@@ -28,9 +24,25 @@ import googleLogo from "../assets/brands/google.svg";
 import proxmoxLogo from "../assets/brands/proxmox.svg";
 import unraidLogo from "../assets/brands/unraid.svg";
 
-const team = [
-  { name: "Yannick Gijbels", role: "Online Identity, Microsoft 365 Cloud & Xink E-mail Signatures", photo: yannickImg },
-  { name: "Chiel van Gansewinkel", role: "IT Consultancy & Microsoft 365 Cloud", photo: chielImg },
+const services = [
+  {
+    name: "Website Development",
+    icon: Code2,
+    desc: "Fast, modern websites and web apps \u2014 with smart AI integration built right in.",
+    to: "/website-development",
+  },
+  {
+    name: "Microsoft 365 & Signatures",
+    icon: Cloud,
+    desc: "Cloud setup, migration and management, plus consistent Xink e-mail signatures.",
+    to: "/microsoft-365",
+  },
+  {
+    name: "IT Consultancy",
+    icon: Wifi,
+    desc: "Down-to-earth, on-site help with Wi-Fi, computers and everyday tech.",
+    to: "/it-consultancy",
+  },
 ];
 
 const tools = [
@@ -41,176 +53,73 @@ const tools = [
   { name: "Unraid", logo: unraidLogo },
 ];
 
-const serviceIcons = [Code2, Cpu, Compass];
-
-const MockupInfo = ({ testId }) => (
-  <TooltipProvider delayDuration={100}>
-    <Tooltip>
-      <TooltipTrigger asChild>
-        <button
-          type="button"
-          aria-label="Image information"
-          data-testid={testId}
-          className="absolute top-3 right-3 flex h-7 w-7 items-center justify-center rounded-full bg-black/45 text-white backdrop-blur-sm ring-1 ring-white/25 transition-colors hover:bg-black/70 focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
-        >
-          <Info size={15} strokeWidth={2} />
-        </button>
-      </TooltipTrigger>
-      <TooltipContent
-        side="bottom"
-        align="end"
-        className="max-w-[280px] bg-neutral-900 text-[11px] leading-relaxed text-neutral-200 px-3 py-2"
-      >
-        Illustrative mockup, not a real client environment. Kept fictional on
-        purpose to protect our clients&rsquo; privacy and security.
-        &ldquo;Kootah&rdquo; is just an informal, internal nickname for Koodh.
-      </TooltipContent>
-    </Tooltip>
-  </TooltipProvider>
-);
+const team = [
+  { name: "Chiel van Gansewinkel", photo: chielImg },
+  { name: "Yannick Gijbels", photo: yannickImg },
+];
 
 export default function About() {
   usePageMeta({
     title: "About",
     description:
-      "Koodh builds websites and AI solutions for small and large businesses. Learn what we do: web development, AI solutions and IT consultancy across the Netherlands and Belgium.",
+      "Koodh builds websites and AI solutions, sets up Microsoft 365 and provides down-to-earth IT support across the Netherlands and Belgium.",
     path: "/about",
   });
+
   return (
     <>
       <Header />
       <main className="pt-[68px] bg-white">
-        {/* Hero */}
-        <section className="max-w-[1600px] mx-auto px-6 md:px-10 pt-20 md:pt-28 pb-16">
-          <p className="text-sm font-semibold uppercase tracking-[0.25em] text-neutral-400">
-            About Koodh
-          </p>
-          <h1 className="mt-6 font-extrabold uppercase-tight text-black text-[11vw] md:text-[6.5vw] leading-[0.95]">
-            We build <span className="font-script" style={{ color: "#3f5b9e" }}>websites</span><br />&amp; AI solutions
-          </h1>
-          <p className="mt-10 max-w-2xl text-xl md:text-2xl text-neutral-600 font-medium">
-            {koodhIntro}
-          </p>
-        </section>
+        <PageHero
+          eyebrow="About Koodh"
+          title={
+            <>
+              We make technology{" "}
+              <span className="font-script" style={{ color: "#3f5b9e" }}>
+                simple
+              </span>
+            </>
+          }
+          subtitle={koodhIntro}
+          chips={["Websites", "AI", "Microsoft 365", "IT support"]}
+        />
 
         {/* What we do */}
-        <section className="max-w-[1600px] mx-auto px-6 md:px-10 py-20 md:py-28">
+        <section className="max-w-[1600px] mx-auto px-6 md:px-10 py-16 md:py-24">
           <h2 className="font-extrabold uppercase-tight text-black text-3xl md:text-5xl">
-            What we do
+            What we{" "}
+            <span className="font-script" style={{ color: "#3f5b9e" }}>
+              do
+            </span>
           </h2>
           <div className="mt-14 grid md:grid-cols-3 gap-8">
-            {koodhServices.map((s, i) => {
-              const Icon = serviceIcons[i] || Code2;
+            {services.map((s, i) => {
+              const Icon = s.icon;
               return (
-                <Reveal key={s.name} delay={i * 90} className="border-t-2 border-black pt-6">
-                  <Icon size={30} strokeWidth={1.6} className="text-black" />
-                  <h3 className="mt-5 font-extrabold uppercase-tight text-2xl text-black">
-                    {s.name}
-                  </h3>
-                  <p className="mt-3 text-neutral-600 leading-relaxed">{s.desc}</p>
-                  <ul className="mt-6 space-y-2">
-                    {s.items.map((it) => (
-                      <li
-                        key={it}
-                        className="text-black font-medium flex items-center gap-2"
-                      >
-                        <span className="w-1.5 h-1.5 rounded-full bg-black" />
-                        {it}
-                      </li>
-                    ))}
-                  </ul>
+                <Reveal key={s.name} delay={i * 90}>
+                  <Link
+                    to={s.to}
+                    data-testid={`about-service-${i}`}
+                    className="group block h-full border-t-2 border-black pt-6 hover:border-[#3f5b9e] transition-colors"
+                  >
+                    <Icon size={30} strokeWidth={1.6} className="text-black group-hover:text-[#3f5b9e] transition-colors" />
+                    <h3 className="mt-5 font-extrabold uppercase-tight text-2xl text-black">
+                      {s.name}
+                    </h3>
+                    <p className="mt-3 text-neutral-600 leading-relaxed">{s.desc}</p>
+                    <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-[#3f5b9e]">
+                      Learn more
+                      <ArrowUpRight
+                        size={16}
+                        className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                      />
+                    </span>
+                  </Link>
                 </Reveal>
               );
             })}
           </div>
         </section>
-
-        {/* Microsoft 365 & E-mail signatures highlight */}
-        <section className="bg-neutral-50 border-y border-black/5">
-          <div className="max-w-[1600px] mx-auto px-6 md:px-10 py-20 md:py-28">
-            <Reveal>
-              <h2 className="font-extrabold uppercase-tight text-black text-3xl md:text-5xl leading-[1.05] max-w-3xl">
-                Microsoft 365 &amp; <span className="font-script" style={{ color: "#3f5b9e" }}>e-mail signatures</span>
-              </h2>
-              <p className="mt-6 text-lg text-neutral-600 leading-relaxed max-w-2xl">
-                We get your business up and running on Microsoft 365 &mdash; mail,
-                Teams, files and everything in between &mdash; and give your whole
-                team polished, consistent e-mail signatures with Xink. Small
-                details that make your business look sharp in every message.
-              </p>
-            </Reveal>
-
-            <div className="mt-14 grid md:grid-cols-2 gap-8">
-              <Reveal className="group relative aspect-[4/3] rounded-2xl overflow-hidden bg-neutral-100 ring-1 ring-black/5">
-                <img
-                  src={kootahMicrosoft365}
-                  alt="Koodh Microsoft 365 cloud workspace"
-                  loading="lazy"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                />
-                <MockupInfo testId="about-m365-info" />
-                <div className="absolute bottom-0 left-0 right-0 p-5 bg-gradient-to-t from-black/70 to-transparent">
-                  <p className="text-white font-bold text-lg">Microsoft 365 Cloud</p>
-                  <p className="text-white/70 text-sm">Setup, migration &amp; day-to-day management</p>
-                </div>
-              </Reveal>
-              <Reveal delay={100} className="group relative aspect-[4/3] rounded-2xl overflow-hidden bg-neutral-100 ring-1 ring-black/5">
-                <img
-                  src={kootahSignature}
-                  alt="Koodh Xink e-mail signature design"
-                  loading="lazy"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                />
-                <MockupInfo testId="about-signature-info" />
-                <div className="absolute bottom-0 left-0 right-0 p-5 bg-gradient-to-t from-black/70 to-transparent">
-                  <p className="text-white font-bold text-lg">Xink E-mail Signatures</p>
-                  <p className="text-white/70 text-sm">Consistent, professional signatures for your whole team</p>
-                </div>
-              </Reveal>
-            </div>
-          </div>
-        </section>
-
-        {/* IT Consultancy highlight */}
-        <section className="max-w-[1600px] mx-auto px-6 md:px-10 py-20 md:py-28">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <Reveal>
-              <h2 className="font-extrabold uppercase-tight text-black text-3xl md:text-5xl leading-[1.05]">
-                IT <span className="font-script" style={{ color: "#3f5b9e" }}>consultancy</span>, on-site
-              </h2>
-              <p className="mt-6 text-lg text-neutral-600 leading-relaxed max-w-xl">
-                When your Wi-Fi drops or a computer starts acting up, you don&rsquo;t
-                want a ticket number &mdash; you want someone who shows up. We come
-                to you, roll up our sleeves and get things working again, in plain
-                language and without the fuss.
-              </p>
-              <div className="mt-8 grid sm:grid-cols-2 gap-x-8 gap-y-6">
-                {[
-                  { title: "Wi-Fi solutions", text: "Fast, stable wireless that reaches every corner of your home or office." },
-                  { title: "PC problems solved", text: "Slow, stuck or broken? We diagnose and fix your computers and devices." },
-                  { title: "On-site service", text: "We come to your location and sort it out in person, not over a chat window." },
-                  { title: "Friendly advice", text: "Clear, honest guidance on your everyday tech — no jargon, no pressure." },
-                ].map((f) => (
-                  <div key={f.title} className="border-t-2 border-black pt-4">
-                    <h3 className="font-bold text-black text-lg">{f.title}</h3>
-                    <p className="mt-2 text-neutral-600 leading-relaxed">{f.text}</p>
-                  </div>
-                ))}
-              </div>
-            </Reveal>
-
-            <Reveal delay={120} className="group relative aspect-[4/3] rounded-2xl overflow-hidden bg-neutral-100 ring-1 ring-black/5">
-              <img
-                src={kootahUnifi}
-                alt="Koodh on-site Wi-Fi and network setup"
-                loading="lazy"
-                className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700"
-              />
-              <MockupInfo testId="about-consultancy-info" />
-            </Reveal>
-          </div>
-        </section>
-
 
         {/* How we work */}
         <section className="relative overflow-hidden bg-[#0e1728] text-[#f4efe3] py-24 md:py-32">
@@ -218,11 +127,12 @@ export default function About() {
             className="pointer-events-none absolute inset-0 opacity-50 bg-cover bg-center"
             style={{ backgroundImage: `url(${accentBg})` }}
           />
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#0e1728] via-[#0e1728]/90 to-[#0e1728]/60" />
-          <div className="relative max-w-[1600px] mx-auto px-6 md:px-10 grid lg:grid-cols-2 gap-12 items-center">
-            <Reveal>
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#0e1728] via-[#0e1728]/90 to-[#0e1728]/70" />
+          <div className="relative max-w-[1600px] mx-auto px-6 md:px-10">
+            <Reveal className="max-w-3xl">
               <h2 className="font-extrabold uppercase-tight text-3xl md:text-5xl leading-[1.05]">
-                How we <span className="font-script text-[#8aa0d8]">work</span>
+                How we{" "}
+                <span className="font-script text-[#8aa0d8]">work</span>
               </h2>
               <div className="mt-8 space-y-5 text-lg md:text-xl text-[#f4efe3]/75 leading-relaxed">
                 <p>
@@ -232,41 +142,11 @@ export default function About() {
                 </p>
                 <p>
                   Whether it&rsquo;s a brand-new website, a smart AI tool like
-                  Clara, or hands-on IT support, we work closely with you as one
-                  team &mdash; keeping things clear, honest and moving forward.
-                </p>
-                <p>
-                  The result: technology that actually helps your business grow,
-                  built by a team that genuinely cares about the craft.
+                  Clara, Microsoft 365 or hands-on IT support, we work closely with
+                  you as one team &mdash; keeping things clear, honest and moving
+                  forward.
                 </p>
               </div>
-            </Reveal>
-            <Reveal delay={120} className="group relative aspect-[4/3] rounded-2xl overflow-hidden bg-white/5 ring-1 ring-white/10">
-              <img src={kootahCode} alt="Koodh web development workspace" loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-              <TooltipProvider delayDuration={100}>
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <button
-                      type="button"
-                      aria-label="Image information"
-                      data-testid="about-howwework-info"
-                      className="absolute top-3 right-3 flex h-7 w-7 items-center justify-center rounded-full bg-black/45 text-white backdrop-blur-sm ring-1 ring-white/25 transition-colors hover:bg-black/70 focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
-                    >
-                      <Info size={15} strokeWidth={2} />
-                    </button>
-                  </TooltipTrigger>
-                  <TooltipContent
-                    side="bottom"
-                    align="end"
-                    className="max-w-[280px] bg-neutral-900 text-[11px] leading-relaxed text-neutral-200 px-3 py-2"
-                  >
-                    Illustrative mockup, not a real client environment. Kept
-                    fictional on purpose to protect our clients&rsquo; privacy and
-                    security. &ldquo;Kootah&rdquo; is just an informal, internal
-                    nickname for Koodh.
-                  </TooltipContent>
-                </Tooltip>
-              </TooltipProvider>
             </Reveal>
           </div>
         </section>
@@ -274,7 +154,10 @@ export default function About() {
         {/* Values */}
         <section className="max-w-[1600px] mx-auto px-6 md:px-10 py-24 md:py-32">
           <h2 className="font-extrabold uppercase-tight text-black text-3xl md:text-5xl max-w-3xl">
-            What we stand for
+            What we stand{" "}
+            <span className="font-script" style={{ color: "#3f5b9e" }}>
+              for
+            </span>
           </h2>
           <div className="mt-14 grid md:grid-cols-2 gap-x-10 gap-y-14">
             {koodhValues.map((v, i) => (
@@ -316,7 +199,7 @@ export default function About() {
           </div>
         </section>
 
-        {/* Clients */}
+        {/* Clients + tools */}
         <section className="bg-[#0e1728] border-t border-white/10 pb-24">
           <div className="max-w-[1600px] mx-auto px-6 md:px-10">
             <h2 className="text-[#f4efe3] text-2xl md:text-3xl font-extrabold uppercase-tight">
@@ -334,7 +217,6 @@ export default function About() {
               ))}
             </div>
 
-            {/* We love to use */}
             <div className="mt-20 pt-12 border-t border-white/10">
               <h2 className="text-[#f4efe3] text-2xl md:text-3xl font-extrabold uppercase-tight">
                 We love to use{" "}
@@ -355,61 +237,58 @@ export default function About() {
           </div>
         </section>
 
-        {/* Team */}
+        {/* Team teaser */}
         <section className="max-w-[1600px] mx-auto px-6 md:px-10 py-24 md:py-32">
-          <h2 className="font-extrabold uppercase-tight text-black text-3xl md:text-5xl">
-            Meet the real <span className="font-script" style={{ color: "#3f5b9e" }}>Kootahs</span>
-          </h2>
-          <p className="mt-4 max-w-2xl text-neutral-600 text-lg">
-            The people behind Koodh &mdash; a small, dedicated team that builds
-            your websites and AI solutions with care.
-          </p>
-          <div className="mt-14 grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-5xl">
-            {team.map((m, i) => (
-              <Reveal as="div" key={m.name} delay={i * 120} className="group">
-                <div className="aspect-[4/3] rounded-2xl overflow-hidden bg-neutral-100">
-                  <img
-                    src={m.photo}
-                    alt={m.name}
-                    loading="lazy"
-                    className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-700"
-                  />
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <Reveal>
+              <h2 className="font-extrabold uppercase-tight text-black text-3xl md:text-5xl leading-[1.05]">
+                Meet the real{" "}
+                <span className="font-script" style={{ color: "#3f5b9e" }}>
+                  Kootahs
+                </span>
+              </h2>
+              <p className="mt-6 text-lg text-neutral-600 leading-relaxed max-w-xl">
+                Behind Koodh is a small, dedicated team that treats your project
+                like our own. Get to know the people you&rsquo;ll actually be
+                working with.
+              </p>
+              <Link
+                to="/meet-us"
+                data-testid="about-meet-us-link"
+                className="mt-8 inline-flex items-center gap-2 bg-black text-white rounded-full pl-6 pr-5 py-3.5 text-sm font-semibold hover:bg-[#3f5b9e] transition-colors group"
+              >
+                Meet the team
+                <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
+              </Link>
+            </Reveal>
+            <Reveal delay={120} className="grid grid-cols-2 gap-5">
+              {team.map((m) => (
+                <div key={m.name} className="group">
+                  <div className="aspect-[4/3] rounded-2xl overflow-hidden bg-neutral-100 ring-1 ring-black/5">
+                    <img
+                      src={m.photo}
+                      alt={m.name}
+                      loading="lazy"
+                      className="w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-700"
+                    />
+                  </div>
+                  <p className="mt-3 font-semibold text-black text-sm">{m.name}</p>
                 </div>
-                <h3 className="mt-5 font-bold text-black text-xl">{m.name}</h3>
-                <p className="text-neutral-500">{m.role}</p>
-              </Reveal>
-            ))}
+              ))}
+            </Reveal>
           </div>
         </section>
 
-        {/* FAQ */}
         <FaqSection />
 
-        {/* CTA */}
-        <section className="relative overflow-hidden bg-[#1c2a4a] text-white">
-          <div
-            className="pointer-events-none absolute inset-0 opacity-40 bg-cover bg-center"
-            style={{ backgroundImage: `url(${accentBg})` }}
-          />
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-[#1c2a4a] via-[#22305a] to-[#3f5b9e]/70" />
-          <div className="relative max-w-[1600px] mx-auto px-6 md:px-10 py-24 md:py-32">
-            <div className="flex flex-col md:flex-row md:items-center justify-between gap-8">
-              <h2 className="font-extrabold uppercase-tight text-3xl md:text-5xl max-w-2xl leading-[1.05]">
-                Have a <span className="font-script text-[#c7d3f2]">project</span> in mind?
-              </h2>
-              <Link
-                to="/contact"
-                className="inline-flex items-center gap-2 bg-white text-[#1c2a4a] rounded-full pl-6 pr-5 py-4 text-sm font-semibold hover:bg-neutral-100 transition-colors group shrink-0"
-              >
-                Let&rsquo;s talk
-                <ArrowRight
-                  size={17}
-                  className="transition-transform group-hover:translate-x-1"
-                />
-              </Link>
-            </div>
-          </div>
-        </section>
+        <CtaBand
+          title={
+            <>
+              Have a{" "}
+              <span className="font-script text-[#c7d3f2]">project</span> in mind?
+            </>
+          }
+        />
       </main>
       <Footer />
       <CookieBanner />
