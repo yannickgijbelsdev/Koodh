@@ -149,6 +149,77 @@ export default function About() {
           </div>
         </section>
 
+        {/* IT Consultancy spotlight */}
+        <section className="bg-neutral-50 border-y border-black/5">
+          <div className="max-w-[1600px] mx-auto px-6 md:px-10 py-20 md:py-28 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            <Reveal>
+              <p className="text-sm font-semibold uppercase tracking-[0.25em] text-neutral-400">
+                Spotlight
+              </p>
+              <h2 className="mt-5 font-extrabold uppercase-tight text-black text-3xl md:text-5xl leading-[1.05]">
+                IT <span className="font-script" style={{ color: "#3f5b9e" }}>consultancy</span> that has your back
+              </h2>
+              <p className="mt-6 text-lg text-neutral-600 leading-relaxed max-w-xl">
+                Technology should make your day easier, not harder. We act as
+                your down-to-earth IT partner &mdash; helping you choose the right
+                tools, set them up properly and keep everything running smoothly,
+                so you can focus on your business instead of your infrastructure.
+              </p>
+              <div className="mt-8 grid sm:grid-cols-2 gap-x-8 gap-y-6">
+                {[
+                  { title: "Microsoft 365 & Cloud", text: "Set up, migrate and manage your mail, files and collaboration in the cloud." },
+                  { title: "Networks & Wi-Fi", text: "Reliable, secure networks and access points that just work, everywhere in your space." },
+                  { title: "Servers & Storage", text: "Solid infrastructure and backups so your data stays safe and always within reach." },
+                  { title: "Ongoing support", text: "A friendly team on call for advice, questions and hands-on help whenever you need it." },
+                ].map((f) => (
+                  <div key={f.title} className="border-t-2 border-black pt-4">
+                    <h3 className="font-bold text-black text-lg">{f.title}</h3>
+                    <p className="mt-2 text-neutral-600 leading-relaxed">{f.text}</p>
+                  </div>
+                ))}
+              </div>
+              <p className="mt-8 text-neutral-500 max-w-xl">
+                Whether you need a one-off second opinion or a partner for the long
+                run, we keep our advice clear, honest and free of jargon.
+              </p>
+            </Reveal>
+
+            <Reveal delay={120} className="group relative aspect-[4/3] rounded-2xl overflow-hidden bg-neutral-100 ring-1 ring-black/5">
+              <img
+                src={kootahUnifi}
+                alt="Koodh IT consultancy — network access point setup"
+                loading="lazy"
+                className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700"
+              />
+              <TooltipProvider delayDuration={100}>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <button
+                      type="button"
+                      aria-label="Image information"
+                      data-testid="about-consultancy-info"
+                      className="absolute top-3 right-3 flex h-7 w-7 items-center justify-center rounded-full bg-black/45 text-white backdrop-blur-sm ring-1 ring-white/25 transition-colors hover:bg-black/70 focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+                    >
+                      <Info size={15} strokeWidth={2} />
+                    </button>
+                  </TooltipTrigger>
+                  <TooltipContent
+                    side="bottom"
+                    align="end"
+                    className="max-w-[280px] bg-neutral-900 text-[11px] leading-relaxed text-neutral-200 px-3 py-2"
+                  >
+                    Illustrative mockup, not a real client environment. Kept
+                    fictional on purpose to protect our clients&rsquo; privacy and
+                    security. &ldquo;Kootah&rdquo; is just an informal, internal
+                    nickname for Koodh.
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
+            </Reveal>
+          </div>
+        </section>
+
+
         {/* How we work */}
         <section className="relative overflow-hidden bg-[#0e1728] text-[#f4efe3] py-24 md:py-32">
           <div
