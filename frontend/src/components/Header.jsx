@@ -55,12 +55,12 @@ export default function Header() {
           />
         </Link>
 
-        <nav className="hidden xl:flex items-center gap-x-5">
+        <nav className="hidden xl:flex items-center gap-x-4 2xl:gap-x-6">
           {navLinks.map((l) => (
             <Link
               key={l.label}
               to={l.to}
-              className={`text-[12px] font-semibold tracking-wide whitespace-nowrap link-underline ${textColor} transition-colors duration-300`}
+              className={`text-[14px] font-semibold tracking-wide whitespace-nowrap link-underline ${textColor} transition-colors duration-300`}
             >
               {l.label}
             </Link>

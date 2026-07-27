@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import CookieBanner from "../components/CookieBanner";
 import WorkCard from "../components/WorkCard";
 import Reveal from "../components/Reveal";
-import { fetchWorkItems, } from "../api";
-import accentBg from "../assets/accent-bg.png";
+import PageHero from "../components/PageHero";
+import CtaBand from "../components/CtaBand";
+import { fetchWorkItems } from "../api";
 import usePageMeta from "../lib/seo";
 
 export default function Work() {
@@ -35,15 +34,19 @@ export default function Work() {
     <>
       <Header />
       <main className="pt-[68px] bg-white">
-        <section className="max-w-[1600px] mx-auto px-6 md:px-10 pt-20 md:pt-28 pb-10">
-          <h1 className="font-extrabold uppercase-tight text-black text-[13vw] md:text-[8vw] leading-[0.92]">
-            Work
-          </h1>
-          <p className="mt-8 max-w-2xl text-xl md:text-2xl text-neutral-600 font-medium">
-            Selected case studies. Brand and experience, put into action for
-            ambitious organisations around the world.
-          </p>
-        </section>
+        <PageHero
+          eyebrow="Work"
+          title={
+            <>
+              Our recent{" "}
+              <span className="font-script" style={{ color: "#3f5b9e" }}>
+                work
+              </span>
+            </>
+          }
+          subtitle="Real projects we designed and built for ambitious people and businesses across the Netherlands and Belgium."
+          chips={["Websites", "Web apps", "AI", "Branding"]}
+        />
 
         <section className="max-w-[1600px] mx-auto px-6 md:px-10 pb-28">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-14">
@@ -67,28 +70,15 @@ export default function Work() {
           )}
         </section>
 
-        {/* Blue CTA band */}
-        <section className="relative overflow-hidden bg-[#1c2a4a] text-white">
-          <div
-            className="pointer-events-none absolute inset-0 opacity-40 bg-cover bg-center"
-            style={{ backgroundImage: `url(${accentBg})` }}
-          />
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-[#1c2a4a] via-[#22305a] to-[#3f5b9e]/70" />
-          <div className="relative max-w-[1600px] mx-auto px-6 md:px-10 py-24 md:py-32">
-            <div className="flex flex-col md:flex-row md:items-center justify-between gap-8">
-              <h2 className="font-extrabold uppercase-tight text-3xl md:text-5xl max-w-2xl leading-[1.05]">
-                Want to be our next <span className="font-script text-[#c7d3f2]">project</span>?
-              </h2>
-              <Link
-                to="/contact"
-                className="inline-flex items-center gap-2 bg-white text-[#1c2a4a] rounded-full pl-6 pr-5 py-4 text-sm font-semibold hover:bg-neutral-100 transition-colors group shrink-0"
-              >
-                Start a project
-                <ArrowRight size={17} className="transition-transform group-hover:translate-x-1" />
-              </Link>
-            </div>
-          </div>
-        </section>
+        <CtaBand
+          title={
+            <>
+              Want to be our next{" "}
+              <span className="font-script text-[#c7d3f2]">project</span>?
+            </>
+          }
+          label="Start a project"
+        />
       </main>
       <Footer />
       <CookieBanner />

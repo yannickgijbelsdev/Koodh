@@ -13,15 +13,15 @@ import chielImg from "../assets/chiel-van-gansewinkel.png";
 const team = [
   {
     name: "Chiel van Gansewinkel",
-    role: "IT Consultancy & Microsoft 365 Cloud",
+    role: "IT Consultancy, Microsoft 365 Cloud & AI Specialist",
     photo: chielImg,
-    bio: "Chiel is the person you want on-site when the Wi-Fi drops or a computer plays up. Hands-on, calm and practical, he keeps your day-to-day tech running so you never have to think about it.",
+    bio: "Chiel is the person you want on-site when the Wi-Fi drops or a computer plays up. Hands-on, calm and practical, he keeps your day-to-day tech running \u2014 and as an AI specialist he builds smart workflows that take care of everyday, repetitive tasks so you don\u2019t have to.",
   },
   {
     name: "Yannick Gijbels",
-    role: "Online Identity, Microsoft 365 Cloud & Xink E-mail Signatures",
+    role: "Web Development, AI Specialist, Microsoft 365 Cloud & Xink E-mail Signatures",
     photo: yannickImg,
-    bio: "Yannick makes your business look sharp online \u2014 from Microsoft 365 setups to polished e-mail signatures with Xink. He loves the details that make a brand feel professional in every message.",
+    bio: "Yannick builds fast, modern websites and web apps, and as an AI specialist in development he weaves smart AI right into the code. He also makes your business look sharp online \u2014 from Microsoft 365 setups to polished Xink e-mail signatures.",
   },
 ];
 

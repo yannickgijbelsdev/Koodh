@@ -41,7 +41,7 @@ export default function WebsiteDevelopment() {
             </>
           }
           subtitle={"Fast, modern and reliable websites and web apps, fully tailored to your brand \u2014 with a little AI magic built right in."}
-          chips={["Websites", "Web apps", "E-commerce", "AI integration", "Maintenance & hosting"]}
+          chips={["Websites", "Web apps", "AI integration", "Maintenance & hosting"]}
         />
 
         <FeatureRow
@@ -51,7 +51,7 @@ export default function WebsiteDevelopment() {
           features={[
             { title: "Custom design", text: "A bespoke look that matches your brand and stands out from the crowd." },
             { title: "Responsive & fast", text: "Perfect on phones, tablets and desktops, with speed that keeps visitors happy." },
-            { title: "E-commerce", text: "Sell online with a smooth, reliable shop your customers will trust." },
+            { title: "Web apps", text: "Interactive tools and platforms built around the way you and your customers work." },
             { title: "Maintenance & hosting", text: "We keep your site secure, up to date and online, so you don\u2019t have to worry." },
           ]}
           image={kootahCode}
@@ -71,11 +71,11 @@ export default function WebsiteDevelopment() {
             { title: "Smart integrations", text: "Connect AI neatly into the website and tools you already use." },
           ]}
           image={kootahAi}
-          imgAlt="Koodh AI assistant dashboard"
+          imgAlt="Koodh AI-assisted development and code"
           reverse
           tinted
           infoTestId="webdev-ai-info"
-          caption={{ title: "AI integration", sub: "Practical, human and genuinely useful" }}
+          caption={{ title: "AI integration", sub: "Built into your code, tools and workflows" }}
         />
 
         {/* Process */}
