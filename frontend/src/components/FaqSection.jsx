@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Plus, Minus } from "lucide-react";
+import Reveal from "./Reveal";
 
 const faqs = [
   {
@@ -98,7 +99,7 @@ export default function FaqSection() {
           {faqs.map((f, i) => {
             const isOpen = open === i;
             return (
-              <div key={i} className="border-b border-black/10">
+              <Reveal as="div" key={i} delay={(i % 4) * 60} className="border-b border-black/10">
                 <button
                   onClick={() => setOpen(isOpen ? -1 : i)}
                   className="w-full flex items-center justify-between gap-6 py-6 text-left"
@@ -126,7 +127,7 @@ export default function FaqSection() {
                     {f.outro && <p>{f.outro}</p>}
                   </div>
                 )}
-              </div>
+              </Reveal>
             );
           })}
         </div>

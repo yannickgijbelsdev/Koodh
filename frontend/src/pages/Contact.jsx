@@ -8,6 +8,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import CookieBanner from "../components/CookieBanner";
 import usePageMeta from "../lib/seo";
+import Reveal from "../components/Reveal";
 import portfolio127 from "../assets/portfolio-127.webp";
 import portfolioDbnt from "../assets/portfolio-dbnt.webp";
 import portfolioGrk from "../assets/portfolio-grk.webp";
@@ -86,16 +87,16 @@ export default function Contact() {
         <section className="overflow-hidden pb-4">
           <div className="grid md:grid-cols-3 gap-4 px-6 md:px-10">
             {contactShots.map((src, i) => (
-              <div key={i} className="aspect-video rounded-2xl overflow-hidden bg-neutral-100">
+              <Reveal as="div" key={i} delay={i * 110} className="aspect-video rounded-2xl overflow-hidden bg-neutral-100">
                 <img src={src} alt="Koodh project" className="w-full h-full object-cover" />
-              </div>
+              </Reveal>
             ))}
           </div>
         </section>
 
         {/* Contact form */}
         <section className="max-w-[1600px] mx-auto px-6 md:px-10 py-24 md:py-32">
-          <div className="grid lg:grid-cols-2 gap-14">
+          <Reveal className="grid lg:grid-cols-2 gap-14">
             <div>
               <h2 className="font-extrabold uppercase-tight text-black text-3xl md:text-5xl">
                 Start a conversation
@@ -144,7 +145,7 @@ export default function Contact() {
                 <ArrowRight size={17} className="transition-transform group-hover:translate-x-1" />
               </button>
             </form>
-          </div>
+          </Reveal>
         </section>
       </main>
       <Footer />

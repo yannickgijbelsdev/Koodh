@@ -3,6 +3,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import CookieBanner from "../components/CookieBanner";
 import WorkCard from "../components/WorkCard";
+import Reveal from "../components/Reveal";
 import { fetchWorkItems } from "../api";
 import usePageMeta from "../lib/seo";
 
@@ -50,7 +51,11 @@ export default function Work() {
                     <div className="mt-4 h-6 w-3/4 rounded bg-neutral-100 animate-pulse" />
                   </div>
                 ))
-              : items.map((c) => <WorkCard key={c.id} item={c} />)}
+              : items.map((c, i) => (
+                  <Reveal key={c.id} delay={(i % 3) * 90}>
+                    <WorkCard item={c} />
+                  </Reveal>
+                ))}
           </div>
           {!loading && items.length === 0 && (
             <p className="text-neutral-500 py-20 text-center">

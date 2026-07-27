@@ -102,7 +102,7 @@
 # Testing Data - Main Agent and testing sub agent both should log testing data below this section
 #====================================================================================================
 
-user_problem_statement: "Test the two new backend proxy endpoints that power the Work grid of a React site"
+user_problem_statement: "Test scroll-reveal animations on the Koodh React site"
 
 backend:
   - task: "GET /api/work endpoint - List work items"
@@ -151,22 +151,37 @@ backend:
         comment: "✅ PASSED - Handles invalid ID gracefully. Returns HTTP 200 with JSON containing 'error' key instead of crashing with 500. Tested with 'invalid-id-123', returned error message: 'Client error 404 Not Found for url https://clr.koodh.com/api/news/articles/invalid-id-123'. No server crashes."
 
 frontend:
-  - task: "Article detail page - Remove 'KOODH' label before date"
+  - task: "Scroll-reveal animations on About page"
     implemented: true
     working: true
-    file: "/app/frontend/src/pages/WorkDetail.jsx"
+    file: "/app/frontend/src/pages/About.jsx, /app/frontend/src/components/Reveal.jsx"
     stuck_count: 0
     priority: "high"
     needs_retesting: false
     status_history:
       - working: "NA"
         agent: "testing"
-        comment: "Bug fix verification - checking if 'KOODH' label is removed from date line"
+        comment: "Testing scroll-reveal animations on About page - verifying CSS class toggling and animation triggers"
       - working: true
         agent: "testing"
-        comment: "✅ PASSED - Date line shows only '7 June 2026' without any 'KOODH' label. Line 63-65 in WorkDetail.jsx correctly displays only formatDate(article.published_at). Verified on article ID a8bfbcd2-1567-4332-beb5-5e7f42551aa9."
+        comment: "✅ PASSED - All 32 reveal elements on About page animate correctly. Progressive reveal working: 3 visible initially → 5 after services → 15 after values → 22 after stats → 32 after full scroll. Tested sections: (1) 'What we do' service cards (3 items with staggered 90ms delay), (2) 'What we stand for' values (4 items), (3) Stats numbers (4 items), (4) 'Trusted by' client logos, (5) 'We love to use brands like' tool logos (5 items), (6) 'Meet the team' cards (2 items - Yannick Gijbels, Chiel van Gansewinkel), (7) FAQ accordion items (10 items). CSS classes 'reveal' and 'is-visible' toggle correctly. IntersectionObserver working as expected. NO elements stuck at opacity 0. Sample element verified: hasReveal=true, hasVisible=true, opacity=1."
 
-  - task: "Article detail page - Copyright/credit appears only once under image"
+  - task: "Scroll-reveal animations on Work page"
+    implemented: true
+    working: true
+    file: "/app/frontend/src/pages/Work.jsx"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: "NA"
+        agent: "testing"
+        comment: "Testing scroll-reveal animations on Work page - verifying project cards reveal with staggered animation"
+      - working: true
+        agent: "testing"
+        comment: "✅ PASSED - All 3 work project cards reveal correctly with staggered animation (90ms delay per card based on grid position). All 3 reveal elements visible after scroll. Staggered animation working as expected with delay calculation: (i % 3) * 90ms. Cards are clickable and navigate to detail pages correctly."
+
+  - task: "Scroll-reveal animations on Work Detail page"
     implemented: true
     working: true
     file: "/app/frontend/src/pages/WorkDetail.jsx"
@@ -176,21 +191,37 @@ frontend:
     status_history:
       - working: "NA"
         agent: "testing"
-        comment: "Bug fix verification - checking copyright/credit appears only once as small caption"
+        comment: "Testing scroll-reveal animations on Work Detail page - verifying article image and body reveal on load/scroll"
       - working: true
         agent: "testing"
-        comment: "✅ PASSED - Copyright 'Foto: Glenn Legein, Timo Piredda · © GRK' appears exactly once as small grey caption (text-xs text-neutral-400) directly under the hero image. Lines 80-85 in WorkDetail.jsx render image_caption_html correctly. No duplication found in article body - stripImageCredit function (lines 11-15) successfully removes clara-image-credit paragraphs from body HTML. Article body contains 3 paragraphs of actual content (726 chars) about GRK radio station."
+        comment: "✅ PASSED - Article detail page reveal animations working correctly. 2 reveal elements detected (article image and body). 1 visible initially (image on load), 2 visible after scroll (both image and body). Article image revealed with fade/slide-up animation. Article body revealed when scrolled into view. NO elements stuck at opacity 0. Tested on GRK article (first work card)."
+
+  - task: "Reveal component implementation"
+    implemented: true
+    working: true
+    file: "/app/frontend/src/components/Reveal.jsx, /app/frontend/src/index.css"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: "NA"
+        agent: "testing"
+        comment: "Verifying Reveal component implementation and CSS animations"
+      - working: true
+        agent: "testing"
+        comment: "✅ PASSED - Reveal component correctly implemented using IntersectionObserver (threshold: 0.12, rootMargin: '0px 0px -8% 0px'). CSS animations defined in index.css lines 77-90: .reveal starts with opacity:0 and translateY(32px), transitions to opacity:1 and translateY(0) when .is-visible class added. Smooth cubic-bezier(0.16, 1, 0.3, 1) transition over 0.8s. Component supports custom delay via transitionDelay style prop. Respects prefers-reduced-motion. Observer disconnects after element becomes visible (performance optimization)."
 
 metadata:
   created_by: "testing_agent"
   version: "1.0"
-  test_sequence: 2
+  test_sequence: 3
   run_ui: true
 
 test_plan:
   current_focus:
-    - "Article detail page - Remove 'KOODH' label before date"
-    - "Article detail page - Copyright/credit appears only once under image"
+    - "Scroll-reveal animations on About page"
+    - "Scroll-reveal animations on Work page"
+    - "Scroll-reveal animations on Work Detail page"
   stuck_tasks: []
   test_all: false
   test_priority: "high_first"
@@ -200,3 +231,5 @@ agent_communication:
     message: "Completed testing of two backend proxy endpoints for Work grid. Created comprehensive test suite in /app/backend_test.py. All 3 tests passed successfully: (1) GET /api/work returns 3 items with correct structure, (2) GET /api/work/{id} returns article detail with HTML body, (3) Invalid ID handling returns graceful error without crashing. Backend logs show no errors. Endpoints are production-ready."
   - agent: "testing"
     message: "✅ Bug fix verification COMPLETE - All requirements passed. Tested article detail page (ID a8bfbcd2-1567-4332-beb5-5e7f42551aa9): (1) 'KOODH' label successfully removed from date line - shows only '7 June 2026', (2) Copyright 'Foto: Glenn Legein, Timo Piredda · © GRK' appears exactly once as small grey caption under image, (3) Copyright NOT duplicated in article body - stripImageCredit function working correctly, (4) Article body content present with 3 paragraphs about GRK. Screenshots captured for visual confirmation. No issues found - bug fix is working as expected."
+  - agent: "testing"
+    message: "✅ Scroll-reveal animation testing COMPLETE - All animations working perfectly across all pages. Comprehensive testing performed: (1) About page: 32/32 elements revealed successfully including service cards, values, stats, client logos, brand logos, team cards, and FAQ items. Progressive reveal verified at multiple scroll positions. (2) Work page: 3/3 project cards revealed with staggered animation. (3) Work Detail page: 2/2 elements (image and body) revealed correctly. CSS class toggling verified: 'reveal' → 'reveal is-visible'. IntersectionObserver working as expected with threshold 0.12 and rootMargin. NO elements stuck at opacity 0. Animations use smooth cubic-bezier transitions over 0.8s. Staggered delays working correctly (90ms, 60ms, 70ms, 80ms, 120ms depending on section). Screenshots captured at 8 scroll positions on About page plus Work and WorkDetail pages. Implementation is production-ready with excellent UX."

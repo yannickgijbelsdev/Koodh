@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import WorkCard from "./WorkCard";
+import Reveal from "./Reveal";
 import { fetchWorkItems } from "../api";
 
 export default function WorkGrid() {
@@ -28,7 +29,11 @@ export default function WorkGrid() {
                   <div className="mt-4 h-6 w-3/4 rounded bg-neutral-100 animate-pulse" />
                 </div>
               ))
-            : items.map((c) => <WorkCard key={c.id} item={c} />)}
+            : items.map((c, i) => (
+                <Reveal key={c.id} delay={(i % 3) * 90}>
+                  <WorkCard item={c} />
+                </Reveal>
+              ))}
         </div>
       </div>
     </section>

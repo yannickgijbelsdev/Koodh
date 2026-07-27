@@ -5,6 +5,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import CookieBanner from "../components/CookieBanner";
 import FaqSection from "../components/FaqSection";
+import Reveal from "../components/Reveal";
 import {
   koodhIntro,
   koodhServices,
@@ -69,7 +70,7 @@ export default function About() {
             {koodhServices.map((s, i) => {
               const Icon = serviceIcons[i] || Code2;
               return (
-                <div key={s.name} className="border-t-2 border-black pt-6">
+                <Reveal key={s.name} delay={i * 90} className="border-t-2 border-black pt-6">
                   <Icon size={30} strokeWidth={1.6} className="text-black" />
                   <h3 className="mt-5 font-extrabold uppercase-tight text-2xl text-black">
                     {s.name}
@@ -86,7 +87,7 @@ export default function About() {
                       </li>
                     ))}
                   </ul>
-                </div>
+                </Reveal>
               );
             })}
           </div>
@@ -124,7 +125,7 @@ export default function About() {
           </h2>
           <div className="mt-14 grid md:grid-cols-2 gap-x-10 gap-y-14">
             {koodhValues.map((v, i) => (
-              <div key={v.title} className="flex gap-6">
+              <Reveal as="div" key={v.title} delay={(i % 2) * 90} className="flex gap-6">
                 <span className="text-neutral-300 font-extrabold text-3xl">
                   0{i + 1}
                 </span>
@@ -134,7 +135,7 @@ export default function About() {
                     {v.text}
                   </p>
                 </div>
-              </div>
+              </Reveal>
             ))}
           </div>
         </section>
@@ -143,15 +144,15 @@ export default function About() {
         <section className="bg-[#0e1728] text-[#f4efe3] py-24">
           <div className="max-w-[1600px] mx-auto px-6 md:px-10">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-10">
-              {koodhStats.map((s) => (
-                <div key={s.label}>
+              {koodhStats.map((s, i) => (
+                <Reveal as="div" key={s.label} delay={i * 90}>
                   <div className="font-extrabold text-5xl md:text-7xl">
                     {s.value}
                   </div>
                   <div className="mt-3 text-[#f4efe3]/60 text-sm font-medium">
                     {s.label}
                   </div>
-                </div>
+                </Reveal>
               ))}
             </div>
           </div>
@@ -164,14 +165,14 @@ export default function About() {
               Trusted <span className="font-script text-[#8aa0d8]">by</span>
             </h2>
             <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-12 items-center">
-              {koodhClients.map((c) => (
-                <div key={c.name} className="flex items-center justify-center h-14">
+              {koodhClients.map((c, i) => (
+                <Reveal as="div" key={c.name} delay={i * 80} className="flex items-center justify-center h-14">
                   <img
                     src={c.logo}
                     alt={c.name}
                     className="max-h-12 max-w-[150px] object-contain opacity-80 hover:opacity-100 transition-opacity"
                   />
-                </div>
+                </Reveal>
               ))}
             </div>
 
@@ -182,14 +183,14 @@ export default function About() {
                 <span className="font-script text-[#8aa0d8]">brands</span> like
               </h2>
               <div className="mt-12 grid grid-cols-2 md:grid-cols-5 gap-x-8 gap-y-12 items-center">
-                {tools.map((t) => (
-                  <div key={t.name} className="flex items-center justify-center h-10">
+                {tools.map((t, i) => (
+                  <Reveal as="div" key={t.name} delay={i * 70} className="flex items-center justify-center h-10">
                     <img
                       src={t.logo}
                       alt={t.name}
                       className="max-h-9 max-w-[150px] object-contain opacity-75 hover:opacity-100 transition-opacity"
                     />
-                  </div>
+                  </Reveal>
                 ))}
               </div>
             </div>
@@ -206,8 +207,8 @@ export default function About() {
             your websites and AI solutions with care.
           </p>
           <div className="mt-14 grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-4xl">
-            {team.map((m) => (
-              <div key={m.name} className="group">
+            {team.map((m, i) => (
+              <Reveal as="div" key={m.name} delay={i * 120} className="group">
                 <div className="aspect-[3/4] rounded-2xl overflow-hidden bg-neutral-100">
                   <img
                     src={m.photo}
@@ -218,7 +219,7 @@ export default function About() {
                 </div>
                 <h3 className="mt-5 font-bold text-black text-xl">{m.name}</h3>
                 <p className="text-neutral-500">{m.role}</p>
-              </div>
+              </Reveal>
             ))}
           </div>
         </section>

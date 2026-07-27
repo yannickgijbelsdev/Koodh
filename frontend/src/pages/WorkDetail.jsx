@@ -5,6 +5,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import CookieBanner from "../components/CookieBanner";
 import { fetchWorkArticle } from "../api";
+import Reveal from "../components/Reveal";
 import usePageMeta from "../lib/seo";
 
 // Remove the duplicate image-credit paragraph(s) from the article body.
@@ -74,13 +75,13 @@ export default function WorkDetail() {
               </h1>
 
               {article.image_url && (
-                <div className="mt-10 aspect-video rounded-2xl overflow-hidden bg-neutral-100">
+                <Reveal as="div" className="mt-10 aspect-video rounded-2xl overflow-hidden bg-neutral-100">
                   <img
                     src={article.image_url}
                     alt={article.title}
                     className="w-full h-full object-cover"
                   />
-                </div>
+                </Reveal>
               )}
 
               {article.image_caption_html && (
@@ -91,7 +92,8 @@ export default function WorkDetail() {
               )}
 
               {article.body && (
-                <div
+                <Reveal
+                  as="div"
                   className="article-body mt-10 text-lg text-neutral-700 leading-relaxed space-y-5"
                   dangerouslySetInnerHTML={{ __html: stripImageCredit(article.body) }}
                 />
