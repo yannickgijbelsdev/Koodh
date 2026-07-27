@@ -78,7 +78,7 @@ const faqs = [
   {
     q: "How can I start a project with Koodh?",
     intro:
-      "Getting started is easy. Simply contact us through our contact form, email or phone. We'll schedule an introductory conversation to discuss your goals, explore possible solutions and provide a tailored quotation without obligation.",
+      "Getting started is easy. Simply contact us through our contact form or email. We'll schedule an introductory conversation to discuss your goals, explore possible solutions and provide a tailored quotation without obligation.",
   },
 ];
 
