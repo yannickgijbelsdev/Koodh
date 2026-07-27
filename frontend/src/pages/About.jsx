@@ -43,6 +43,32 @@ const tools = [
 
 const serviceIcons = [Code2, Cpu, Compass];
 
+const MockupInfo = ({ testId }) => (
+  <TooltipProvider delayDuration={100}>
+    <Tooltip>
+      <TooltipTrigger asChild>
+        <button
+          type="button"
+          aria-label="Image information"
+          data-testid={testId}
+          className="absolute top-3 right-3 flex h-7 w-7 items-center justify-center rounded-full bg-black/45 text-white backdrop-blur-sm ring-1 ring-white/25 transition-colors hover:bg-black/70 focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+        >
+          <Info size={15} strokeWidth={2} />
+        </button>
+      </TooltipTrigger>
+      <TooltipContent
+        side="bottom"
+        align="end"
+        className="max-w-[280px] bg-neutral-900 text-[11px] leading-relaxed text-neutral-200 px-3 py-2"
+      >
+        Illustrative mockup, not a real client environment. Kept fictional on
+        purpose to protect our clients&rsquo; privacy and security.
+        &ldquo;Kootah&rdquo; is just an informal, internal nickname for Koodh.
+      </TooltipContent>
+    </Tooltip>
+  </TooltipProvider>
+);
+
 export default function About() {
   usePageMeta({
     title: "About",
@@ -65,56 +91,6 @@ export default function About() {
           <p className="mt-10 max-w-2xl text-xl md:text-2xl text-neutral-600 font-medium">
             {koodhIntro}
           </p>
-        </section>
-
-        {/* Image feature band */}
-        <section className="max-w-[1600px] mx-auto px-6 md:px-10 pb-8">
-          <TooltipProvider delayDuration={100}>
-            <Reveal className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              {[
-                { src: kootahUnifi, alt: "Koodh network access point installation", pos: "object-top" },
-                { src: kootahMicrosoft365, alt: "Koodh Microsoft 365 cloud workspace", pos: "object-center" },
-                { src: kootahSignature, alt: "Koodh e-mail signature design", pos: "object-center" },
-              ].map((img, i) => (
-                <div
-                  key={i}
-                  className={`group relative overflow-hidden rounded-2xl bg-neutral-100 ${
-                    i === 0 ? "col-span-2 aspect-[2/1] md:aspect-[2/1]" : "aspect-square"
-                  }`}
-                  data-testid={`about-feature-image-${i}`}
-                >
-                  <img
-                    src={img.src}
-                    alt={img.alt}
-                    loading="lazy"
-                    className={`w-full h-full object-cover ${img.pos} group-hover:scale-105 transition-transform duration-700`}
-                  />
-                  <Tooltip>
-                    <TooltipTrigger asChild>
-                      <button
-                        type="button"
-                        aria-label="Image information"
-                        data-testid={`about-image-info-${i}`}
-                        className="absolute top-3 right-3 flex h-7 w-7 items-center justify-center rounded-full bg-black/45 text-white backdrop-blur-sm ring-1 ring-white/25 transition-colors hover:bg-black/70 focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
-                      >
-                        <Info size={15} strokeWidth={2} />
-                      </button>
-                    </TooltipTrigger>
-                    <TooltipContent
-                      side="bottom"
-                      align="end"
-                      className="max-w-[280px] bg-neutral-900 text-[11px] leading-relaxed text-neutral-200 px-3 py-2"
-                    >
-                      Illustrative mockup, not a real client environment. Kept
-                      fictional on purpose to protect our clients&rsquo; privacy and
-                      security. &ldquo;Kootah&rdquo; is just an informal, internal
-                      nickname for Koodh.
-                    </TooltipContent>
-                  </Tooltip>
-                </div>
-              ))}
-            </Reveal>
-          </TooltipProvider>
         </section>
 
         {/* What we do */}
@@ -149,28 +125,71 @@ export default function About() {
           </div>
         </section>
 
-        {/* IT Consultancy spotlight */}
+        {/* Microsoft 365 & E-mail signatures highlight */}
         <section className="bg-neutral-50 border-y border-black/5">
-          <div className="max-w-[1600px] mx-auto px-6 md:px-10 py-20 md:py-28 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          <div className="max-w-[1600px] mx-auto px-6 md:px-10 py-20 md:py-28">
             <Reveal>
-              <p className="text-sm font-semibold uppercase tracking-[0.25em] text-neutral-400">
-                Spotlight
+              <h2 className="font-extrabold uppercase-tight text-black text-3xl md:text-5xl leading-[1.05] max-w-3xl">
+                Microsoft 365 &amp; <span className="font-script" style={{ color: "#3f5b9e" }}>e-mail signatures</span>
+              </h2>
+              <p className="mt-6 text-lg text-neutral-600 leading-relaxed max-w-2xl">
+                We get your business up and running on Microsoft 365 &mdash; mail,
+                Teams, files and everything in between &mdash; and give your whole
+                team polished, consistent e-mail signatures with Xink. Small
+                details that make your business look sharp in every message.
               </p>
-              <h2 className="mt-5 font-extrabold uppercase-tight text-black text-3xl md:text-5xl leading-[1.05]">
-                IT <span className="font-script" style={{ color: "#3f5b9e" }}>consultancy</span> that has your back
+            </Reveal>
+
+            <div className="mt-14 grid md:grid-cols-2 gap-8">
+              <Reveal className="group relative aspect-[4/3] rounded-2xl overflow-hidden bg-neutral-100 ring-1 ring-black/5">
+                <img
+                  src={kootahMicrosoft365}
+                  alt="Koodh Microsoft 365 cloud workspace"
+                  loading="lazy"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                />
+                <MockupInfo testId="about-m365-info" />
+                <div className="absolute bottom-0 left-0 right-0 p-5 bg-gradient-to-t from-black/70 to-transparent">
+                  <p className="text-white font-bold text-lg">Microsoft 365 Cloud</p>
+                  <p className="text-white/70 text-sm">Setup, migration &amp; day-to-day management</p>
+                </div>
+              </Reveal>
+              <Reveal delay={100} className="group relative aspect-[4/3] rounded-2xl overflow-hidden bg-neutral-100 ring-1 ring-black/5">
+                <img
+                  src={kootahSignature}
+                  alt="Koodh Xink e-mail signature design"
+                  loading="lazy"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                />
+                <MockupInfo testId="about-signature-info" />
+                <div className="absolute bottom-0 left-0 right-0 p-5 bg-gradient-to-t from-black/70 to-transparent">
+                  <p className="text-white font-bold text-lg">Xink E-mail Signatures</p>
+                  <p className="text-white/70 text-sm">Consistent, professional signatures for your whole team</p>
+                </div>
+              </Reveal>
+            </div>
+          </div>
+        </section>
+
+        {/* IT Consultancy highlight */}
+        <section className="max-w-[1600px] mx-auto px-6 md:px-10 py-20 md:py-28">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            <Reveal>
+              <h2 className="font-extrabold uppercase-tight text-black text-3xl md:text-5xl leading-[1.05]">
+                IT <span className="font-script" style={{ color: "#3f5b9e" }}>consultancy</span>, on-site
               </h2>
               <p className="mt-6 text-lg text-neutral-600 leading-relaxed max-w-xl">
-                Technology should make your day easier, not harder. We act as
-                your down-to-earth IT partner &mdash; helping you choose the right
-                tools, set them up properly and keep everything running smoothly,
-                so you can focus on your business instead of your infrastructure.
+                When your Wi-Fi drops or a computer starts acting up, you don&rsquo;t
+                want a ticket number &mdash; you want someone who shows up. We come
+                to you, roll up our sleeves and get things working again, in plain
+                language and without the fuss.
               </p>
               <div className="mt-8 grid sm:grid-cols-2 gap-x-8 gap-y-6">
                 {[
-                  { title: "Microsoft 365 & Cloud", text: "Set up, migrate and manage your mail, files and collaboration in the cloud." },
-                  { title: "Networks & Wi-Fi", text: "Reliable, secure networks and access points that just work, everywhere in your space." },
-                  { title: "Servers & Storage", text: "Solid infrastructure and backups so your data stays safe and always within reach." },
-                  { title: "Ongoing support", text: "A friendly team on call for advice, questions and hands-on help whenever you need it." },
+                  { title: "Wi-Fi solutions", text: "Fast, stable wireless that reaches every corner of your home or office." },
+                  { title: "PC problems solved", text: "Slow, stuck or broken? We diagnose and fix your computers and devices." },
+                  { title: "On-site service", text: "We come to your location and sort it out in person, not over a chat window." },
+                  { title: "Friendly advice", text: "Clear, honest guidance on your everyday tech — no jargon, no pressure." },
                 ].map((f) => (
                   <div key={f.title} className="border-t-2 border-black pt-4">
                     <h3 className="font-bold text-black text-lg">{f.title}</h3>
@@ -178,43 +197,16 @@ export default function About() {
                   </div>
                 ))}
               </div>
-              <p className="mt-8 text-neutral-500 max-w-xl">
-                Whether you need a one-off second opinion or a partner for the long
-                run, we keep our advice clear, honest and free of jargon.
-              </p>
             </Reveal>
 
             <Reveal delay={120} className="group relative aspect-[4/3] rounded-2xl overflow-hidden bg-neutral-100 ring-1 ring-black/5">
               <img
                 src={kootahUnifi}
-                alt="Koodh IT consultancy — network access point setup"
+                alt="Koodh on-site Wi-Fi and network setup"
                 loading="lazy"
                 className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700"
               />
-              <TooltipProvider delayDuration={100}>
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <button
-                      type="button"
-                      aria-label="Image information"
-                      data-testid="about-consultancy-info"
-                      className="absolute top-3 right-3 flex h-7 w-7 items-center justify-center rounded-full bg-black/45 text-white backdrop-blur-sm ring-1 ring-white/25 transition-colors hover:bg-black/70 focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
-                    >
-                      <Info size={15} strokeWidth={2} />
-                    </button>
-                  </TooltipTrigger>
-                  <TooltipContent
-                    side="bottom"
-                    align="end"
-                    className="max-w-[280px] bg-neutral-900 text-[11px] leading-relaxed text-neutral-200 px-3 py-2"
-                  >
-                    Illustrative mockup, not a real client environment. Kept
-                    fictional on purpose to protect our clients&rsquo; privacy and
-                    security. &ldquo;Kootah&rdquo; is just an informal, internal
-                    nickname for Koodh.
-                  </TooltipContent>
-                </Tooltip>
-              </TooltipProvider>
+              <MockupInfo testId="about-consultancy-info" />
             </Reveal>
           </div>
         </section>

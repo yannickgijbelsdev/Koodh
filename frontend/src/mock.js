@@ -212,8 +212,8 @@ export const koodhServices = [
   },
   {
     name: "IT Consultancy",
-    desc: "The right team for your IT decisions. We help you with strategy, architecture and hands-on support so technology works for you.",
-    items: ["Strategy", "Architecture", "Support", "Digital products"],
+    desc: "Hands-on, on-site IT help. From Wi-Fi that reaches everywhere to fixing computer problems, we come to you and get things working again.",
+    items: ["Wi-Fi solutions", "PC problem solving", "On-site service", "Friendly advice"],
   },
 ];
 
