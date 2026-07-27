@@ -119,3 +119,20 @@ html { scroll-behavior: smooth; }
 
 .no-scrollbar::-webkit-scrollbar { display: none; }
 .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+
+/* in-article images */
+.article-body .clara-img-figure { margin: 0; }
+.article-body .clara-img-figure img {
+  border-radius: 1rem;
+  overflow: hidden;
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.article-body .clara-img-credit {
+  margin-top: 0.75rem;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  color: #a3a3a3;
+}
