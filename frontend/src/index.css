@@ -57,7 +57,7 @@ html { scroll-behavior: smooth; }
 
 .font-display { font-family: 'Archivo', sans-serif; letter-spacing: -0.02em; }
 
-.font-script { font-family: 'Caveat', cursive; }
+.font-script { font-family: 'Caveat', cursive; text-transform: lowercase; }
 
 .uppercase-tight { text-transform: uppercase; letter-spacing: -0.01em; }
 

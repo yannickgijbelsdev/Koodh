@@ -60,7 +60,7 @@ export default function Contact() {
         {/* Hero */}
         <section className="max-w-[1600px] mx-auto px-6 md:px-10 pt-20 md:pt-28 pb-16">
           <h1 className="font-extrabold uppercase-tight text-black text-[11vw] md:text-[7vw] leading-[0.92]">
-            We'd <span className="font-script normal-case" style={{ color: "#3f5b9e" }}>love</span> to<br />hear from you
+            We'd <span className="font-script" style={{ color: "#3f5b9e" }}>love</span> to<br />hear from you
           </h1>
           <p className="mt-8 max-w-xl text-xl text-neutral-600">
             Got an idea we can help with? Want to join our team? Here's how you

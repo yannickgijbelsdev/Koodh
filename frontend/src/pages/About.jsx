@@ -52,7 +52,7 @@ export default function About() {
             About Koodh
           </p>
           <h1 className="mt-6 font-extrabold uppercase-tight text-black text-[11vw] md:text-[6.5vw] leading-[0.95]">
-            We build websites<br />&amp; <span className="font-script normal-case" style={{ color: "#3f5b9e" }}>AI</span> solutions
+            We build <span className="font-script" style={{ color: "#3f5b9e" }}>websites</span><br />&amp; AI solutions
           </h1>
           <p className="mt-10 max-w-2xl text-xl md:text-2xl text-neutral-600 font-medium">
             {koodhIntro}
@@ -198,7 +198,7 @@ export default function About() {
         {/* Team */}
         <section className="max-w-[1600px] mx-auto px-6 md:px-10 py-24 md:py-32">
           <h2 className="font-extrabold uppercase-tight text-black text-3xl md:text-5xl">
-            Meet the <span className="font-script normal-case" style={{ color: "#3f5b9e" }}>team</span>
+            Meet the <span className="font-script" style={{ color: "#3f5b9e" }}>team</span>
           </h2>
           <p className="mt-4 max-w-2xl text-neutral-600 text-lg">
             The people behind Koodh &mdash; a small, dedicated team that builds
@@ -226,7 +226,7 @@ export default function About() {
         <section className="max-w-[1600px] mx-auto px-6 md:px-10 py-24 md:py-32">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-8">
             <h2 className="font-extrabold uppercase-tight text-black text-3xl md:text-5xl max-w-2xl leading-[1.05]">
-              Have a <span className="font-script normal-case" style={{ color: "#3f5b9e" }}>project</span> in mind?
+              Have a <span className="font-script" style={{ color: "#3f5b9e" }}>project</span> in mind?
             </h2>
             <Link
               to="/contact"
