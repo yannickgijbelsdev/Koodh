@@ -17,7 +17,14 @@ Pixel-perfect clone of a branding website, fully rebranded to "Koodh". Dynamic p
 - Full Koodh rebrand, hero carousel + work grid via API proxy.
 - Custom About/Work/Legal/Contact pages, SEO/GEO, sitemap.xml, robots.txt.
 - FAQ component, cookie consent (LocalStorage), scroll-reveal animations, koodh.com footer (KVK 42066318).
-- **2026-06 (this session):** Replaced Pexels images in About page beeldband with 4 local Koodh mockups (kootah-unifi/microsoft365/signature/code.png), added English privacy disclaimer explaining images are fictional mockups and "Kootah" is an informal internal nickname for Koodh. Also swapped the "How we work" image to a Koodh mockup. Verified via screenshot.
+- Hero rotating title: circular loop with measured per-title stacking + bottom fade mask (no gap/overlap/hard clip).
+- **2026-06 (this session):** Split the site into dedicated pages with a shared, consistent design system:
+  - New shared components: PageHero, FeatureRow, CtaBand, MockupInfo (`/app/frontend/src/components/`).
+  - New pages: `/meet-us` (MeetUs), `/website-development` (WebsiteDevelopment, incl. AI Integration), `/microsoft-365` (Microsoft365 + Xink signatures), `/it-consultancy` (ItConsultancy: Wi-Fi/PC/on-site). About.jsx rewritten as overview with service cards linking to the detail pages + team teaser.
+  - Nav (`mock.js` navLinks) now lists all items separately: WORK, ABOUT, MEET US, WEBSITE DEVELOPMENT, MICROSOFT 365, IT CONSULTANCY, CONTACT. Header desktop nav uses `xl:flex` (mobile menu below xl, scrollable).
+  - Routes added in App.js. Generated AI mockup image `kootah-ai.jpg`. Each Kootah mockup image used once. Team photos: Chiel = KOODH_CHIEL, Yannick = KOODH_YANNICK.
+  - Verified by frontend testing agent (iteration_1.json): 28/29 checks pass, no app bugs.
 
 ## Backlog / notes
 - Orphaned SMTP config in backend `.env`/`server.py` (harmless, contact form removed).
+- Footer has no service links yet (nav covers it); could add for SEO/discoverability.
