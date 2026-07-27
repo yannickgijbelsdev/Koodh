@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import CookieBanner from "../components/CookieBanner";
 import WorkCard from "../components/WorkCard";
 import Reveal from "../components/Reveal";
-import { fetchWorkItems } from "../api";
+import { fetchWorkItems, } from "../api";
+import { media } from "../mock";
 import usePageMeta from "../lib/seo";
 
 export default function Work() {
@@ -62,6 +65,29 @@ export default function Work() {
               No projects yet.
             </p>
           )}
+        </section>
+
+        {/* Blue CTA band */}
+        <section className="relative overflow-hidden bg-[#1c2a4a] text-white">
+          <div
+            className="pointer-events-none absolute inset-0 opacity-20 bg-cover bg-center"
+            style={{ backgroundImage: `url(${media.bluePanels})` }}
+          />
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-[#1c2a4a] via-[#22305a] to-[#3f5b9e]/70" />
+          <div className="relative max-w-[1600px] mx-auto px-6 md:px-10 py-24 md:py-32">
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-8">
+              <h2 className="font-extrabold uppercase-tight text-3xl md:text-5xl max-w-2xl leading-[1.05]">
+                Want to be our next <span className="font-script text-[#c7d3f2]">project</span>?
+              </h2>
+              <Link
+                to="/contact"
+                className="inline-flex items-center gap-2 bg-white text-[#1c2a4a] rounded-full pl-6 pr-5 py-4 text-sm font-semibold hover:bg-neutral-100 transition-colors group shrink-0"
+              >
+                Start a project
+                <ArrowRight size={17} className="transition-transform group-hover:translate-x-1" />
+              </Link>
+            </div>
+          </div>
         </section>
       </main>
       <Footer />

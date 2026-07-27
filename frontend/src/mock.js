@@ -251,6 +251,28 @@ export const koodhClients = [
   { name: "GRK", logo: "https://koodh.com/clients/grk_w.png" },
 ];
 
+// People-free imagery from Pexels/Unsplash
+const px = (id, w = 1600) =>
+  `https://images.pexels.com/photos/${id}/pexels-photo-${id}.jpeg?auto=compress&cs=tinysrgb&w=${w}`;
+const un = (id, w = 1600) =>
+  `https://images.unsplash.com/photo-${id}?w=${w}&q=80&auto=format&fit=crop`;
+
+export const media = {
+  workspace: px(3747070),
+  workspace2: px(19089182),
+  code: un("1488590528505-98d2b5aba04b"),
+  code2: px(256502),
+  code3: un("1461749280684-dccba630e2f6"),
+  server: px(17489157),
+  server2: px(17323801),
+  server3: px(37730211),
+  blueStreaks: px(14990059),
+  blueCircuit: px(12537427),
+  blueCurves: px(804269),
+  blueTunnel: px(12707785),
+  bluePanels: px(14973823),
+};
+
 
 // ===== ABOUT PAGE =====
 export const aboutImages = [

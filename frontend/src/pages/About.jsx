@@ -12,6 +12,7 @@ import {
   koodhValues,
   koodhStats,
   koodhClients,
+  media,
 } from "../mock";
 import usePageMeta from "../lib/seo";
 import yannickImg from "../assets/yannick-gijbels.png";
@@ -61,6 +62,22 @@ export default function About() {
           </p>
         </section>
 
+        {/* Image feature band */}
+        <section className="max-w-[1600px] mx-auto px-6 md:px-10 pb-8">
+          <Reveal className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {[media.workspace, media.code, media.server, media.workspace2].map((src, i) => (
+              <div
+                key={i}
+                className={`overflow-hidden rounded-2xl bg-neutral-100 ${
+                  i === 0 ? "col-span-2 aspect-[2/1] md:aspect-[2/1]" : "aspect-square"
+                }`}
+              >
+                <img src={src} alt="" loading="lazy" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
+              </div>
+            ))}
+          </Reveal>
+        </section>
+
         {/* What we do */}
         <section className="max-w-[1600px] mx-auto px-6 md:px-10 py-20 md:py-28">
           <h2 className="font-extrabold uppercase-tight text-black text-3xl md:text-5xl">
@@ -94,27 +111,37 @@ export default function About() {
         </section>
 
         {/* How we work */}
-        <section className="bg-neutral-50 border-y border-black/5 py-24 md:py-32">
-          <div className="max-w-[1600px] mx-auto px-6 md:px-10 grid lg:grid-cols-2 gap-12">
-            <h2 className="font-extrabold uppercase-tight text-black text-3xl md:text-5xl leading-[1.05]">
-              How we work
-            </h2>
-            <div className="space-y-5 text-lg md:text-xl text-neutral-600 leading-relaxed">
-              <p>
-                We start by understanding your business, your customers and your
-                goals. From there we design and build digital products that are
-                fast, reliable and a pleasure to use.
-              </p>
-              <p>
-                Whether it&rsquo;s a brand-new website, a smart AI tool like
-                Clara, or hands-on IT support, we work closely with you as one
-                team &mdash; keeping things clear, honest and moving forward.
-              </p>
-              <p>
-                The result: technology that actually helps your business grow,
-                built by a team that genuinely cares about the craft.
-              </p>
-            </div>
+        <section className="relative overflow-hidden bg-[#0e1728] text-[#f4efe3] py-24 md:py-32">
+          <div
+            className="pointer-events-none absolute inset-0 opacity-30 bg-cover bg-center"
+            style={{ backgroundImage: `url(${media.blueCircuit})` }}
+          />
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#0e1728] via-[#0e1728]/90 to-[#0e1728]/60" />
+          <div className="relative max-w-[1600px] mx-auto px-6 md:px-10 grid lg:grid-cols-2 gap-12 items-center">
+            <Reveal>
+              <h2 className="font-extrabold uppercase-tight text-3xl md:text-5xl leading-[1.05]">
+                How we <span className="font-script text-[#8aa0d8]">work</span>
+              </h2>
+              <div className="mt-8 space-y-5 text-lg md:text-xl text-[#f4efe3]/75 leading-relaxed">
+                <p>
+                  We start by understanding your business, your customers and your
+                  goals. From there we design and build digital products that are
+                  fast, reliable and a pleasure to use.
+                </p>
+                <p>
+                  Whether it&rsquo;s a brand-new website, a smart AI tool like
+                  Clara, or hands-on IT support, we work closely with you as one
+                  team &mdash; keeping things clear, honest and moving forward.
+                </p>
+                <p>
+                  The result: technology that actually helps your business grow,
+                  built by a team that genuinely cares about the craft.
+                </p>
+              </div>
+            </Reveal>
+            <Reveal delay={120} className="aspect-[4/3] rounded-2xl overflow-hidden bg-white/5 ring-1 ring-white/10">
+              <img src={media.code3} alt="" loading="lazy" className="w-full h-full object-cover" />
+            </Reveal>
           </div>
         </section>
 
@@ -141,8 +168,13 @@ export default function About() {
         </section>
 
         {/* Stats */}
-        <section className="bg-[#0e1728] text-[#f4efe3] py-24">
-          <div className="max-w-[1600px] mx-auto px-6 md:px-10">
+        <section className="relative overflow-hidden bg-[#0e1728] text-[#f4efe3] py-24">
+          <div
+            className="pointer-events-none absolute inset-0 opacity-25 bg-cover bg-center"
+            style={{ backgroundImage: `url(${media.blueStreaks})` }}
+          />
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[#0e1728]/70 via-[#0e1728]/85 to-[#0e1728]" />
+          <div className="relative max-w-[1600px] mx-auto px-6 md:px-10">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-10">
               {koodhStats.map((s, i) => (
                 <Reveal as="div" key={s.label} delay={i * 90}>
@@ -228,21 +260,28 @@ export default function About() {
         <FaqSection />
 
         {/* CTA */}
-        <section className="max-w-[1600px] mx-auto px-6 md:px-10 py-24 md:py-32">
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-8">
-            <h2 className="font-extrabold uppercase-tight text-black text-3xl md:text-5xl max-w-2xl leading-[1.05]">
-              Have a <span className="font-script" style={{ color: "#3f5b9e" }}>project</span> in mind?
-            </h2>
-            <Link
-              to="/contact"
-              className="inline-flex items-center gap-2 bg-black text-white rounded-full pl-6 pr-5 py-4 text-sm font-semibold hover:bg-neutral-800 transition-colors group shrink-0"
-            >
-              Let&rsquo;s talk
-              <ArrowRight
-                size={17}
-                className="transition-transform group-hover:translate-x-1"
-              />
-            </Link>
+        <section className="relative overflow-hidden bg-[#1c2a4a] text-white">
+          <div
+            className="pointer-events-none absolute inset-0 opacity-20 bg-cover bg-center"
+            style={{ backgroundImage: `url(${media.blueCurves})` }}
+          />
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-[#1c2a4a] via-[#22305a] to-[#3f5b9e]/70" />
+          <div className="relative max-w-[1600px] mx-auto px-6 md:px-10 py-24 md:py-32">
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-8">
+              <h2 className="font-extrabold uppercase-tight text-3xl md:text-5xl max-w-2xl leading-[1.05]">
+                Have a <span className="font-script text-[#c7d3f2]">project</span> in mind?
+              </h2>
+              <Link
+                to="/contact"
+                className="inline-flex items-center gap-2 bg-white text-[#1c2a4a] rounded-full pl-6 pr-5 py-4 text-sm font-semibold hover:bg-neutral-100 transition-colors group shrink-0"
+              >
+                Let&rsquo;s talk
+                <ArrowRight
+                  size={17}
+                  className="transition-transform group-hover:translate-x-1"
+                />
+              </Link>
+            </div>
           </div>
         </section>
       </main>
