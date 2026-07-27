@@ -295,7 +295,7 @@ export default function About() {
         {/* Team */}
         <section className="max-w-[1600px] mx-auto px-6 md:px-10 py-24 md:py-32">
           <h2 className="font-extrabold uppercase-tight text-black text-3xl md:text-5xl">
-            Meet the <span className="font-script" style={{ color: "#3f5b9e" }}>team</span>
+            Meet the real <span className="font-script" style={{ color: "#3f5b9e" }}>Kootahs</span>
           </h2>
           <p className="mt-4 max-w-2xl text-neutral-600 text-lg">
             The people behind Koodh &mdash; a small, dedicated team that builds
