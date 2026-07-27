@@ -223,14 +223,13 @@ export default function About() {
                 We love to use{" "}
                 <span className="font-script text-[#8aa0d8]">brands</span> like
               </h2>
-              <div className="mt-12 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-x-8 gap-y-10 items-center">
+              <div className="mt-12 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-x-8 gap-y-8 items-center">
                 {tools.map((t, i) => (
-                  <Reveal as="div" key={t.name} delay={i * 60} className="flex items-center justify-center h-8">
-                    <img
-                      src={t.logo}
-                      alt={t.name}
-                      className="h-5 md:h-6 w-auto opacity-75 hover:opacity-100 transition-opacity"
-                    />
+                  <Reveal as="div" key={t.name} delay={i * 60} className="flex items-center justify-center gap-2.5 h-9 opacity-80 hover:opacity-100 transition-opacity">
+                    <img src={t.icon} alt={t.name} className="h-5 w-5 object-contain shrink-0" />
+                    <span className="text-[#f4efe3] text-base font-semibold whitespace-nowrap">
+                      {t.name}
+                    </span>
                   </Reveal>
                 ))}
               </div>
