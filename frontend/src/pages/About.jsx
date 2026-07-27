@@ -12,9 +12,12 @@ import {
   koodhValues,
   koodhStats,
   koodhClients,
-  media,
 } from "../mock";
 import accentBg from "../assets/accent-bg.png";
+import kootahUnifi from "../assets/kootah-unifi.png";
+import kootahMicrosoft365 from "../assets/kootah-microsoft365.png";
+import kootahSignature from "../assets/kootah-signature.png";
+import kootahCode from "../assets/kootah-code.png";
 import usePageMeta from "../lib/seo";
 import yannickImg from "../assets/yannick-gijbels.png";
 import chielImg from "../assets/chiel-van-gansewinkel.png";
@@ -66,17 +69,33 @@ export default function About() {
         {/* Image feature band */}
         <section className="max-w-[1600px] mx-auto px-6 md:px-10 pb-8">
           <Reveal className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {[media.workspace, media.code, media.server, media.workspace2].map((src, i) => (
+            {[
+              { src: kootahUnifi, alt: "Koodh network management dashboard" },
+              { src: kootahMicrosoft365, alt: "Koodh Microsoft 365 cloud workspace" },
+              { src: kootahSignature, alt: "Koodh e-mail signature design" },
+              { src: kootahCode, alt: "Koodh web development" },
+            ].map((img, i) => (
               <div
                 key={i}
                 className={`overflow-hidden rounded-2xl bg-neutral-100 ${
                   i === 0 ? "col-span-2 aspect-[2/1] md:aspect-[2/1]" : "aspect-square"
                 }`}
+                data-testid={`about-feature-image-${i}`}
               >
-                <img src={src} alt="" loading="lazy" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
+                <img src={img.src} alt={img.alt} loading="lazy" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
               </div>
             ))}
           </Reveal>
+          <p
+            data-testid="about-image-disclaimer"
+            className="mt-5 max-w-3xl text-xs md:text-sm text-neutral-400 leading-relaxed"
+          >
+            Please note: the visuals above are illustrative mockups, not screenshots
+            of real client environments. We keep them fictional on purpose to protect
+            the privacy and security of our clients&rsquo; infrastructure and data.
+            &ldquo;Kootah&rdquo; is simply an informal, internal nickname we use for
+            Koodh &mdash; nothing more than a playful spin on the name.
+          </p>
         </section>
 
         {/* What we do */}
@@ -141,7 +160,7 @@ export default function About() {
               </div>
             </Reveal>
             <Reveal delay={120} className="aspect-[4/3] rounded-2xl overflow-hidden bg-white/5 ring-1 ring-white/10">
-              <img src={media.code3} alt="" loading="lazy" className="w-full h-full object-cover" />
+              <img src={kootahCode} alt="Koodh web development workspace" loading="lazy" className="w-full h-full object-cover" />
             </Reveal>
           </div>
         </section>
