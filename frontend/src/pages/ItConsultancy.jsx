@@ -6,6 +6,7 @@ import PageHero from "../components/PageHero";
 import FeatureRow from "../components/FeatureRow";
 import CtaBand from "../components/CtaBand";
 import Reveal from "../components/Reveal";
+import BrandStrip from "../components/BrandStrip";
 import { Wifi, MonitorSmartphone, MapPin, HeartHandshake } from "lucide-react";
 import usePageMeta from "../lib/seo";
 import kootahUnifi from "../assets/kootah-unifi.png";
@@ -44,6 +45,10 @@ export default function ItConsultancy() {
           }
           chips={["Wi-Fi & networks", "PC repair", "On-site", "Everyday support"]}
         />
+
+        <div className="max-w-[1600px] mx-auto px-6 md:px-10 pb-4">
+          <BrandStrip brands={["microsoft", "proxmox", "unraid"]} label="We work with" />
+        </div>
 
         <FeatureRow
           title="On-site,"

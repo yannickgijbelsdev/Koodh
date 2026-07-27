@@ -5,6 +5,7 @@ import CookieBanner from "../components/CookieBanner";
 import PageHero from "../components/PageHero";
 import FeatureRow from "../components/FeatureRow";
 import CtaBand from "../components/CtaBand";
+import BrandStrip from "../components/BrandStrip";
 import usePageMeta from "../lib/seo";
 import kootahMicrosoft365 from "../assets/kootah-microsoft365.png";
 import kootahSignature from "../assets/kootah-signature.png";
@@ -36,6 +37,10 @@ export default function Microsoft365() {
           }
           chips={["Microsoft 365 setup", "Migration", "Teams & files", "Xink signatures"]}
         />
+
+        <div className="max-w-[1600px] mx-auto px-6 md:px-10 pb-4">
+          <BrandStrip brands={["microsoft", "xink"]} label="Powered by" />
+        </div>
 
         <FeatureRow
           title="Microsoft"

@@ -5,6 +5,7 @@ import CookieBanner from "../components/CookieBanner";
 import PageHero from "../components/PageHero";
 import CtaBand from "../components/CtaBand";
 import Reveal from "../components/Reveal";
+import BrandStrip from "../components/BrandStrip";
 import usePageMeta from "../lib/seo";
 import { koodhValues } from "../mock";
 import yannickImg from "../assets/yannick-gijbels.png";
@@ -16,12 +17,14 @@ const team = [
     role: "IT Consultancy, Microsoft 365 Cloud & AI Specialist",
     photo: chielImg,
     bio: "Chiel is the person you want on-site when the Wi-Fi drops or a computer plays up. Hands-on, calm and practical, he keeps your day-to-day tech running \u2014 and as an AI specialist he builds smart workflows that take care of everyday, repetitive tasks so you don\u2019t have to.",
+    brands: ["microsoft", "proxmox", "unraid"],
   },
   {
     name: "Yannick Gijbels",
     role: "Web Development, AI Specialist, Microsoft 365 Cloud & Xink E-mail Signatures",
     photo: yannickImg,
     bio: "Yannick builds fast, modern websites and web apps, and as an AI specialist in development he weaves smart AI right into the code. He also makes your business look sharp online \u2014 from Microsoft 365 setups to polished Xink e-mail signatures.",
+    brands: ["microsoft", "xink", "google"],
   },
 ];
 
@@ -68,6 +71,7 @@ export default function MeetUs() {
                 <p className="mt-4 text-neutral-600 text-lg leading-relaxed max-w-xl">
                   {m.bio}
                 </p>
+                <BrandStrip brands={m.brands} className="mt-6" />
               </Reveal>
             ))}
           </div>
