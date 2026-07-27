@@ -4,6 +4,12 @@ import xinkLogo from "../assets/brands/xink.svg";
 import googleLogo from "../assets/brands/google.svg";
 import proxmoxLogo from "../assets/brands/proxmox.svg";
 import unraidLogo from "../assets/brands/unraid.svg";
+import unifiLogo from "../assets/brands/unifi.svg";
+import tplinkLogo from "../assets/brands/tplink.svg";
+import omadaLogo from "../assets/brands/omada.svg";
+import cloudflareLogo from "../assets/brands/cloudflare.svg";
+import claudeLogo from "../assets/brands/claude.svg";
+import openaiLogo from "../assets/brands/openai.svg";
 
 // White-on-dark brand marks, shown inside small dark chips so they stay
 // visible on any background.
@@ -13,6 +19,12 @@ export const brandLogos = {
   google: { name: "Google", logo: googleLogo },
   proxmox: { name: "Proxmox", logo: proxmoxLogo },
   unraid: { name: "Unraid", logo: unraidLogo },
+  unifi: { name: "UniFi", logo: unifiLogo },
+  tplink: { name: "TP-Link", logo: tplinkLogo },
+  omada: { name: "Omada", logo: omadaLogo },
+  cloudflare: { name: "Cloudflare", logo: cloudflareLogo },
+  claude: { name: "Claude", logo: claudeLogo },
+  openai: { name: "OpenAI", logo: openaiLogo },
 };
 
 export const BrandStrip = ({ brands = [], label = "Works with", className = "" }) => (

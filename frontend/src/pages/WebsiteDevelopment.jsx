@@ -46,7 +46,7 @@ export default function WebsiteDevelopment() {
         />
 
         <div className="max-w-[1600px] mx-auto px-6 md:px-10 pb-4">
-          <BrandStrip brands={["microsoft", "google"]} label="We often integrate" />
+          <BrandStrip brands={["google", "cloudflare", "claude", "openai"]} label="We often integrate" />
         </div>
 
         <FeatureRow

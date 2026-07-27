@@ -17,11 +17,7 @@ import accentBg from "../assets/accent-bg.png";
 import usePageMeta from "../lib/seo";
 import yannickImg from "../assets/yannick-gijbels.png";
 import chielImg from "../assets/chiel-van-gansewinkel.png";
-import msLogo from "../assets/brands/microsoft.svg";
-import xinkLogo from "../assets/brands/xink.svg";
-import googleLogo from "../assets/brands/google.svg";
-import proxmoxLogo from "../assets/brands/proxmox.svg";
-import unraidLogo from "../assets/brands/unraid.svg";
+import { brandLogos } from "../components/BrandStrip";
 
 const services = [
   {
@@ -45,12 +41,18 @@ const services = [
 ];
 
 const tools = [
-  { name: "Microsoft", logo: msLogo },
-  { name: "Xink Signatures", logo: xinkLogo },
-  { name: "Google", logo: googleLogo },
-  { name: "Proxmox", logo: proxmoxLogo },
-  { name: "Unraid", logo: unraidLogo },
-];
+  "microsoft",
+  "xink",
+  "google",
+  "proxmox",
+  "unraid",
+  "unifi",
+  "tplink",
+  "omada",
+  "cloudflare",
+  "claude",
+  "openai",
+].map((k) => brandLogos[k]);
 
 const team = [
   { name: "Chiel van Gansewinkel", photo: chielImg },
@@ -221,13 +223,13 @@ export default function About() {
                 We love to use{" "}
                 <span className="font-script text-[#8aa0d8]">brands</span> like
               </h2>
-              <div className="mt-12 grid grid-cols-2 md:grid-cols-5 gap-x-8 gap-y-12 items-center">
+              <div className="mt-12 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-x-8 gap-y-10 items-center">
                 {tools.map((t, i) => (
-                  <Reveal as="div" key={t.name} delay={i * 70} className="flex items-center justify-center h-10">
+                  <Reveal as="div" key={t.name} delay={i * 60} className="flex items-center justify-center h-8">
                     <img
                       src={t.logo}
                       alt={t.name}
-                      className="max-h-9 max-w-[150px] object-contain opacity-75 hover:opacity-100 transition-opacity"
+                      className="h-5 md:h-6 w-auto opacity-75 hover:opacity-100 transition-opacity"
                     />
                   </Reveal>
                 ))}

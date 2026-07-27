@@ -47,7 +47,7 @@ export default function ItConsultancy() {
         />
 
         <div className="max-w-[1600px] mx-auto px-6 md:px-10 pb-4">
-          <BrandStrip brands={["microsoft", "proxmox", "unraid"]} label="We work with" />
+          <BrandStrip brands={["microsoft", "proxmox", "unraid", "unifi", "tplink", "omada"]} label="We work with" />
         </div>
 
         <FeatureRow
