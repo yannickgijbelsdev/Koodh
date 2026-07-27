@@ -301,10 +301,10 @@ export default function About() {
             The people behind Koodh &mdash; a small, dedicated team that builds
             your websites and AI solutions with care.
           </p>
-          <div className="mt-14 grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-4xl">
+          <div className="mt-14 grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-5xl">
             {team.map((m, i) => (
               <Reveal as="div" key={m.name} delay={i * 120} className="group">
-                <div className="aspect-[3/4] rounded-2xl overflow-hidden bg-neutral-100">
+                <div className="aspect-[4/3] rounded-2xl overflow-hidden bg-neutral-100">
                   <img
                     src={m.photo}
                     alt={m.name}
