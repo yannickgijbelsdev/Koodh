@@ -1,10 +1,11 @@
 import React from "react";
-import { ArrowRight, Mail } from "lucide-react";
+import { ArrowRight, Mail, Info } from "lucide-react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import CookieBanner from "../components/CookieBanner";
 import usePageMeta from "../lib/seo";
 import Reveal from "../components/Reveal";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "../components/ui/tooltip";
 import portfolio127 from "../assets/portfolio-127.webp";
 import portfolioDbnt from "../assets/portfolio-dbnt.webp";
 import portfolioGrk from "../assets/portfolio-grk.webp";
@@ -60,13 +61,35 @@ export default function Contact() {
 
         {/* Image strip */}
         <section className="overflow-hidden pb-4">
-          <div className="grid md:grid-cols-3 gap-4 px-6 md:px-10">
-            {contactShots.map((src, i) => (
-              <Reveal as="div" key={i} delay={i * 110} className="aspect-video rounded-2xl overflow-hidden bg-neutral-100">
-                <img src={src} alt="Koodh project" className="w-full h-full object-cover" />
-              </Reveal>
-            ))}
-          </div>
+          <TooltipProvider delayDuration={100}>
+            <div className="grid md:grid-cols-3 gap-4 px-6 md:px-10">
+              {contactShots.map((src, i) => (
+                <Reveal as="div" key={i} delay={i * 110} className="group relative aspect-video rounded-2xl overflow-hidden bg-neutral-100">
+                  <img src={src} alt="Koodh project" loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <button
+                        type="button"
+                        aria-label="Project information"
+                        data-testid={`contact-image-info-${i}`}
+                        className="absolute top-3 right-3 flex h-7 w-7 items-center justify-center rounded-full bg-black/45 text-white backdrop-blur-sm ring-1 ring-white/25 transition-colors hover:bg-black/70 focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+                      >
+                        <Info size={15} strokeWidth={2} />
+                      </button>
+                    </TooltipTrigger>
+                    <TooltipContent
+                      side="bottom"
+                      align="end"
+                      className="max-w-[280px] bg-neutral-900 text-[11px] leading-relaxed text-neutral-200 px-3 py-2"
+                    >
+                      This is a real Koodh project we designed and built for a
+                      client &mdash; not a mockup.
+                    </TooltipContent>
+                  </Tooltip>
+                </Reveal>
+              ))}
+            </div>
+          </TooltipProvider>
         </section>
 
         {/* Email CTA */}
