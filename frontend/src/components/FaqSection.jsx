@@ -34,6 +34,11 @@ const faqs = [
       "Absolutely. We support startups and SMEs with everything from day-to-day IT support to digital transformation. Whether you need consultancy, infrastructure management, a custom web application or an AI-powered solution, we provide tailored solutions designed around your business.",
   },
   {
+    q: "Where are your websites and data hosted?",
+    intro:
+      "We take data location and privacy seriously. Your websites are hosted in secure datacenters in the Netherlands and Belgium. All Microsoft services and data are hosted within the European Union, in line with EU privacy and data-protection standards.",
+  },
+  {
     q: "Do you use Artificial Intelligence (AI)?",
     intro:
       "Yes. Artificial Intelligence is an important part of how we develop modern digital solutions. We integrate AI where it creates real value, helping businesses improve efficiency, automate repetitive tasks and unlock new opportunities. Examples include:",
