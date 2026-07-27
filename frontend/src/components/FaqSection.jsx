@@ -5,14 +5,13 @@ const faqs = [
   {
     q: "Who are Koodh's services for?",
     intro:
-      "Koodh provides IT and development services for both individuals and businesses. Whether you need help with your personal computer, network, Microsoft 365 environment or smart home technology, or you're a company looking for a reliable IT partner for consultancy, software development or cloud solutions, we're here to help.",
+      "Koodh provides IT and development services for both individuals and businesses. Whether you need help with your personal computer, network, Microsoft 365 environment or smart home technology, or you're a company looking for a reliable IT partner for consultancy, web development or cloud solutions, we're here to help.",
   },
   {
     q: "What services does Koodh offer?",
     intro: "Our services include:",
     list: [
       "IT Consultancy",
-      "Custom Software Development",
       "Website Design & Development",
       "AI Solutions & Business Automation",
       "Microsoft 365 Implementation & Management",
@@ -26,12 +25,12 @@ const faqs = [
   {
     q: "Do you work with private customers?",
     intro:
-      "Yes. While many of our clients are businesses, we also support private customers with a wide range of IT services. This includes computer support, Wi-Fi troubleshooting, Microsoft 365 setup, cloud storage, backups, cybersecurity, hardware installation and software configuration.",
+      "Yes. While many of our clients are businesses, we also support private customers with a wide range of IT services. This includes computer support, Wi-Fi troubleshooting, Microsoft 365 setup, cloud storage, backups, cybersecurity, hardware installation and setup.",
   },
   {
     q: "Do you work with businesses?",
     intro:
-      "Absolutely. We support startups, SMEs and larger organizations with everything from day-to-day IT support to complex digital transformation projects. Whether you need consultancy, infrastructure management, a custom web application or AI-powered software, we provide tailored solutions designed around your business.",
+      "Absolutely. We support startups and SMEs with everything from day-to-day IT support to digital transformation. Whether you need consultancy, infrastructure management, a custom web application or an AI-powered solution, we provide tailored solutions designed around your business.",
   },
   {
     q: "Do you use Artificial Intelligence (AI)?",
@@ -43,7 +42,7 @@ const faqs = [
       "AI chatbots and virtual assistants",
       "Document and content processing",
       "Data analysis and reporting",
-      "AI integrations within websites and custom software",
+      "AI integrations within websites and web applications",
     ],
     outro:
       "Every AI implementation is tailored to the client's specific needs and integrated seamlessly into existing workflows whenever possible.",
@@ -53,7 +52,7 @@ const faqs = [
     intro:
       "Yes. Our development process is enhanced by modern AI tools that help us streamline repetitive tasks, improve code quality and accelerate development without compromising reliability.",
     outro:
-      "AI supports our developers throughout the process, but every solution is carefully reviewed, tested and refined by experienced professionals before delivery. This ensures high-quality, secure and maintainable software.",
+      "AI supports our developers throughout the process, but every solution is carefully reviewed, tested and refined by experienced professionals before delivery. This ensures high-quality, secure and reliable solutions.",
   },
   {
     q: "What are your payment terms?",
@@ -61,7 +60,7 @@ const faqs = [
       "Payment terms depend on the type and scope of each project and are always agreed upon before work begins. Our standard payment terms are:",
     list: [
       "IT Consultancy: Payment due within 15 days of the invoice date.",
-      "Software Development & Web Development: Payment due within 30 days of the invoice date.",
+      "Web Development: Payment due within 30 days of the invoice date.",
     ],
     outro:
       "For larger projects, milestone-based payments or upfront deposits may apply. These arrangements are clearly outlined in the quotation or project agreement.",

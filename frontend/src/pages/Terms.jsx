@@ -12,7 +12,7 @@ export default function Terms() {
         {
           heading: "Definitions",
           paragraphs: [
-            "In these terms, \u201CKoodh\u201D, \u201Cwe\u201D or \u201Cus\u201D refers to Koodh and its team. \u201CClient\u201D, \u201Cyou\u201D refers to the natural or legal person that enters into an agreement with Koodh. \u201CServices\u201D refers to any work delivered by Koodh, including websites, software and AI solutions.",
+            "In these terms, \u201CKoodh\u201D, \u201Cwe\u201D or \u201Cus\u201D refers to Koodh and its team. \u201CClient\u201D, \u201Cyou\u201D refers to the natural or legal person that enters into an agreement with Koodh. \u201CServices\u201D refers to any work delivered by Koodh, including websites and AI solutions.",
           ],
         },
         {
