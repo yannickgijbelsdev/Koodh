@@ -1,22 +1,42 @@
 import React from "react";
-import { ArrowRight, Mail, Info } from "lucide-react";
+import { Link } from "react-router-dom";
+import { ArrowRight, Mail, CreditCard, MapPin, MessageCircle, PenTool, Rocket } from "lucide-react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import CookieBanner from "../components/CookieBanner";
-import usePageMeta from "../lib/seo";
+import PageHero from "../components/PageHero";
+import CtaBand from "../components/CtaBand";
 import Reveal from "../components/Reveal";
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "../components/ui/tooltip";
-import portfolio127 from "../assets/portfolio-127.webp";
-import portfolioDbnt from "../assets/portfolio-dbnt.webp";
-import portfolioGrk from "../assets/portfolio-grk.webp";
+import usePageMeta from "../lib/seo";
 
-const contactShots = [portfolio127, portfolioDbnt, portfolioGrk];
+const channels = [
+  {
+    icon: Mail,
+    label: "General enquiries",
+    value: "info@koodh.com",
+    href: "mailto:info@koodh.com?subject=Project%20enquiry",
+    note: "Websites, AI, Microsoft 365 or IT support \u2014 start here.",
+  },
+  {
+    icon: CreditCard,
+    label: "Payments",
+    value: "payments@koodh.com",
+    href: "mailto:payments@koodh.com?subject=Payment%20question",
+    note: "Questions about an invoice or a payment.",
+  },
+];
+
+const steps = [
+  { icon: MessageCircle, title: "You reach out", text: "Send us a quick e-mail with your idea, question or challenge \u2014 no essay needed." },
+  { icon: PenTool, title: "We think along", text: "We reply with honest, jargon-free advice and a clear next step that fits you." },
+  { icon: Rocket, title: "We get to work", text: "Once it clicks, we roll up our sleeves and turn the plan into something real." },
+];
 
 export default function Contact() {
   usePageMeta({
     title: "Contact",
     description:
-      "Get in touch with Koodh. Tell us about your website, AI or IT project and we'll get back to you. Email info@koodh.com.",
+      "Get in touch with Koodh. Tell us about your website, AI, Microsoft 365 or IT question and we'll get back to you. Email info@koodh.com.",
     path: "/contact",
   });
 
@@ -24,111 +44,105 @@ export default function Contact() {
     <>
       <Header />
       <main className="pt-[68px] bg-white">
-        {/* Hero */}
-        <section className="max-w-[1600px] mx-auto px-6 md:px-10 pt-20 md:pt-28 pb-16">
-          <h1 className="font-extrabold uppercase-tight text-black text-[11vw] md:text-[7vw] leading-[0.92]">
-            We'd <span className="font-script" style={{ color: "#3f5b9e" }}>love</span> to<br />hear from you
-          </h1>
-          <p className="mt-8 max-w-xl text-xl text-neutral-600">
-            Got an idea we can help with? Reach out and we'll get back to you.
-          </p>
+        <PageHero
+          eyebrow="Contact"
+          title={
+            <>
+              Let&rsquo;s start a{" "}
+              <span className="font-script" style={{ color: "#3f5b9e" }}>
+                conversation
+              </span>
+            </>
+          }
+          subtitle={"Got an idea we can help with? Drop us a line and we\u2019ll get back to you \u2014 real people, no ticket numbers."}
+          chips={["Websites", "AI", "Microsoft 365", "IT support"]}
+        />
 
-          <div className="mt-14 grid md:grid-cols-2 gap-10 max-w-3xl">
-            <div className="border-t-2 border-black pt-5">
-              <p className="text-sm font-semibold uppercase tracking-widest text-neutral-500">
-                General enquiries
-              </p>
-              <a
-                href="mailto:info@koodh.com"
-                className="mt-3 block text-black link-underline"
-              >
-                info@koodh.com
-              </a>
-            </div>
-            <div className="border-t-2 border-black pt-5">
-              <p className="text-sm font-semibold uppercase tracking-widest text-neutral-500">
-                Payments
-              </p>
-              <a
-                href="mailto:payments@koodh.com"
-                className="mt-3 block text-black link-underline"
-              >
-                payments@koodh.com
-              </a>
-            </div>
+        {/* Contact channels */}
+        <section className="max-w-[1600px] mx-auto px-6 md:px-10 pb-6">
+          <div className="grid md:grid-cols-2 gap-6">
+            {channels.map((c, i) => {
+              const Icon = c.icon;
+              return (
+                <Reveal as="div" key={c.label} delay={i * 100}>
+                  <a
+                    href={c.href}
+                    data-testid={`contact-channel-${i}`}
+                    className="group flex items-start gap-5 rounded-2xl border border-black/10 bg-neutral-50 p-7 md:p-8 hover:border-[#3f5b9e] hover:bg-white transition-colors h-full"
+                  >
+                    <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#3f5b9e]/10 text-[#3f5b9e] group-hover:bg-[#3f5b9e] group-hover:text-white transition-colors">
+                      <Icon size={20} strokeWidth={1.8} />
+                    </span>
+                    <div className="min-w-0">
+                      <p className="text-sm font-semibold uppercase tracking-widest text-neutral-500">
+                        {c.label}
+                      </p>
+                      <p className="mt-2 text-xl md:text-2xl font-bold text-black break-words">
+                        {c.value}
+                      </p>
+                      <p className="mt-3 text-neutral-600 leading-relaxed">{c.note}</p>
+                      <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-[#3f5b9e]">
+                        Send an e-mail
+                        <ArrowRight
+                          size={16}
+                          className="transition-transform group-hover:translate-x-1"
+                        />
+                      </span>
+                    </div>
+                  </a>
+                </Reveal>
+              );
+            })}
+          </div>
+
+          {/* Where we work */}
+          <Reveal as="div" className="mt-6 flex flex-col sm:flex-row sm:items-center gap-3 rounded-2xl border border-black/10 p-6 md:p-7">
+            <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-neutral-100 text-black">
+              <MapPin size={18} strokeWidth={1.8} />
+            </span>
+            <p className="text-neutral-600">
+              <span className="font-semibold text-black">Working across the Netherlands &amp; Belgium.</span>{" "}
+              On-site where it helps, online where it&rsquo;s faster. &middot; KVK 42066318
+            </p>
+          </Reveal>
+        </section>
+
+        {/* What happens next */}
+        <section className="max-w-[1600px] mx-auto px-6 md:px-10 py-24 md:py-32">
+          <h2 className="font-extrabold uppercase-tight text-black text-3xl md:text-5xl">
+            What happens{" "}
+            <span className="font-script" style={{ color: "#3f5b9e" }}>
+              next
+            </span>
+          </h2>
+          <div className="mt-14 grid md:grid-cols-3 gap-8">
+            {steps.map((s, i) => {
+              const Icon = s.icon;
+              return (
+                <Reveal key={s.title} delay={i * 100} className="border-t-2 border-black pt-6">
+                  <div className="flex items-center gap-4">
+                    <span className="font-extrabold text-3xl text-neutral-300">0{i + 1}</span>
+                    <Icon size={24} strokeWidth={1.7} className="text-[#3f5b9e]" />
+                  </div>
+                  <h3 className="mt-5 font-bold text-xl text-black">{s.title}</h3>
+                  <p className="mt-3 text-neutral-600 leading-relaxed">{s.text}</p>
+                </Reveal>
+              );
+            })}
           </div>
         </section>
 
-        {/* Image strip */}
-        <section className="overflow-hidden pb-4">
-          <TooltipProvider delayDuration={100}>
-            <div className="grid md:grid-cols-3 gap-4 px-6 md:px-10">
-              {contactShots.map((src, i) => (
-                <Reveal as="div" key={i} delay={i * 110} className="group relative aspect-video rounded-2xl overflow-hidden bg-neutral-100">
-                  <img src={src} alt="Koodh project" loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-                  <Tooltip>
-                    <TooltipTrigger asChild>
-                      <button
-                        type="button"
-                        aria-label="Project information"
-                        data-testid={`contact-image-info-${i}`}
-                        className="absolute top-3 right-3 flex h-7 w-7 items-center justify-center rounded-full bg-black/45 text-white backdrop-blur-sm ring-1 ring-white/25 transition-colors hover:bg-black/70 focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
-                      >
-                        <Info size={15} strokeWidth={2} />
-                      </button>
-                    </TooltipTrigger>
-                    <TooltipContent
-                      side="bottom"
-                      align="end"
-                      className="max-w-[280px] bg-neutral-900 text-[11px] leading-relaxed text-neutral-200 px-3 py-2"
-                    >
-                      This is a real Koodh project we designed and built for a
-                      client &mdash; not a mockup.
-                    </TooltipContent>
-                  </Tooltip>
-                </Reveal>
-              ))}
-            </div>
-          </TooltipProvider>
-        </section>
-
-        {/* Email CTA */}
-        <section className="max-w-[1600px] mx-auto px-6 md:px-10 py-24 md:py-32">
-          <Reveal className="grid lg:grid-cols-2 gap-14 items-center">
-            <div>
-              <h2 className="font-extrabold uppercase-tight text-black text-3xl md:text-5xl">
-                Start a <span className="font-script" style={{ color: "#3f5b9e" }}>conversation</span>
-              </h2>
-              <p className="mt-4 text-neutral-600 text-lg max-w-md">
-                Tell us a little about your project or question and we'll route
-                it to the right people. Drop us an email and we'll take it from
-                there.
-              </p>
-            </div>
-            <div className="lg:justify-self-end">
-              <a
-                href="mailto:info@koodh.com?subject=Project%20enquiry"
-                className="group inline-flex items-center gap-4 rounded-2xl border border-black/10 bg-neutral-50 px-6 py-6 hover:border-black transition-colors"
-              >
-                <span className="w-12 h-12 rounded-full bg-black text-white flex items-center justify-center group-hover:scale-105 transition-transform">
-                  <Mail size={18} />
-                </span>
-                <span>
-                  <span className="block text-sm font-semibold uppercase tracking-widest text-neutral-500">
-                    Email us
-                  </span>
-                  <span className="block text-xl md:text-2xl font-bold text-black">
-                    info@koodh.com
-                  </span>
-                </span>
-                <ArrowRight
-                  size={20}
-                  className="ml-2 text-black transition-transform group-hover:translate-x-1"
-                />
-              </a>
-            </div>
-          </Reveal>
-        </section>
+        {/* Explore services instead of a hard CTA */}
+        <CtaBand
+          title={
+            <>
+              Not sure where to{" "}
+              <span className="font-script text-[#c7d3f2]">start</span>?
+            </>
+          }
+          to="/about"
+          label="Explore what we do"
+        />
       </main>
       <Footer />
       <CookieBanner />
