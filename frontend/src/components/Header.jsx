@@ -56,15 +56,25 @@ export default function Header() {
         </Link>
 
         <nav className="hidden xl:flex items-center gap-x-4 2xl:gap-x-6">
-          {navLinks.map((l) => (
-            <Link
-              key={l.label}
-              to={l.to}
-              className={`text-[14px] font-semibold tracking-wide whitespace-nowrap link-underline ${textColor} transition-colors duration-300`}
-            >
-              {l.label}
-            </Link>
-          ))}
+          {navLinks.map((l) =>
+            l.to === "/contact" ? (
+              <Link
+                key={l.label}
+                to={l.to}
+                className="text-[14px] font-semibold tracking-wide whitespace-nowrap rounded-full bg-[#3f5b9e] text-white px-5 py-2 hover:bg-[#33497f] transition-colors duration-300"
+              >
+                {l.label}
+              </Link>
+            ) : (
+              <Link
+                key={l.label}
+                to={l.to}
+                className={`text-[14px] font-semibold tracking-wide whitespace-nowrap link-underline ${textColor} transition-colors duration-300`}
+              >
+                {l.label}
+              </Link>
+            )
+          )}
         </nav>
 
         <button

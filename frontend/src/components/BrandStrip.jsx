@@ -27,36 +27,47 @@ export const brandLogos = {
   openai: { name: "OpenAI", icon: openaiIcon },
 };
 
-export const BrandStrip = ({ brands = [], label = "Works with", className = "" }) => (
-  <div className={className}>
-    {label && (
-      <p className="text-xs font-semibold uppercase tracking-[0.2em] text-neutral-400">
-        {label}
-      </p>
-    )}
-    <div className="mt-3 flex flex-wrap items-center gap-2.5">
-      {brands.map((b) => {
-        const item = brandLogos[b];
-        if (!item) return null;
-        return (
-          <span
-            key={b}
-            data-testid={`brand-${b}`}
-            className="inline-flex items-center gap-2 rounded-lg bg-[#0e1728] pl-3 pr-3.5 py-2 ring-1 ring-black/5 hover:bg-[#16233f] transition-colors"
-          >
-            <img
-              src={item.icon}
-              alt={item.name}
-              className="h-[15px] w-[15px] object-contain shrink-0"
-            />
-            <span className="text-[13px] font-semibold text-white whitespace-nowrap">
-              {item.name}
+export const BrandStrip = ({ brands = [], label = "Works with", theme = "light", className = "" }) => {
+  const onDark = theme === "dark";
+  return (
+    <div className={className}>
+      {label && (
+        <p
+          className={`text-xs font-semibold uppercase tracking-[0.2em] ${
+            onDark ? "text-white/40" : "text-neutral-400"
+          }`}
+        >
+          {label}
+        </p>
+      )}
+      <div className="mt-3 flex flex-wrap items-center gap-2.5">
+        {brands.map((b) => {
+          const item = brandLogos[b];
+          if (!item) return null;
+          return (
+            <span
+              key={b}
+              data-testid={`brand-${b}`}
+              className={`inline-flex items-center gap-2 rounded-full pl-3 pr-4 py-2 transition-colors ${
+                onDark
+                  ? "bg-white/[0.07] ring-1 ring-white/10 hover:bg-white/[0.14]"
+                  : "bg-[#0e1728] ring-1 ring-black/5 hover:bg-[#16233f]"
+              }`}
+            >
+              <img
+                src={item.icon}
+                alt={item.name}
+                className="h-[15px] w-[15px] object-contain shrink-0"
+              />
+              <span className="text-[13px] font-semibold text-white whitespace-nowrap">
+                {item.name}
+              </span>
             </span>
-          </span>
-        );
-      })}
+          );
+        })}
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 export default BrandStrip;

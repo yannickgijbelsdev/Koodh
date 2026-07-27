@@ -17,7 +17,7 @@ import accentBg from "../assets/accent-bg.png";
 import usePageMeta from "../lib/seo";
 import yannickImg from "../assets/yannick-gijbels.png";
 import chielImg from "../assets/chiel-van-gansewinkel.png";
-import { brandLogos } from "../components/BrandStrip";
+import { BrandStrip } from "../components/BrandStrip";
 
 const services = [
   {
@@ -40,7 +40,7 @@ const services = [
   },
 ];
 
-const tools = [
+const toolKeys = [
   "microsoft",
   "xink",
   "google",
@@ -52,7 +52,7 @@ const tools = [
   "cloudflare",
   "claude",
   "openai",
-].map((k) => brandLogos[k]);
+];
 
 const team = [
   { name: "Chiel van Gansewinkel", photo: chielImg },
@@ -223,16 +223,13 @@ export default function About() {
                 We love to use{" "}
                 <span className="font-script text-[#8aa0d8]">brands</span> like
               </h2>
-              <div className="mt-12 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-x-8 gap-y-8 items-center">
-                {tools.map((t, i) => (
-                  <Reveal as="div" key={t.name} delay={i * 60} className="flex items-center justify-center gap-2.5 h-9 opacity-80 hover:opacity-100 transition-opacity">
-                    <img src={t.icon} alt={t.name} className="h-5 w-5 object-contain shrink-0" />
-                    <span className="text-[#f4efe3] text-base font-semibold whitespace-nowrap">
-                      {t.name}
-                    </span>
-                  </Reveal>
-                ))}
-              </div>
+              <Reveal as="div" className="mt-10">
+                <BrandStrip
+                  brands={toolKeys}
+                  label={null}
+                  theme="dark"
+                />
+              </Reveal>
             </div>
           </div>
         </section>

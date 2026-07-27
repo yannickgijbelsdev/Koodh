@@ -1,4 +1,9 @@
-<svg fill="#ffffff" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-  <circle cx="12" cy="12" r="10" fill="none" stroke="#ffffff" stroke-width="2"/>
-  <circle cx="12" cy="12" r="3.4" fill="#ffffff"/>
+<svg fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+  <path d="M12 4a8 8 0 1 1 -6.35 3.13" stroke="#ffffff" stroke-width="3.1" stroke-linecap="round"/>
+  <g stroke="#ffffff" stroke-width="1.7" stroke-linecap="round">
+    <line x1="3.1" y1="9.2" x2="6.4" y2="10.2"/>
+    <line x1="2.6" y1="12" x2="6.1" y2="12"/>
+    <line x1="3.1" y1="14.8" x2="6.4" y2="13.8"/>
+    <line x1="4.5" y1="17" x2="7.2" y2="15.2"/>
+  </g>
 </svg>
