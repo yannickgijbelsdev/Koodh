@@ -32,8 +32,8 @@ export default function Terms() {
         {
           heading: "Prices and payment",
           paragraphs: [
-            "All prices are exclusive of VAT unless stated otherwise. Invoices are payable within 14 days of the invoice date.",
-            "In the event of late payment, we reserve the right to suspend ongoing work until outstanding amounts have been settled.",
+            "All prices are exclusive of VAT unless stated otherwise. Applicable payment arrangements are always agreed upon in the quotation or project agreement before work begins.",
+            "In the event of non-payment, we reserve the right to suspend ongoing work until outstanding amounts have been settled.",
           ],
         },
         {

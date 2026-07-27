@@ -4,6 +4,7 @@ import { ArrowRight, Code2, Cpu, Compass } from "lucide-react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import CookieBanner from "../components/CookieBanner";
+import FaqSection from "../components/FaqSection";
 import {
   koodhIntro,
   koodhServices,
@@ -159,8 +160,8 @@ export default function About() {
         {/* Clients */}
         <section className="bg-[#0e1728] border-t border-white/10 pb-24">
           <div className="max-w-[1600px] mx-auto px-6 md:px-10">
-            <h2 className="text-[#f4efe3]/60 text-sm font-semibold uppercase tracking-[0.2em]">
-              Trusted by
+            <h2 className="text-[#f4efe3] text-2xl md:text-3xl font-extrabold uppercase-tight">
+              Trusted <span className="font-script text-[#8aa0d8]">by</span>
             </h2>
             <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-12 items-center">
               {koodhClients.map((c) => (
@@ -221,6 +222,9 @@ export default function About() {
             ))}
           </div>
         </section>
+
+        {/* FAQ */}
+        <FaqSection />
 
         {/* CTA */}
         <section className="max-w-[1600px] mx-auto px-6 md:px-10 py-24 md:py-32">
