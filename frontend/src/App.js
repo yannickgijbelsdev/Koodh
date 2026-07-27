@@ -7,6 +7,7 @@ import MeetUs from "./pages/MeetUs";
 import WebsiteDevelopment from "./pages/WebsiteDevelopment";
 import Microsoft365 from "./pages/Microsoft365";
 import ItConsultancy from "./pages/ItConsultancy";
+import Faq from "./pages/Faq";
 import Work from "./pages/Work";
 import Contact from "./pages/Contact";
 import WorkDetail from "./pages/WorkDetail";
@@ -35,6 +36,7 @@ function App() {
           <Route path="/website-development" element={<WebsiteDevelopment />} />
           <Route path="/microsoft-365" element={<Microsoft365 />} />
           <Route path="/it-consultancy" element={<ItConsultancy />} />
+          <Route path="/faq" element={<Faq />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/terms" element={<Terms />} />
           <Route path="/privacy" element={<Privacy />} />

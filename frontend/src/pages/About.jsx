@@ -4,7 +4,6 @@ import { ArrowRight, ArrowUpRight, Code2, Cloud, Wifi } from "lucide-react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import CookieBanner from "../components/CookieBanner";
-import FaqSection from "../components/FaqSection";
 import Reveal from "../components/Reveal";
 import PageHero from "../components/PageHero";
 import CtaBand from "../components/CtaBand";
@@ -278,8 +277,6 @@ export default function About() {
             </Reveal>
           </div>
         </section>
-
-        <FaqSection />
 
         <CtaBand
           title={

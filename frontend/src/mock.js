@@ -1,4 +1,9 @@
 // Mock data for Koodh Brand Consultants clone
+import thomasmoreLogo from "./assets/clients/thomasmore_w.svg";
+import radiogroepLogo from "./assets/clients/radiogroep_w.png";
+import wonderlandLogo from "./assets/clients/wonderland_w.png";
+import grkLogo from "./assets/clients/grk_w.png";
+
 const IMG = "https://saffron.imgix.net";
 const p = "?ixlib=js-3.8.0&q=80&auto=format%2Ccompress&fit=crop";
 
@@ -9,6 +14,7 @@ export const navLinks = [
   { label: "WEBSITE DEVELOPMENT", to: "/website-development" },
   { label: "MICROSOFT 365", to: "/microsoft-365" },
   { label: "IT CONSULTANCY", to: "/it-consultancy" },
+  { label: "FAQ", to: "/faq" },
   { label: "CONTACT", to: "/contact" },
 ];
 
@@ -249,10 +255,10 @@ export const koodhStats = [
 
 // White logos from koodh.com (shown on a dark strip)
 export const koodhClients = [
-  { name: "Thomas More", logo: "https://koodh.com/clients/thomasmore_w.svg" },
-  { name: "Radiogroep", logo: "https://koodh.com/clients/radiogroep_w.png" },
-  { name: "Studio Wonderland", logo: "https://koodh.com/clients/wonderland_w.png" },
-  { name: "GRK", logo: "https://koodh.com/clients/grk_w.png" },
+  { name: "Thomas More", logo: thomasmoreLogo },
+  { name: "Radiogroep", logo: radiogroepLogo },
+  { name: "Studio Wonderland", logo: wonderlandLogo },
+  { name: "GRK", logo: grkLogo },
 ];
 
 // People-free imagery from Pexels/Unsplash

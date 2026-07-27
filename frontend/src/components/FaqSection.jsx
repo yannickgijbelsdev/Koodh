@@ -79,23 +79,25 @@ const faqs = [
   {
     q: "How can I start a project with Koodh?",
     intro:
-      "Getting started is easy. Simply contact us through our contact form or email. We'll schedule an introductory conversation to discuss your goals, explore possible solutions and provide a tailored quotation without obligation.",
+      "Getting started is easy. Simply send us an email and we'll schedule an introductory conversation to discuss your goals, explore possible solutions and provide a tailored quotation without obligation.",
   },
 ];
 
-export default function FaqSection() {
+export default function FaqSection({ hideHeading = false }) {
   const [open, setOpen] = useState(0);
 
   return (
     <section className="bg-neutral-50 border-y border-black/5 py-24 md:py-32">
       <div className="max-w-[1000px] mx-auto px-6 md:px-10">
-        <h2 className="font-extrabold uppercase-tight text-black text-3xl md:text-5xl">
-          Frequently Asked{" "}
-          <span className="font-script" style={{ color: "#3f5b9e" }}>
-            questions
-          </span>
-        </h2>
-        <div className="mt-12 border-t border-black/10">
+        {!hideHeading && (
+          <h2 className="font-extrabold uppercase-tight text-black text-3xl md:text-5xl">
+            Frequently Asked{" "}
+            <span className="font-script" style={{ color: "#3f5b9e" }}>
+              questions
+            </span>
+          </h2>
+        )}
+        <div className={`${hideHeading ? "" : "mt-12"} border-t border-black/10`}>
           {faqs.map((f, i) => {
             const isOpen = open === i;
             return (

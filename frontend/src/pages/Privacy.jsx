@@ -21,7 +21,7 @@ export default function Privacy() {
             "We only collect data that is necessary to provide and improve our services. This may include:",
           ],
           list: [
-            "Contact details you share via our contact form (name, email, message).",
+            "Contact details you share when you email us (name, email address, message).",
             "Technical data such as your IP address, browser type and device information.",
             "Usage data about how you interact with our website, if you allow analytics cookies.",
           ],

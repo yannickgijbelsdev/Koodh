@@ -24,6 +24,10 @@ Pixel-perfect clone of a branding website, fully rebranded to "Koodh". Dynamic p
   - Nav (`mock.js` navLinks) now lists all items separately: WORK, ABOUT, MEET US, WEBSITE DEVELOPMENT, MICROSOFT 365, IT CONSULTANCY, CONTACT. Header desktop nav uses `xl:flex` (mobile menu below xl, scrollable).
   - Routes added in App.js. Generated AI mockup image `kootah-ai.jpg`. Each Kootah mockup image used once. Team photos: Chiel = KOODH_CHIEL, Yannick = KOODH_YANNICK.
   - Verified by frontend testing agent (iteration_1.json): 28/29 checks pass, no app bugs.
+- **2026-06 (English + local assets + FAQ page):**
+  - Reviewed all pages for perfect English; fixed content that referenced a non-existent "contact form" (FAQ + Privacy) to reflect email-only contact.
+  - Localized all remaining static external assets: client "Trusted by" logos (Thomas More, Radiogroep, Studio Wonderland, GRK) downloaded to `src/assets/clients/` and imported in mock.js. No static asset now loads from koodh.com — repo is self-contained for GitHub push/pull. (Work/WorkDetail images remain from the live Koodh API by design.)
+  - New dedicated FAQ page `/faq` (Faq.jsx) reusing FaqSection (with `hideHeading` prop); added to nav (now 8 items) and App.js routes. Removed the inline FAQ section from About.
 
 ## Backlog / notes
 - Orphaned SMTP config in backend `.env`/`server.py` (harmless, contact form removed).
