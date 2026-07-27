@@ -7,7 +7,7 @@ import CookieBanner from "../components/CookieBanner";
 import WorkCard from "../components/WorkCard";
 import Reveal from "../components/Reveal";
 import { fetchWorkItems, } from "../api";
-import { media } from "../mock";
+import accentBg from "../assets/accent-bg.png";
 import usePageMeta from "../lib/seo";
 
 export default function Work() {
@@ -70,8 +70,8 @@ export default function Work() {
         {/* Blue CTA band */}
         <section className="relative overflow-hidden bg-[#1c2a4a] text-white">
           <div
-            className="pointer-events-none absolute inset-0 opacity-20 bg-cover bg-center"
-            style={{ backgroundImage: `url(${media.bluePanels})` }}
+            className="pointer-events-none absolute inset-0 opacity-40 bg-cover bg-center"
+            style={{ backgroundImage: `url(${accentBg})` }}
           />
           <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-[#1c2a4a] via-[#22305a] to-[#3f5b9e]/70" />
           <div className="relative max-w-[1600px] mx-auto px-6 md:px-10 py-24 md:py-32">

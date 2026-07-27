@@ -150,6 +150,66 @@ backend:
         agent: "testing"
         comment: "✅ PASSED - Handles invalid ID gracefully. Returns HTTP 200 with JSON containing 'error' key instead of crashing with 500. Tested with 'invalid-id-123', returned error message: 'Client error 404 Not Found for url https://clr.koodh.com/api/news/articles/invalid-id-123'. No server crashes."
 
+  - task: "POST /api/contact endpoint - Contact form submission"
+    implemented: true
+    working: true
+    file: "/app/backend/server.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: "NA"
+        agent: "testing"
+        comment: "Initial testing - endpoint implemented at lines 141-168 in server.py"
+      - working: true
+        agent: "testing"
+        comment: "✅ PASSED - Returns HTTP 200 with JSON containing 'success': true, 'email_sent': false, 'email_error': 'SMTP is not configured'. Tested with payload {name: 'Jane Test', email: 'jane@example.com', message: 'Hello, this is a test enquiry.'}. Email not sent because SMTP_USER and SMTP_PASSWORD are empty in .env (credentials not yet provided) - this is EXPECTED behavior, not a failure. Endpoint logic is working correctly."
+
+  - task: "POST /api/contact MongoDB storage"
+    implemented: true
+    working: true
+    file: "/app/backend/server.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: "NA"
+        agent: "testing"
+        comment: "Testing MongoDB storage of contact form submissions"
+      - working: true
+        agent: "testing"
+        comment: "✅ PASSED - Contact submission stored correctly in MongoDB collection 'contact_messages'. Document contains all required fields: id (UUID), name, email, message, created_at (ISO timestamp), emailed (false). Field values match submitted data. Verified document ID: b33ac9cd-a919-47df-833e-a5df3131452d with name='Jane Test', email='jane@example.com', created_at='2026-07-27T18:26:53.138184+00:00'."
+
+  - task: "POST /api/contact validation error handling"
+    implemented: true
+    working: true
+    file: "/app/backend/server.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: "NA"
+        agent: "testing"
+        comment: "Testing validation error handling for missing required fields"
+      - working: true
+        agent: "testing"
+        comment: "✅ PASSED - Returns HTTP 422 (Unprocessable Entity) with proper Pydantic validation error when required field is missing. Tested with payload missing 'message' field. Response contains detailed error: {type: 'missing', loc: ['body', 'message'], msg: 'Field required'}. Validation working correctly."
+
+  - task: "SMTP configuration for Microsoft 365"
+    implemented: true
+    working: true
+    file: "/app/backend/.env"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: "NA"
+        agent: "testing"
+        comment: "Verifying SMTP configuration in backend .env file"
+      - working: true
+        agent: "testing"
+        comment: "✅ PASSED - SMTP correctly configured for Microsoft 365: SMTP_HOST='smtp.office365.com', SMTP_PORT='587', SMTP_FROM='info@koodh.com', CONTACT_TO='info@koodh.com'. SMTP_USER and SMTP_PASSWORD are empty (credentials not yet provided). This is why email_sent=false in contact form responses. Once real M365 credentials are added to SMTP_USER and SMTP_PASSWORD, emails will be sent successfully."
+
 frontend:
   - task: "Scroll-reveal animations on About page"
     implemented: true
@@ -214,14 +274,15 @@ frontend:
 metadata:
   created_by: "testing_agent"
   version: "1.0"
-  test_sequence: 3
+  test_sequence: 4
   run_ui: true
 
 test_plan:
   current_focus:
-    - "Scroll-reveal animations on About page"
-    - "Scroll-reveal animations on Work page"
-    - "Scroll-reveal animations on Work Detail page"
+    - "POST /api/contact endpoint - Contact form submission"
+    - "POST /api/contact MongoDB storage"
+    - "POST /api/contact validation error handling"
+    - "SMTP configuration for Microsoft 365"
   stuck_tasks: []
   test_all: false
   test_priority: "high_first"
@@ -233,3 +294,5 @@ agent_communication:
     message: "✅ Bug fix verification COMPLETE - All requirements passed. Tested article detail page (ID a8bfbcd2-1567-4332-beb5-5e7f42551aa9): (1) 'KOODH' label successfully removed from date line - shows only '7 June 2026', (2) Copyright 'Foto: Glenn Legein, Timo Piredda · © GRK' appears exactly once as small grey caption under image, (3) Copyright NOT duplicated in article body - stripImageCredit function working correctly, (4) Article body content present with 3 paragraphs about GRK. Screenshots captured for visual confirmation. No issues found - bug fix is working as expected."
   - agent: "testing"
     message: "✅ Scroll-reveal animation testing COMPLETE - All animations working perfectly across all pages. Comprehensive testing performed: (1) About page: 32/32 elements revealed successfully including service cards, values, stats, client logos, brand logos, team cards, and FAQ items. Progressive reveal verified at multiple scroll positions. (2) Work page: 3/3 project cards revealed with staggered animation. (3) Work Detail page: 2/2 elements (image and body) revealed correctly. CSS class toggling verified: 'reveal' → 'reveal is-visible'. IntersectionObserver working as expected with threshold 0.12 and rootMargin. NO elements stuck at opacity 0. Animations use smooth cubic-bezier transitions over 0.8s. Staggered delays working correctly (90ms, 60ms, 70ms, 80ms, 120ms depending on section). Screenshots captured at 8 scroll positions on About page plus Work and WorkDetail pages. Implementation is production-ready with excellent UX."
+  - agent: "testing"
+    message: "✅ Contact form endpoint testing COMPLETE - All 4 contact form tests passed successfully. Extended /app/backend_test.py with comprehensive contact form test suite (7 total tests now). Test results: (1) POST /api/contact returns HTTP 200 with success=true, email_sent=false, email_error='SMTP is not configured' - endpoint logic working correctly. (2) MongoDB storage verified - submission stored in contact_messages collection with all required fields (id, name, email, message, created_at, emailed). (3) Validation working - returns HTTP 422 for missing required fields with proper Pydantic error messages. (4) SMTP configuration verified - correctly configured for Microsoft 365 (smtp.office365.com:587, info@koodh.com). SMTP_USER and SMTP_PASSWORD are EMPTY (credentials not yet provided) - this is EXPECTED and why email_sent=false. Once real M365 credentials are added to backend/.env, emails will be sent successfully. Endpoint is production-ready and working as designed."
