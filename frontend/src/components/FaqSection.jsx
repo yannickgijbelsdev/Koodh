@@ -36,7 +36,7 @@ const faqs = [
   {
     q: "Where are your websites and data hosted?",
     intro:
-      "We take data location and privacy seriously. Your websites are hosted in secure datacenters in the Netherlands and Belgium. All Microsoft services and data are hosted within the European Union, in line with EU privacy and data-protection standards.",
+      "We take data location and privacy seriously. Your websites are hosted in secure datacenters in the Netherlands and Belgium. All Microsoft services and data are hosted within the European Union, in line with EU privacy and data-protection standards. Our Xink e-mail signatures are hosted on Microsoft Azure, also within the EU.",
   },
   {
     q: "Do you use Artificial Intelligence (AI)?",
