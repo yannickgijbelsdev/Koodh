@@ -68,19 +68,31 @@ export default function HeroCarousel() {
                 />
               )}
               <div className="relative h-[84px] md:h-[168px] overflow-hidden flex-1 min-w-0">
-                {slides.map((s, i) => (
-                  <button
-                    key={s.id}
-                    onClick={() => setIndex(i)}
-                    className="absolute left-0 top-0 w-full text-left text-white font-extrabold uppercase-tight text-2xl md:text-5xl leading-[1.08] transition-all duration-500 line-clamp-3"
-                    style={{
-                      transform: `translateY(${(i - index) * 100}%)`,
-                      opacity: i === index ? 1 : 0.25,
-                    }}
-                  >
-                    {s.title}
-                  </button>
-                ))}
+                {slides.map((s, i) => {
+                  const n = slides.length;
+                  let offset = i - index;
+                  if (n > 0) {
+                    if (offset > n / 2) offset -= n;
+                    if (offset < -n / 2) offset += n;
+                  }
+                  return (
+                    <button
+                      key={s.id}
+                      onClick={() => setIndex(i)}
+                      className="absolute left-0 top-0 w-full text-left text-white font-extrabold uppercase-tight text-2xl md:text-5xl leading-[1.08] line-clamp-3"
+                      style={{
+                        transform: `translateY(${offset * 100}%)`,
+                        opacity: i === index ? 1 : 0.25,
+                        transition:
+                          Math.abs(offset) <= 1
+                            ? "transform 0.5s ease, opacity 0.5s ease"
+                            : "none",
+                      }}
+                    >
+                      {s.title}
+                    </button>
+                  );
+                })}
               </div>
             </div>
           </div>
