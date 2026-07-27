@@ -7,8 +7,12 @@ import { Toaster } from "../components/ui/toaster";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import CookieBanner from "../components/CookieBanner";
-import { contactImages } from "../mock";
 import usePageMeta from "../lib/seo";
+import portfolio127 from "../assets/portfolio-127.webp";
+import portfolioDbnt from "../assets/portfolio-dbnt.webp";
+import portfolioGrk from "../assets/portfolio-grk.webp";
+
+const contactShots = [portfolio127, portfolioDbnt, portfolioGrk];
 
 const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
 
@@ -81,9 +85,9 @@ export default function Contact() {
         {/* Image strip */}
         <section className="overflow-hidden pb-4">
           <div className="grid md:grid-cols-3 gap-4 px-6 md:px-10">
-            {contactImages.map((src, i) => (
+            {contactShots.map((src, i) => (
               <div key={i} className="aspect-video rounded-2xl overflow-hidden bg-neutral-100">
-                <img src={src} alt="Koodh office" className="w-full h-full object-cover" />
+                <img src={src} alt="Koodh project" className="w-full h-full object-cover" />
               </div>
             ))}
           </div>
