@@ -22,6 +22,7 @@ export default function Header() {
   const textColor = light ? "text-white" : "text-black";
 
   return (
+    <>
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-500 ${
         scrolled ? "bg-white/90 backdrop-blur-md border-b border-black/5" : "bg-transparent"
@@ -85,10 +86,12 @@ export default function Header() {
           <Menu size={26} />
         </button>
       </div>
+    </header>
 
-      {/* Mobile menu */}
+      {/* Mobile menu (rendered outside <header> so the header's backdrop-blur
+          doesn't create a containing block that clips this fixed overlay) */}
       {open && (
-        <div className="fixed inset-0 z-[60] bg-white flex flex-col p-6 animate-fade-up">
+        <div className="fixed inset-0 z-[70] bg-white flex flex-col p-6 animate-fade-up">
           <div className="flex items-center justify-between h-[36px]">
             <img src={logo} alt="Koodh" className="h-7 w-auto" />
             <button onClick={() => setOpen(false)} aria-label="Close menu">
@@ -109,6 +112,6 @@ export default function Header() {
           </nav>
         </div>
       )}
-    </header>
+    </>
   );
 }

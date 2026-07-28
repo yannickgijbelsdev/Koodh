@@ -64,7 +64,7 @@ export default function HeroCarousel() {
 
       {/* Center content */}
       <div className="relative z-10 h-full flex items-center">
-        <div className="w-full max-w-[1600px] mx-auto px-6 md:px-10 flex items-center justify-between gap-6">
+        <div className="w-full max-w-[1600px] mx-auto px-6 md:px-10 flex flex-col md:flex-row items-start md:items-center md:justify-between gap-5 md:gap-6">
           {/* Pause / play */}
           <button
             onClick={() => setPaused((p) => !p)}
@@ -75,7 +75,7 @@ export default function HeroCarousel() {
           </button>
 
           {/* Rotating project title */}
-          <div className="flex-1 flex items-center justify-center">
+          <div className="w-full md:flex-1 flex items-center md:justify-center">
             <div className="flex items-center gap-4 md:gap-8 w-full max-w-[1200px]">
               {active && (
                 <img
@@ -153,9 +153,10 @@ export default function HeroCarousel() {
           </div>
 
           {/* View project */}
-          <div className="hidden md:block shrink-0">
+          <div className="shrink-0">
             <button
               onClick={() => active && navigate(active.to)}
+              data-testid="hero-view-project"
               className="group flex items-center gap-2 bg-white text-black rounded-full pl-6 pr-5 py-3 text-[14px] font-semibold hover:bg-neutral-100 transition-colors"
             >
               View project
