@@ -31,9 +31,9 @@ export default function Footer() {
         {/* Bottom row */}
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
           <img src={logo} alt="Koodh" className="h-10 md:h-12 w-auto" />
-          <p className="font-extrabold uppercase-tight text-2xl md:text-4xl lg:text-[2.6rem] leading-none">
-            The right{" "}
-            <span className="font-script lowercase font-semibold" style={{ color: NAVY }}>
+          <p className="font-extrabold tracking-tight text-2xl md:text-4xl lg:text-[2.6rem] leading-none">
+            the right{" "}
+            <span className="font-script font-semibold" style={{ color: NAVY }}>
               team,
             </span>{" "}
             for your IT solutions.
